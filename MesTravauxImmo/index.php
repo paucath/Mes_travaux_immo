@@ -14,7 +14,7 @@ include_once('include/header.php');
             <!--============ Featured Ads ===========================================================================-->
             <section class="block">
                 <div class="container">
-                    <h2>Featured Ads</h2>
+                    <h2>Featured Ads 1</h2>
                     <div class="items grid grid-xl-3-items grid-lg-3-items grid-md-2-items">
                         <div class="item">
                             <div class="wrapper">
