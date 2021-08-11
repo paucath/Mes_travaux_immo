@@ -1,0 +1,8 @@
+:root{
+    --color-red: #FF0000;
+    --color-gray: #363636 ; 
+    --color-white: #FFFFFF ;
+}
+
+/* pour utiliser la vaiable couleur CSS 
+ex:   color: var(--color-red);    */
