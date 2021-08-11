@@ -1,7 +1,7 @@
 <?php 
 
-include_once('include/data.php');
-include_once('include/header.html');
+include('include/data.php');
+include('include/header.html');
 
 ?>
 
@@ -739,6 +739,6 @@ include_once('include/header.html');
 
 <?php 
 
-include_once('include/footer.html');
+include('include/footer.html');
 
 ?>

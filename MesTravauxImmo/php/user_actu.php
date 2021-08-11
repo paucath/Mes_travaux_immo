@@ -1,7 +1,7 @@
 <?php 
 
-include_once('include/data.php');
-include_once('include/header.html');
+include('include/data.php');
+include('include/header.html');
 
 ?>
 <section>
