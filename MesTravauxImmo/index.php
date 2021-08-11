@@ -1,10 +1,7 @@
 <?php 
-
 include('include/data.php');
 include('include/header.html');
-
 ?>
-
 
         <!--************ CONTENT-->
         <section class="content">
@@ -726,7 +723,5 @@ include('include/header.html');
         </section>
 
 <?php 
-
 include('include/footer.html');
-
 ?>
