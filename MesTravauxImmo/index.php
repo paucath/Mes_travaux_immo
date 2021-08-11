@@ -1,6 +1,6 @@
 <?php 
 include('include/data.php');
-include('include/header.html');
+include('include/header_index.html');
 ?>
 
         <!--************ CONTENT-->
@@ -723,5 +723,5 @@ include('include/header.html');
         </section>
 
 <?php 
-include('include/footer.html');
+include('include/footer_index.html');
 ?>
