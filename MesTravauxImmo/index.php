@@ -6,12 +6,9 @@ include('include/header.html');
 ?>
 
 
-
-        <!--*********************************************************************************************************-->
-        <!--************ CONTENT  ************************************************************************************-->
-        <!--*********************************************************************************************************-->
+        <!--************ CONTENT-->
         <section class="content">
-            <!--============ Featured Ads ===========================================================================-->
+            <!--============ Featured Ads-->
             <section class="block">
                 <div class="container">
                     <h2>Featured Ads 1</h2>
@@ -147,8 +144,7 @@ include('include/header.html');
                     </div>
                 </div>
             </section>
-            <!--============ End Featured Ads =======================================================================-->
-            <!--============ Features Steps =========================================================================-->
+            <!--============ Features Steps-->
             <section class="block">
                 <div class="container">
                     <div class="block">
@@ -211,9 +207,7 @@ include('include/header.html');
                 <div class="background" data-background-color="#fff"></div>
                 <!--end background-->
             </section>
-            <!--end block-->
-            <!--============ End Features Steps =====================================================================-->
-            <!--============ Recent Ads =============================================================================-->
+            <!--============ Recent Ads-->
             <section class="block">
                 <div class="container">
                     <h2>Recent Ads</h2>
@@ -650,9 +644,7 @@ include('include/header.html');
                 </div>
                 <!--end container-->
             </section>
-            <!--end block-->
-            <!--============ End Recent Ads =========================================================================-->
-            <!--============ Newsletter =============================================================================-->
+            <!--============ Newsletter-->
             <section class="block">
                 <div class="container">
                     <div class="box has-dark-background">
@@ -709,8 +701,7 @@ include('include/header.html');
                 </div>
                 <!--end container-->
             </section>
-            <!--end block-->
-
+            <!--============ Partenaires-->
             <section class="block">
                 <div class="container">
                     <div class="d-flex align-items-center justify-content-around">
@@ -731,11 +722,8 @@ include('include/header.html');
                         </a>
                     </div>
                 </div>
-
             </section>
-
         </section>
-        <!--end content-->
 
 <?php 
 
