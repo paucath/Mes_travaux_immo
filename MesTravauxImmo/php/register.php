@@ -49,7 +49,7 @@
                                         $pdoStatementObject->bindValue(":id_type_user", 1, PDO::PARAM_INT);
                                         $pdoStatementObject->execute();
 
-                                        header("Location: http://localhost:8888/Mes_travaux_immo/MesTravauxImmo/php/sign-in.php");exit;
+                                        header("Location:" . URL . "index.php");exit;
                                     }
                                     else // sinon le numéro de téléphone n'est pas bon
                                     {
