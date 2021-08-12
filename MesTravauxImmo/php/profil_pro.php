@@ -78,27 +78,32 @@ include('../include/data.php');
                 <div class="wb-tabs">
                     <div class="tabpanels">
                         <!-- ***************onglet profil************* -->
-                        <details>
+                        <details class="details">
                             <summary class="nav_pro">Mon profil</summary>
                             <div>
                                 <div class="carte">
                                     <div class="input">
                                         <label for="entreprise">Nom de l'Entreprise</label>
-                                        <input class="info" type="text">
-                                        <input class="info" type="text">
-                                        <input class="info" type="text">
+                                        <input class="info" id="entreprise" name="entreprise" type="text">
+                                        <label for="adresse">Adresse de l'Entreprise</label>
+                                        <input class="info" id="adresse" name="adresse" type="text">
+                                        <label for="telephone">Numero de téléphone</label>
+                                        <input class="info" id="telephone" name="telephone" type="text">
                                     </div>
                                     <div class="input">
-                                        <input class="info" type="text">
-                                        <input class="info" type="text">
-                                        <input class="info" type="text">
+                                        <label for="siret">Numéro de SIRET</label>
+                                        <input class="info" id="siret" name="siret" type="text">
+                                        <label for="mail">Email de l'Entreprise</label>
+                                        <input class="info" id="mail" name="mail" type="text">
+                                        <label for="mdp">Mot de passe</label>
+                                        <input class="info" id="mdp" name="mdp" type="text">
                                         <button class="modif_profil">Modifier</button>
                                     </div>
                                 </div>
                             </div>
                         </details>
                         <!-- ***************Projets dispo************* -->
-                        <details>
+                        <details class="details">
                             <summary class="nav_pro">Projets Dispo</summary>
                             <div>
                                 <div class="carte">
@@ -106,7 +111,7 @@ include('../include/data.php');
                             </div>
                         </details>
                         <!-- ***************Projets acceptés************* -->
-                        <details>
+                        <details class="details">
                             <summary class="nav_pro">Projets acceptés</summary>
                             <div>
                                 <div class="carte">
@@ -114,7 +119,7 @@ include('../include/data.php');
                             </div>
                         </details>
                         <!-- ***************Mes filtres************* -->
-                        <details>
+                        <details class="details">
                             <summary class="nav_pro">Mes filtres</summary>
                             <div>
                                 <div class="carte">
@@ -122,7 +127,7 @@ include('../include/data.php');
                             </div>
                         </details>
                         <!-- ***************Mes factures************* -->
-                        <details>
+                        <details class="details">
                             <summary class="nav_pro">Mes factures</summary>
                             <div>
                                 <div class="carte">
