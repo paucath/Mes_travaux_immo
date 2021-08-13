@@ -17,6 +17,7 @@ include('../include/data.php');
     <link rel="stylesheet" href="../assets/css/selectize.css" type="text/css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/global.css">
+    
 
     <title>Mes Travaux Immo</title>
 
@@ -78,7 +79,7 @@ include('../include/data.php');
                 <div class="wb-tabs">
                     <div class="tabpanels">
                         <!-- ***************onglet profil************* -->
-                        <details class="details">
+                        <details class="details" open="open">
                             <summary class="nav_pro">Mon profil</summary>
                             <div>
                                 <div class="carte">
@@ -110,6 +111,8 @@ include('../include/data.php');
                             <summary class="nav_pro">Projets Dispo</summary>
                             <div>
                                 <div class="carte">
+                                <table id="table_projet_dispo" border="1">
+			                    </table>
                                 </div>
                             </div>
                         </details>
@@ -118,6 +121,8 @@ include('../include/data.php');
                             <summary class="nav_pro">Projets acceptés</summary>
                             <div>
                                 <div class="carte">
+                                <table id="table_projet_valide" border="1">
+			                    </table>
                                 </div>
                             </div>
                         </details>
@@ -126,6 +131,47 @@ include('../include/data.php');
                             <summary class="nav_pro">Mes filtres</summary>
                             <div>
                                 <div class="carte">
+                                    <div class="cat_trav cadre d-flex ">
+                                        <p>Catégories travaux</p>
+                                        <div class="input-group-text flex-column">
+                                            <div><input type="checkbox" class="Gros oeuvre" aria-label="Gros oeuvre"><label for="Gros oeuvre">Gros oeuvre</label></div>
+                                            <div><input type="checkbox" class="Petits travaux" aria-label="Petits Travaux"><label for="Petits travaux">Petits travaux</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="duree cadre d-flex ">
+                                        <p>Durée</p>
+                                        <div class="input-group-text flex-column ">
+                                            <div><input type="checkbox" class="24h ou moins" aria-label="24h ou moins"><label for="24h ou moins">24h ou moins</label></div>
+                                            <div><input type="checkbox" class="24H à 120h" aria-label="24H à 120h"><label for="24H à 120h">24H à 120h</label></div>
+                                            <div><input type="checkbox" class="plus de 120h" aria-label="plus de 120h"><label for="plus de 120h">plus de 120h</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="type_trav cadre d-flex">
+                                        <p>Type travaux</p>
+                                        <div class="input-group-text flex-column">
+                                            <div><input type="checkbox" class="type1" aria-label="type1"><label for="type1">type1</label></div>
+                                            <div><input type="checkbox" class="type2" aria-label="type2"><label for="type2">type2</label></div>
+                                            <div><input type="checkbox" class="type3" aria-label="type3"><label for="type3">type3</label></div>
+                                            <div><input type="checkbox" class="type4" aria-label="type4"><label for="type4">type4</label></div>
+                                            <div><input type="checkbox" class="type5" aria-label="type5"><label for="type5">type5</label></div>
+                                            <div><input type="checkbox" class="type6" aria-label="type6"><label for="type6">type6</label></div>
+                                            <div><input type="checkbox" class="type7" aria-label="type7"><label for="type7">type7</label></div>
+                                            <div><input type="checkbox" class="type8" aria-label="type8"><label for="type8">type8</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="montant cadre d-flex">
+                                        <p>Montant Devis</p>
+                                        <div class="input-group-text flex-column">
+                                            <div><input type="checkbox" class="1" aria-label="moins de 100€"><label for="1">moins de 100€</label></div>
+                                            <div><input type="checkbox" class="2" aria-label="100 à 200€"><label for="2">100 à 200€</label></div>
+                                            <div><input type="checkbox" class="3" aria-label="200 à 500€"><label for="3">200 à 500€</label></div>
+                                            <div><input type="checkbox" class="4" aria-label="500 à 1000€"><label for="4">500 à 1000€</label></div>
+                                            <div><input type="checkbox" class="5" aria-label="plus de 1000€"><label for="5">plus de 1000€</label></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="valide" type="submit">Valide</button>
+                                    </div>
                                 </div>
                             </div>
                         </details>
@@ -222,6 +268,7 @@ include('../include/data.php');
 <script src="../assets/js/icheck.min.js"></script>
 <script src="../assets/js/jquery.validate.min.js"></script>
 <script src="../assets/js/custom.js"></script>
+<script type="text/javascript" src="../assets/js/profil_pro.js" ></script>
 
 
 </html>

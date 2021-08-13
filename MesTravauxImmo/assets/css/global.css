@@ -83,3 +83,39 @@ label{
     font-size:20px;
 }
 
+/* onglets Mes filtres */
+
+.cadre{
+    border: 3px solid var(--color-red);
+    border-radius: 5px;
+    margin: 3%;
+}
+
+.input-group-text{
+    margin: auto;
+    background-color: lightgrey;
+}
+
+.cadre p{
+    color: var(--color-gray);
+    font-size: 25px;
+}
+
+.valide{
+    height:50px;
+    width:100%;
+    background-color: var(--color-white);
+    font-size: 20px;
+    border: 3px solid var(--color-red);
+    border-radius: 5px;
+    color : var(--color-red);
+    font-weight:bold;
+    margin: auto;
+}
+
+.valide:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
+}
