@@ -80,7 +80,7 @@ input[type=text]{
 
 label{
     color: var(--color-gray);
-    font-size:20px;
+    font-size:15px;
 }
 
 /* onglets Mes filtres */

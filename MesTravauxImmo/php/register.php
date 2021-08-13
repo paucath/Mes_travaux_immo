@@ -93,11 +93,18 @@
     }
 ?>
 
-        <!--************ CONTENT-->
+        <!-------------- CONTENT-->
         <section class="content">
             <section class="block">
                 <div class="container">
-                <?= $notification; ?>
+                    <!-------------- Titre de la Page-->
+                    <div class="page-title">
+                        <div class="container">
+                            <h1 class="center">Inscription Particulier</h1>
+                            <hr class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
+                        </div>
+                    </div>
+                    <?= $notification; ?>
                     <div class="row justify-content-center">
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
                             <form class="form clearfix" method="post">
@@ -116,16 +123,16 @@
                                     <label for="address_member" class="col-form-label required">Adresse</label>
                                     <input name="address_member" type="text" class="form-control" id="address_member" placeholder="Votre Adresse">
                                 </div>
-                                <!--Ville
+                                <!--Ville-->
                                 <div class="form-group">
                                     <label for="ville" class="col-form-label required">Ville</label>
                                     <input name="ville" type="text" class="form-control" id="ville" placeholder="Votre Ville">
                                 </div>
-                                    CP
+                                <!--CP-->
                                 <div class="form-group">
                                     <label for="cp" class="col-form-label required">Code Postal</label>
                                     <input name="cp" type="text" class="form-control" id="cp" placeholder="Votre Code Postal">
-                                </div>-->
+                                </div>
                                 <!--Téléphone-->
                                 <div class="form-group">
                                     <label for="phone_member" class="col-form-label required">Téléphone</label>
