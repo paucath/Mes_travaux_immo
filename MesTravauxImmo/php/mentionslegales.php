@@ -5,7 +5,7 @@
         <section class="content">
             <section class="block">
                 <div class="container">
-                    <!--============ Titre de la Page-->
+                    <!------------ Titre de la Page-->
                     <div class="page-title">
                         <div class="container">
                             <h1 class="center">Mes Travaux Immo</h1>
