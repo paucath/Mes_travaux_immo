@@ -83,20 +83,23 @@ include('../include/data.php');
                             <div>
                                 <div class="carte">
                                     <div class="input">
-                                        <label for="entreprise">Nom de l'Entreprise</label>
-                                        <input class="info" id="entreprise" name="entreprise" type="text">
-                                        <label for="adresse">Adresse de l'Entreprise</label>
-                                        <input class="info" id="adresse" name="adresse" type="text">
-                                        <label for="telephone">Numero de téléphone</label>
-                                        <input class="info" id="telephone" name="telephone" type="text">
+                                        <label for="entreprise">Nom de l'Entreprise</label></br>
+                                        <input class="info" id="entreprise" name="entreprise" placeholder="Nom de votre entreprise" type="text">
+                                        <label for="adresse1">Adresse de l'Entreprise</label></br>
+                                        <input class="info" id="adresse1" name="adresse1" placeholder="Numéro de la rue" type="text">
+                                        <input class="info" id="adresse2" name="adresse2" placeholder="Nom de la rue" type="text">
+                                        <input class="info" id="adresse3" name="adresse3" placeholder="code postal" type="text">
+                                        <input class="info" id="adresse4" name="adresse4" placeholder="ville" type="text">
                                     </div>
-                                    <div class="input">
-                                        <label for="siret">Numéro de SIRET</label>
-                                        <input class="info" id="siret" name="siret" type="text">
-                                        <label for="mail">Email de l'Entreprise</label>
-                                        <input class="info" id="mail" name="mail" type="text">
-                                        <label for="mdp">Mot de passe</label>
-                                        <input class="info" id="mdp" name="mdp" type="text">
+                                    <div class="input2">
+                                        <label for="telephone">Numero de téléphone</label></br>
+                                        <input class="info" id="telephone" name="telephone" placeholder="Numéro de téléphone" type="text">
+                                        <label for="siret">Numéro de SIRET</label></br>
+                                        <input class="info" id="siret" name="siret" placeholder="Numero de Siret" type="text">
+                                        <label for="mail">Email de l'Entreprise</label></br>
+                                        <input class="info" id="mail" name="mail" placeholder="e-mail" type="text">
+                                        <label for="mdp">Mot de passe</label></br>
+                                        <input class="info" id="mdp" name="mdp" placeholder="Mot de passe" type="text"></br>
                                         <button class="modif_profil">Modifier</button>
                                     </div>
                                 </div>

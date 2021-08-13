@@ -35,25 +35,40 @@ body{
     width:85%;
     margin: auto;
 }
-.input{
+.input {
     margin: 2%;
-    width:50%;
 }
+
+.input2{
+    margin: 2%;
+}
+
 input[type=text]{
     margin:2%;
     border: 1px solid var(--color-red);
     border-radius:5px;
+    width:80%;
+}
+#adresse1{
+    width: 10%;
+}
+#adresse2{
+    width: 65%;
+}
+#adresse3{
+    width: 30%;
 }
 
 .modif_profil{
     height:50px;
-    width:15%;
+    width:30%;
     background-color: var(--color-white);
     font-size: 20px;
     border: 3px solid var(--color-red);
     border-radius: 5px;
     color : var(--color-red);
     font-weight:bold;
+    margin: auto;
 }
 
 .modif_profil:hover{
