@@ -1,0 +1,7 @@
+ALTER TABLE `membre` ADD `password` VARCHAR(255) NOT NULL AFTER `mail_member`;
+
+UPDATE `membre` SET `password` = '1234' WHERE `membre`.`id_member` = 1;
+
+UPDATE `membre` SET `password` = '0000' WHERE `membre`.`id_member` = 2;
+
+UPDATE `membre` SET `password` = '9999' WHERE `membre`.`id_member` = 3;
