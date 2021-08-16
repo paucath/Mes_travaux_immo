@@ -1,0 +1,41 @@
+<base href="<?= $GLOBALS_INI["BASE_HREF"] ?>">
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>mes travaux immo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery v3.4.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+
+<!--BODY -->
+
+<body>
+
+
+    <!--HEADER -->
+    <header>
+        <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . 'header.html'; ?>
+    </header>
+    <!--END HEADER -->
+
+    <!--SECTION -->
+    <section>
+        <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . $monPHP . ".html" ?>
+    </section>
+    <!--END SECTION -->
+
+    <!--FOOTER -->
+    <footer>
+        <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . "footer.html" ?>
+    </footer>
+    <!--END FOOTER -->
+
+    <!--END BODY -->
+</body>
+
+</html>
