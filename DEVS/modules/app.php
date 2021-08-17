@@ -226,7 +226,10 @@ abstract class App
         // If an unconnected user wants to access a page that
         // is not in the list, they will be redirected to the home page
         $notConnectedAllowedClasses = [
-            'accueil'
+            'accueil',
+            'profil_pro',
+            'mentionslegales',
+            'user_actu'
         ];
         return in_array($myPHP, $notConnectedAllowedClasses);
     }

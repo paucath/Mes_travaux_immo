@@ -44,7 +44,6 @@
 	// load the 'html' page
 	require $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"] . $page_to_load;
 
-	error_log("test" . $GLOBALS_INI["BASE_HREF"]);
 	
 	unset($oMain);
 
