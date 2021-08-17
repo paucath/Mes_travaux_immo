@@ -1,59 +1,71 @@
-<base href="<?= $GLOBALS_INI[" BASE_HREF"] ?>">
+<base href="<?= $GLOBALS_INI["BASE_HREF"] ?>">
 <!DOCTYPE HTML>
 <html>
 
-<head>
-    <title>mes travaux immo</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script type="text/javascript" src="js/jquery v3.4.1.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Varela+Round" rel="stylesheet">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/selectize.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/user.css">
-    <link rel="stylesheet" href="assets/css/global.css">
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="http://maps.google.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58&libraries=places"></script>
-    <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>-->
-    <script src="assets/js/selectize.min.js"></script>
-    <script src="assets/js/masonry.pkgd.min.js"></script>
-    <script src="assets/js/icheck.min.js"></script>
-    <script src="assets/js/jquery.validate.min.js"></script>
-    <script src="assets/js/custom.js"></script>
-</head>
+    <head>
+        <title>mes travaux immo</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--        JQUERY        -->
+
+        <script src="assets/js/jquery.validate.min.js"></script>
+        <script src="assets/js/jquery-3.3.1.min.js"></script>
+
+        <!--     Datatables         -->
+
+        <link rel="stylesheet" href="assets/lib/datatables/datatables.min.css">
+        <script src="assets/lib/datatables/datatables.min.js"></script>
+
+        <!--     Bootstrap      -->
+
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" type="text/css">
+        <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/js/popper.min.js"></script>
+
+        <!--     CSS        -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Varela+Round" rel="stylesheet">
+        <link rel="stylesheet" href="assets/fonts/font-awesome.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/selectize.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/global.css">
+
+        <!--      JS       -->
+        <script type="text/javascript"
+            src="http://maps.google.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58&libraries=places"></script>
+        <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>-->
+        <script src="assets/js/selectize.min.js"></script>
+        <script src="assets/js/masonry.pkgd.min.js"></script>
+        <script src="assets/js/icheck.min.js"></script>
+        <script src="assets/js/custom.js"></script>
+
+    </head>
 
 <!--BODY -->
 
-<body>
+    <body>
 
 
-    <!--HEADER -->
-    <header>
-        <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . 'header.html'; ?>
-    </header>
-    <!--END HEADER -->
+        <!--HEADER -->
+        <header>
+            <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . 'header.html'; ?>
+        </header>
+        <!--END HEADER -->
 
-    <!--SECTION -->
-    <section>
-        <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . $monPHP . ".html" ?>
-    </section>
-    <!--END SECTION -->
+        <!--SECTION -->
+        <section>
+            <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . $monPHP . ".html" ?>
+        </section>
+        <!--END SECTION -->
 
-    <!--FOOTER -->
-    <footer>
-        <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . "footer.html" ?>
-    </footer>
-    <!--END FOOTER -->
+        <!--FOOTER -->
+        <footer>
+            <?php include $GLOBALS_INI["PATH_HOME"] . $GLOBALS_INI["PATH_FILES"]  . "footer.html" ?>
+        </footer>
+        <!--END FOOTER -->
 
-    <!--END BODY -->
-</body>
+        <!--END BODY -->
+    </body>
 
 </html>
