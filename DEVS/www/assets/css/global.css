@@ -97,8 +97,9 @@ label{
 }
 
 .cadre p{
-    color: var(--color-gray);
+    color: black;
     font-size: 25px;
+    font-weight: bold;
 }
 
 .valide{
