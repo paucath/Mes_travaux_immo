@@ -103,6 +103,17 @@ var projet_dispo = [];
 					"sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
 					"sInfoEmpty":      "Utilisateurs 0 à 0 sur 0 sélectionnée",
 				},
+
+					// autoWidth: true,
+					// processing: true,
+					// deferRender: true,
+					// responsive: true,
+					// paging: false,
+
+					"responsive":{
+						"responsive":true
+					},
+
 				"columns": [
 					{
 						"orderable": true
@@ -125,8 +136,12 @@ var projet_dispo = [];
 				],
 				'retrieve': true
 			};
-
 			var tables;
+
+			// $('#table_projet_dispo').DataTable( {
+			// 	responsive: true
+			// } );
+
 			$(document).ready(function() {
 				constructTable();
 				// INIT DATATABLE
