@@ -297,3 +297,62 @@ h5{
       position: absolute;
     }
   }
+
+  /*----------------------------------------------------------------*/
+/*                            css Devis                            */
+/*----------------------------------------------------------------*/
+
+.devis_titre{
+    border:3px solid var(--color-red) ;
+    background-color:var(--color-gray) ;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+    vertical-align: middle;
+    margin:auto;
+}
+
+.cadre_devis{
+    border: 3px solid var(--color-red);
+    border-radius: 5px;
+    margin: auto;
+    width: 80%;
+    background-color: lightgrey;
+}
+
+.cadre_devis p{
+    font-size:25px;
+    font-weight:bold;
+    padding: 2%;
+}
+
+
+.devis_titre h6 {
+    font-size: 35px;
+}
+
+.bouton_taille_trav{
+    height:60px;
+    background-color: var(--color-white);
+    font-size: 20px;
+    border: 3px solid var(--color-red);
+    border-radius: 5px;
+    color : var(--color-red);
+    font-weight:bold;
+}
+
+.bouton_taille_trav:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
+}
+
+.buttons{
+    margin-bottom: 1%;
+}
+
+.total{
+    margin:3%;
+}
