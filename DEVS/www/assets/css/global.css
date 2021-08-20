@@ -134,12 +134,7 @@ label{
     margin-top:3%;
 }
 
-h5{
-    font-size:25px;
-}
-.user_actu_complet_article{
-    width: 67%;
-}
+/*  Titre   */
 
 .bande{
     border:3px solid var(--color-red) ;
@@ -156,6 +151,23 @@ h5{
      /* margin-top: 3%; */
 }
 
+h5{
+    font-size:25px;
+}
+
+/*     Grand article      */
+
+.user_actu_complet_article{
+    width: 67%;
+}
+
+.user_actu_img_article{
+    max-width: 100%;
+}
+.user_actu_texte{
+    padding: 5%;
+}
+
 .user_actu_vertical_line{
      border-left: 2px solid black;
 }
@@ -163,12 +175,9 @@ h5{
      max-width: 25%;
      margin: auto;
 }
-.user_actu_img_article{
-    max-width: 100%;
-}
-.user_actu_texte{
-    padding: 5%;
-}
+
+/*     Liste article      */
+
 
 .user_actu_list_article{
     width: 27%;
@@ -197,9 +206,9 @@ h5{
     padding-left: 10%;
 }
 
-/* .amineArticle{
-    display: none !important;
-} */
+/*           Gestion du responsive        */
+
+
 .anim_show_article {
     transition-duration: 1s;
     transform: translateX(0%);
@@ -273,11 +282,7 @@ h5{
     background-color: rgba(255, 255, 255, 0.815);
 
  }
-      /* .exc_input_grp {
-      top: 0 !important;
-      position: static !important;
-    } */
-  
+    
     .exc_arrowArticle {
       display: block;
       font-size: 35px;
@@ -302,6 +307,11 @@ h5{
 /*                            css Devis                            */
 /*----------------------------------------------------------------*/
 
+.total{
+    margin:3%;
+}
+
+/*     Titre       */
 .devis_titre{
     border:3px solid var(--color-red) ;
     background-color:var(--color-gray) ;
@@ -313,6 +323,11 @@ h5{
     margin:auto;
 }
 
+.devis_titre h6 {
+    font-size: 35px;
+}
+
+/*     Cadre      */
 .cadre_devis{
     border: 3px solid var(--color-red);
     border-radius: 5px;
@@ -327,12 +342,9 @@ h5{
     padding: 2%;
 }
 
+/*    Boutons     */
 
-.devis_titre h6 {
-    font-size: 35px;
-}
-
-.bouton_taille_trav{
+.bouton_taille_trav , .type_go , .type_pt , .info_sup , .valid_devis{
     height:60px;
     background-color: var(--color-white);
     font-size: 20px;
@@ -340,6 +352,34 @@ h5{
     border-radius: 5px;
     color : var(--color-red);
     font-weight:bold;
+}
+
+.valid_devis:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
+}
+
+.info_sup:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
+}
+
+.type_pt:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
+}
+
+.type_go:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
 }
 
 .bouton_taille_trav:hover{
@@ -353,6 +393,25 @@ h5{
     margin-bottom: 1%;
 }
 
-.total{
+.button_place{
     margin:3%;
 }
+
+/*    Input     */
+
+.input_3{
+    margin: 3%;
+}
+
+textarea{
+    width: 50%;
+    height: 50%;
+    margin: 3%;
+    border: 1px solid var(--color-red);
+}
+
+.textarea_4 label{
+    margin: 2%;
+}
+
+
