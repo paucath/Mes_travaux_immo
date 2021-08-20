@@ -342,6 +342,8 @@ h5{
     padding: 2%;
 }
 
+
+
 /*    Boutons     */
 
 .bouton_taille_trav , .type_go , .type_pt , .info_sup , .valid_devis{
@@ -418,6 +420,28 @@ textarea{
 /*                    css page tunnel de commande                    */
 /*----------------------------------------------------------------*/
 
+/*     Titre       */
+
+.commande_titre{
+    border:3px solid var(--color-red) ;
+    background-color:var(--color-gray) ;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+    vertical-align: middle;
+    margin:auto;
+}
+
+.commande_titre h5 {
+    font-size: 35px;
+}
+
+/*     bulles     */
+.bulles{
+    margin: 3%;
+}
+
 .bulle{
     width: 100px;
     height: 100px;
@@ -430,4 +454,48 @@ textarea{
     width: 100px;
     flex-wrap: wrap ;
     text-align: center;
+}
+
+/*     Cadre      */
+
+.cadre_commande{
+    border: 3px solid var(--color-red);
+    border-radius: 5px;
+    margin: auto;
+    padding: 2%;
+    width: 80%;
+    background-color: lightgrey;
+}
+
+.cadre_commande h6{
+    font-size:25px;
+    font-weight:bold;
+    padding: 2%;
+}
+
+/*       boutons        */
+.valide_commande{
+    height:50px;
+    width:10%;
+    background-color: var(--color-white);
+    font-size: 15px;
+    border: 3px solid var(--color-red);
+    border-radius: 5px;
+    color : var(--color-red);
+    font-weight:bold;
+    margin: 2%;
+}
+
+.valide_commande:hover{
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 3px solid var(--color-white);
+    transition-duration:1s;
+}
+
+/*     panier     */
+
+.panier , .total_panier{
+    font-size: 20px;
+    color: black;
 }
