@@ -10,6 +10,9 @@ $(document).ready(function() {
     $("#Paiement").hide();
     $("#CGV").hide();
 });
+
+// fonction annulé le payment
+
 function annule(){
     var bulle_1=$("#bulle1");
     bulle_1.css("background-color" , "#FF0000");
@@ -19,6 +22,9 @@ function annule(){
     $("#Paiement").hide();
     $("#CGV").hide();
 }
+
+// fonction validation du panier
+
 function valid_panier(){
     var bulle_1=$("#bulle1");
     bulle_1.css("background-color" , "lightgrey");
@@ -30,6 +36,8 @@ function valid_panier(){
     $("#Paiement").hide();
     $("#CGV").hide();
 }
+
+// fonction validation connexion
 
 function valid_connexion(){
     var bulle_2=$("#bulle2");
@@ -43,6 +51,8 @@ function valid_connexion(){
     $("#CGV").hide();
 }
 
+// fonction validation livraison
+
 function valid_livraison(){
     var bulle_3=$("#bulle3");
     bulle_3.css("background-color" , "lightgrey");
@@ -54,6 +64,8 @@ function valid_livraison(){
     $("#Paiement").show();
     $("#CGV").hide();
 }
+
+// validation payment
 
 function valid_payment(){
     var bulle_4=$("#bulle4");

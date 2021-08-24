@@ -20,6 +20,8 @@
 	if(!isset($_SESSION["id_user"]) ||(isset($_SESSION["id_user"]) && $_SESSION["id_user"] == ""))	{
 		if(!in_array($monPHP, $list_class)){
 			//$monPHP = "accueil";
+			
+			
 		}		
 	}
 

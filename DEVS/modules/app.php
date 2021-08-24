@@ -229,7 +229,8 @@ abstract class App
             'accueil',
             'profil_pro',
             'mentionslegales',
-            'user_actu'
+            'user_actu',
+            'user_actu_list'
         ];
         return in_array($myPHP, $notConnectedAllowedClasses);
     }

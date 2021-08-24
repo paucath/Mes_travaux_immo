@@ -1,0 +1,6 @@
+UPDATE `professionnel` SET `date_inscription` = '2021-03-25' WHERE `professionnel`.`id_pro` = 1;
+
+UPDATE `professionnel` SET `date_inscription` = '2021-05-17' WHERE `professionnel`.`id_pro` = 2;
+
+UPDATE `professionnel` SET `date_inscription` = '2021-04-07' WHERE `professionnel`.`id_pro` = 3;
+

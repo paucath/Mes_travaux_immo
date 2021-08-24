@@ -9,6 +9,8 @@ $(document).ready(function() {
     $("#content_4").hide();
 });
 
+// bouton pour gros oeuvre
+
 function GrosOeuvre(){
     $("#content_1").hide();
     $("#content_2a").show();
@@ -16,6 +18,8 @@ function GrosOeuvre(){
     $("#content_3").hide();
     $("#content_4").hide();
 }
+
+// bouton pour petit travaux sur
 
 function PetitsTrav(){
     $("#content_1").hide();
@@ -25,6 +29,8 @@ function PetitsTrav(){
     $("#content_4").hide();
 }
 
+// valide type de gros oeuvre
+
 function valide_type_go() {
     $("#content_1").hide();
     $("#content_2a").hide();
@@ -33,6 +39,8 @@ function valide_type_go() {
     $("#content_4").hide();
 }
 
+// valide type de petits travaux
+
 function valide_type_pt() {
     $("#content_1").hide();
     $("#content_2a").hide();
@@ -40,6 +48,8 @@ function valide_type_pt() {
     $("#content_3").show();
     $("#content_4").hide();
 }
+
+// valide information sup
 
 function valide_infosup(){
     $("#content_1").hide();

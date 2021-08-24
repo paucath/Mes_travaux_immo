@@ -1,0 +1,1 @@
+ALTER TABLE `actualite` ADD `img_actu` VARCHAR(255) NOT NULL AFTER `article_news`;

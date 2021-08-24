@@ -69,9 +69,9 @@
         </div>
         <div>
             <label for="login">LOGIN</label></br>
-            <input type="text" class="login" id="login" name="login"></br>
+            <input type="text" class="login" id="login" name="login" placeholder="votre login"></br>
             <label for="mdp">Mot de passe</label></br>
-            <input type="text" class="mdp" id="mdp" name="mdp"></br>
+            <input type="text" class="mdp" id="mdp" name="mdp" placeholder="votre mot de passe"></br>
         </div>
         <div class="d-flex justify-content-center">
             <button class="valide_commande" id="" name="" onClick="valid_connexion()">Valider</button>
@@ -97,58 +97,25 @@
         <div>
             <h6>Paiement</h6>
         </div>
-        <div>
+        <div class="ref">
             <p>Référence du paiement</p>
             <p></p>
         </div>
-        <div>
+        <div class="mode">
             <p>Mode de paiement</p>
             <p></p>
         </div>
-        <div>
+        <div class="montant">
             <p>Montant</p>
             <p></p>
         </div>
-        <div>
-            <p>Numéro de la carte</p>
-            <input type="text" class="" name="" id="">
+        <div class="num_carte">
+            <label for="numero_carte">Numéro de la carte</label>
+            <input type="text" class="numero_carte" name="numero_carte" id="numero_carte" placeholder="votre numero de carte">
         </div>
-        <div>
-            <p>Date d'expiration</p>
-            <select class="jour" name="jour">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-            </select>
-            <select class="jour" name="jour">
+        <div class="date_carte">
+            <label>Date d'expiration</label>
+            <select class="mois" name="mois">
                 <option value="janvier">janvier</option>
                 <option value="fevrier">fevrier</option>
                 <option value="mars">mars</option>
@@ -162,14 +129,26 @@
                 <option value="novembre">novembre</option>
                 <option value="decembre">decembre</option>
             </select>
+            <select class="annee" name="annee">
+                <option value="1">2021</option>
+                <option value="2">2022</option>
+                <option value="3">2023</option>
+                <option value="4">2024</option>
+                <option value="5">2025</option>
+                <option value="6">2026</option>
+                <option value="7">2027</option>
+                <option value="8">2028</option>
+                <option value="9">2029</option>
+                <option value="10">2030</option>
+            </select>
         </div>
-        <div>
-            <p>Nom du titulaire de la carte</p>
-            <input type="text" class="" name="" id="">
+        <div clas="titulaire_carte">
+            <label for="tit_carte">Nom du titulaire de la carte</label>
+            <input type="text" class="tit_carte" name="tit_carte" id="tit_carte" placeholder="titulaire de la carte">
         </div>
-        <div>
-            <p>Code de sécurité</p>
-            <input type="text" class="" name="" id="">
+        <div class="secu_carte">
+            <label for="code_secu_carte">Code de sécurité</label>
+            <input type="text" class="code_secu_carte" name="code_secu_carte" id="code_secu_carte" Placeholder="sécurité carte">
         </div>
         <div class="d-flex justify-content-center">
             <button class="valide_commande" id="" name="" onClick="annule()">Annuler</button>
