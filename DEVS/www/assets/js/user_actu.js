@@ -42,9 +42,10 @@ $(document).ready(function() {
         }
 
 /** création liste article */
+let i;
+var aofactu=[];
 
 function list_article(aofactu){
-    var i;
     var sHTML2="";
  
 
@@ -55,13 +56,15 @@ function list_article(aofactu){
         sHTML2+='<p>' + aofactu[i]["catch_phrase_news"]+ '</p></div></div>';
     }
     $("#mini_article").html(sHTML2);
+
+    console.log(aofactu[i] , "test");
 }
 
 /** création article complet */
 function article_complet(aofactu){
     
-    var sHTML1="";
-    console.log(aofactu);
+    let sHTML1="";
+    console.log(aofactu , "article_complet");
 
         sHTML1='<div class="bande ml-2 ">';
         sHTML1+='<h5>'+ aofactu["title_news"] +'</h5>';

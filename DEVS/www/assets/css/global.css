@@ -121,6 +121,8 @@ label{
     transition-duration:1s;
 }
 
+
+
 /*----------------------------------------------------------------*/
 /*                         css user actu                          */
 /*----------------------------------------------------------------*/
@@ -206,9 +208,7 @@ h5{
     padding-left: 10%;
 }
 
-.mini_img:hover{
-    box-shadow: 5px 5px 5px lightgrey;
-}
+
 /*           Gestion du responsive        */
 
 

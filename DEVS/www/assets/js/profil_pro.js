@@ -1,6 +1,8 @@
 var table_projet_dispo;
 var table_projet_valide;
 
+
+
 // ***************CRUD PROJETS DISPONIBLES*******************************
 
 var projet_dispo = [];
@@ -51,7 +53,7 @@ var projet_dispo = [];
 					sHTML+= "<td>" + projet_dispo[i]["area"] + "</td>";
 					sHTML+= "<td>" + projet_dispo[i]["duration"] + "</td>";
 					sHTML+= "<td>" + projet_dispo[i]["price"] + "</td>";
-					sHTML+= "<td>OUI/NON</td>";
+					sHTML+= "<td><button class='valide'>OK</button></td>";
 					sHTML+= "</tr>";
 				}
 				
@@ -170,13 +172,6 @@ var projet_valide = [];
 			projet_valide[1]["price"]= "1000";
 			projet_valide[1]["details"]= "migsfjFCJBsdfjbdskbvjkfdsbfksbbfkjbkjb";
 
-			projet_valide[2]= [];
-			projet_valide[2]["size_work"]= "Gros oeuvre";
-			projet_valide[2]["type_work"]= "jardinage";
-			projet_valide[2]["area"]= "0";
-			projet_valide[2]["duration"]= "5H";
-			projet_valide[2]["price"]= "100";
-			projet_valide[2]["details"]= "migsfjFCJBsdfjbdskbvjkfdsbfksbbfkjbkjb";
 
 			
 			function constructTable_valide()	{
@@ -191,7 +186,7 @@ var projet_valide = [];
 				sHTML+= "<td>durée</td>";
 				sHTML+= "<td>prix</td>";
 				sHTML+= "<td>détails</td>";
-				sHTML+= "<td>Fini</td>";
+				sHTML+= "<td>Etat</td>";
 				sHTML+= "</tr>";
 				sHTML+= "</thead>";
 				sHTML+= "<tbody>";
@@ -204,7 +199,7 @@ var projet_valide = [];
 					sHTML+= "<td>" + projet_valide[i]["duration"] + "</td>";
 					sHTML+= "<td>" + projet_valide[i]["price"] + "</td>";
 					sHTML+= "<td>" + projet_valide[i]["details"] + "</td>";
-					sHTML+= "<td>OUI/NON</td>";
+					sHTML+= "<td><button class='valide'>Terminer</button></td>";
 					sHTML+= "</tr>";
 				}
 				
