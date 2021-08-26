@@ -39,6 +39,13 @@ Class Profil_pro_service extends Initialize	{
     // execute main function
   }
 
+      /**fonction de récupération des informations de la bdd */
+
+      public function facture_list(){
+        $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "facture_list.sql";
+        $this->resultat["profil_pro_facture_list"]= $this->oBdd->getSelectDatas($spathSQL);
+    }
+
   /**
    *
    * Destroy service

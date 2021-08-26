@@ -8,7 +8,12 @@
  */
 abstract class App
 {
-    
+    public static function route()
+    {
+        //
+        return Configuration::getGlobalsINI();
+    }
+
     /**
      * Clear all session data :  $_SESSION = []
      */
@@ -16,7 +21,7 @@ abstract class App
     {
         $_SESSION = [];
     }
-    
+
     /**
      * Disable the user mode.
      * The user mode permite to an admin to navigate like a simple user.
@@ -34,7 +39,7 @@ abstract class App
     static function disconnectUser()
     {
         App::clearSession();
-        return ( count($_SESSION) === 0 );
+        return (count($_SESSION) === 0);
     }
 
     /**
@@ -51,15 +56,15 @@ abstract class App
      * 
      * @return string
      */
-    static function getHeaderFileName() : string
+    static function getHeaderFileName(): string
     {
         // if the user role is undefined
-        if ( !isset($_SESSION["userRole"]) ) {
+        if (!isset($_SESSION["userRole"])) {
             return "header_nc";
         } else {
             if (
                 ($_SESSION["userRole"] == 0) ||
-                ( isset($_SESSION["userMode"]) && $_SESSION["userMode"] )
+                (isset($_SESSION["userMode"]) && $_SESSION["userMode"])
             ) {
                 // user OR admin in 'user mode' :
                 return "header_user";
@@ -88,15 +93,15 @@ abstract class App
      * 
      * @return string
      */
-    static function getHomePageFileName(string $desiredPage = 'auto') : string
+    static function getHomePageFileName(string $desiredPage = 'auto'): string
     {
         // auto detection
         if ($desiredPage === 'auto') {
             // page if no user is connected
             $desiredPage = 'nc';
-            if ( App::isAdminConnected() && !App::isUserMode() ) {
+            if (App::isAdminConnected() && !App::isUserMode()) {
                 $desiredPage = 'admin';
-            } elseif ( App::isUserConnected() ) {
+            } elseif (App::isUserConnected()) {
                 $desiredPage = 'user';
             }
         }
@@ -117,7 +122,7 @@ abstract class App
      * 
      * @return bool
      */
-    static function isAdminConnected() : bool
+    static function isAdminConnected(): bool
     {
         return !empty($_SESSION['userRole']);
     }
@@ -127,12 +132,11 @@ abstract class App
      * 
      * @return bool
      */
-    static function isAdminPage() : bool
+    static function isAdminPage(): bool
     {
         global $myPHP;
         return (
-            (substr($myPHP, 0, 4) === 'adm_')
-        );
+            (substr($myPHP, 0, 4) === 'adm_'));
     }
 
     /**
@@ -140,12 +144,10 @@ abstract class App
      * 
      * @return bool
      */
-    static function isDevelopperConnected() : bool
+    static function isDevelopperConnected(): bool
     {
-        return (
-            isset($_SESSION['isUserDevelopper']) &&
-            $_SESSION['isUserDevelopper']
-        );
+        return (isset($_SESSION['isUserDevelopper']) &&
+            $_SESSION['isUserDevelopper']);
     }
 
     /**
@@ -153,7 +155,7 @@ abstract class App
      * 
      * @return bool
      */
-    static function isDevelopperPage() : bool
+    static function isDevelopperPage(): bool
     {
         global $myPHP;
         $aDevelopperPages = [
@@ -170,7 +172,7 @@ abstract class App
      * 
      * @return bool
      */
-    static function isFreeAccessPage() : bool
+    static function isFreeAccessPage(): bool
     {
         global $myPHP;
         $pagesAllowedForEverybody = [
@@ -187,15 +189,14 @@ abstract class App
      * 
      * @return bool
      */
-    static function isHomePage() : bool
+    static function isHomePage(): bool
     {
         global $myPHP;
         return (
             ($myPHP === 'index') ||
             ($myPHP === App::getHomePageFileName('nc')) ||
             ($myPHP === App::getHomePageFileName('user')) ||
-            ($myPHP === App::getHomePageFileName('admin'))
-        );
+            ($myPHP === App::getHomePageFileName('admin')));
     }
 
     /**
@@ -203,16 +204,15 @@ abstract class App
      * 
      * @return bool
      */
-    static function isLocalhost() : bool
+    static function isLocalhost(): bool
     {
         $aLocalHostAddr = [
             '127.0.0.1',
             '::1'
         ];
         return (
-            ( in_array($_SERVER['SERVER_ADDR'], $aLocalHostAddr) ) &&
-            ( $_SERVER['SERVER_NAME'] === 'localhost' )
-        );
+            (in_array($_SERVER['SERVER_ADDR'], $aLocalHostAddr)) &&
+            ($_SERVER['SERVER_NAME'] === 'localhost'));
     }
 
     /**
@@ -220,7 +220,7 @@ abstract class App
      * 
      * @return bool
      */
-    static function isNotConnectedPage() : bool
+    static function isNotConnectedPage(): bool
     {
         global $myPHP;
         // If an unconnected user wants to access a page that
@@ -240,7 +240,7 @@ abstract class App
      * 
      * @return bool
      */
-    static function isUserConnected() : bool
+    static function isUserConnected(): bool
     {
         return !empty($_SESSION['userId']);
     }
@@ -250,15 +250,14 @@ abstract class App
      * 
      * @return bool
      */
-    static function isUserMode() : bool
+    static function isUserMode(): bool
     {
-        if ( App::isAdminConnected() && !isset($_SESSION['userMode']) ) {
+        if (App::isAdminConnected() && !isset($_SESSION['userMode'])) {
             $_SESSION['userMode'] = false;
         }
         return (
-            ( App::isAdminConnected() ) &&
-            ( $_SESSION['userMode'] == true )
-        );
+            (App::isAdminConnected()) &&
+            ($_SESSION['userMode'] == true));
     }
 
     /**
@@ -266,7 +265,7 @@ abstract class App
      * 
      * @return bool
      */
-    static function isUserPage() : bool
+    static function isUserPage(): bool
     {
         global $myPHP;
         // list of pages which can be seen by a connected user (non-admin)

@@ -43,7 +43,6 @@ Class User_actu_service extends Initialize	{
   public function user_actu_list(){
     $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "user_actu_list.sql";
     $this->resultat["user_actu_list"]= $this->oBdd->getSelectDatas($spathSQL);
-    error_log("coucou");
 }
 
   /**

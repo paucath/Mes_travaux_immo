@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 25 août 2021 à 12:51
+-- Généré le : jeu. 26 août 2021 à 07:49
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.9
 
@@ -139,12 +139,11 @@ CREATE TABLE IF NOT EXISTS `facture` (
 --
 
 INSERT INTO `facture` (`id_facture`, `facture`, `id_pro`) VALUES
-(1, 'facture1', 1),
-(2, 'facture2', 1),
-(3, 'facture3', 1),
-(4, 'facture1', 2),
-(5, 'facture2', 2),
-(6, 'facture1', 3);
+(1, 'facture_1.pdf', 1),
+(3, 'facture_2.pdf', 1),
+(4, 'facture_3.pdf', 2),
+(5, 'facture_4.pdf', 2),
+(6, 'facture_5.pdf', 3);
 
 -- --------------------------------------------------------
 

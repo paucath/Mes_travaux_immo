@@ -121,7 +121,11 @@ label{
     transition-duration:1s;
 }
 
+/*       onglets facture         */
 
+.a_facture{
+    margin:2%;
+}
 
 /*----------------------------------------------------------------*/
 /*                         css user actu                          */
