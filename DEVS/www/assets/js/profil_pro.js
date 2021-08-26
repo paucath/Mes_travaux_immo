@@ -1,11 +1,12 @@
 var table_projet_dispo;
 var table_projet_valide;
 var aoffacture = [];
-
+var aofprofil = [];
 // document ready
 
 $(document).ready(function () {
 	load_facture();
+	load_profil();
 });
 
 // ***************CRUD PROJETS DISPONIBLES*******************************
@@ -66,29 +67,7 @@ function constructTable() {
 	$('#table_projet_dispo').html(sHTML);
 }
 
-// function ajoutPersonne()	{
-// 	var iLongueur= aOfPersonnes.length;
-// 	aOfPersonnes[iLongueur]= [];
-// 	aOfPersonnes[iLongueur]["prenom"]= $('#prenom').val();
-// 	aOfPersonnes[iLongueur]["nom"]= $('#nom').val();
-// 	aOfPersonnes[iLongueur]["age"]= $('#age').val();
-// 	aOfPersonnes[iLongueur]["tel"]= $('#telephone').val();
-// 	aOfPersonnes[iLongueur]["mail"]= $('#email').val();
-// 	constructTable();
-// }
 
-// function majPersonne()	{
-// }
-
-// function supprimPersonne()	{
-// }
-
-// var iIndiceEditionEncours;
-// function editPersonne(iIndiceEdit)	{
-// 	alert("iIndiceEdit = " + iIndiceEdit);
-// 	iIndiceEditionEncours= iIndiceEdit;
-// 	$('#prenom').val( aOfPersonnes[iIndiceEdit]["prenom"] );
-// }
 
 // CONFIGURATION DATATABLE
 const configuration = {
@@ -135,9 +114,6 @@ const configuration = {
 };
 var tables;
 
-// $('#table_projet_dispo').DataTable( {
-// 	responsive: true
-// } );
 
 $(document).ready(function () {
 	constructTable();
@@ -202,29 +178,6 @@ function constructTable_valide() {
 	$('#table_projet_valide').html(sHTML);
 }
 
-// function ajoutPersonne()	{
-// 	var iLongueur= aOfPersonnes.length;
-// 	aOfPersonnes[iLongueur]= [];
-// 	aOfPersonnes[iLongueur]["prenom"]= $('#prenom').val();
-// 	aOfPersonnes[iLongueur]["nom"]= $('#nom').val();
-// 	aOfPersonnes[iLongueur]["age"]= $('#age').val();
-// 	aOfPersonnes[iLongueur]["tel"]= $('#telephone').val();
-// 	aOfPersonnes[iLongueur]["mail"]= $('#email').val();
-// 	constructTable();
-// }
-
-// function majPersonne()	{
-// }
-
-// function supprimPersonne()	{
-// }
-
-// var iIndiceEditionEncours;
-// function editPersonne(iIndiceEdit)	{
-// 	alert("iIndiceEdit = " + iIndiceEdit);
-// 	iIndiceEditionEncours= iIndiceEdit;
-// 	$('#prenom').val( aOfPersonnes[iIndiceEdit]["prenom"] );
-// }
 
 // CONFIGURATION DATATABLE
 const configuration_valide = {
@@ -342,3 +295,73 @@ function facture() {
 
 
 }
+/*
+ * Récupération des données BDD du profil pro
+ */
+function load_profil() {
+	// Ici je mets les paramètres pour appeler un autre PHP :
+	// Je décide de l'appeler "user_actu_list"
+	// Qui va s'occuper d'aller chercher mes données dans la base
+	// Le paramètre bJSON à 1, me permet que ma page ne se recharge pas
+	// Mais reste bien figée
+	var datas = {
+		page: "profil_pro_profil_list",
+		bJSON: 1
+	}
+	// J'exécute le POST
+	// Dans le ".done", le retour du PHP "user_actu_list", soit "user_actu_list.html"
+	// Si tout s'est bien passé
+	// Dans le ".fail", si il y'a eu une erreur d'exécution côté serveur.
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+			// C'est dans result que je recevrais les données de la base de données
+			// Je fais un console.log pour voir son contenu
+			// Ici j'aurais à coder de parcourir le tableau "result"
+
+			aofprofil = result[0];
+
+			// organisation des données sur ma page 
+
+			$('#entreprise').val(aofprofil["societe_pro"]);
+			$('#adresse2').val(aofprofil["address_pro"]);
+			$('#adresse3').val(aofprofil["code_ville"]);
+			$('#adresse4').val(aofprofil["ville"]);
+			$('#telephone').val(aofprofil["tel_pro"]);
+			$('#siret').val(aofprofil["siret_pro"]);
+			$('#mail').val(aofprofil["mail_pro"]);
+			$('#login').val(aofprofil["login_pro"]);
+			$('#mdp').val(aofprofil["mdp_pro"]);
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/*
+ * Remplissage du profil pro
+ */
+// function profil(){
+// 	console.log("profil" , aofprofil);
+
+// 	$('#entreprise').val(aofprofil["societe_pro"]);
+// 	$('#adresse2').val(aofprofil["address_pro"]);
+// 	$('#adresse3').val(aofprofil["code_ville"]);
+// 	$('#adresse4').val(aofprofil["ville"]);
+// 	$('#telephone').val(aofprofil["tel_pro"]);
+// 	$('#siret').val(aofprofil["siret_pro"]);
+// 	$('#mail').val(aofprofil["mail_pro"]);
+// 	$('#login').val(aofprofil["login_pro"]);
+// 	$('#mdp').val(aofprofil["mdp_pro"]);
+// }

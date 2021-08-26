@@ -10,13 +10,13 @@ require_once  "initialize.php";
  * require_once "initialize.php";
  *
  * @package Mes travaux immo
- * @subpackage profil pro service
+ * @subpackage espace admin service
  * @author CATHELAIN Pauline
  * @copyright  
  * @version v1.0
  */
 
-Class Profil_pro_service extends Initialize	{
+Class Espace_admin_service extends Initialize	{
 
   /**
    * public $resultat is used to store all datas needed for HTML Templates
@@ -39,18 +39,6 @@ Class Profil_pro_service extends Initialize	{
     // execute main function
   }
 
-      /**fonction de récupération des informations de la bdd */
-
-      public function facture_list(){
-        $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "facture_list.sql";
-        $this->resultat["profil_pro_facture_list"]= $this->oBdd->getSelectDatas($spathSQL);
-    }
-
-    public function profil_list(){
-      $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "profil_list.sql";
-      $this->resultat["profil_pro_profil_list"]= $this->oBdd->getSelectDatas($spathSQL);
-  }
-
   /**
    *
    * Destroy service
@@ -67,3 +55,4 @@ Class Profil_pro_service extends Initialize	{
   
 
 ?>
+

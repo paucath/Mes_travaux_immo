@@ -1,0 +1,1 @@
+SELECT * FROM ville INNER JOIN professionnel ON ville.id_ville= professionnel.id_ville WHERE id_pro=1 
