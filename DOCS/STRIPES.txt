@@ -1,0 +1,3 @@
+doc STRIPES API de payment:
+
+https://stripe.com/docs
