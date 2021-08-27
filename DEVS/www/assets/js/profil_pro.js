@@ -2,6 +2,7 @@ var table_projet_dispo;
 var table_projet_valide;
 var aoffacture = [];
 var aofprofil = [];
+var aofprofil_maj=[];
 // document ready
 
 $(document).ready(function () {
@@ -349,19 +350,55 @@ function load_profil() {
 		})
 }
 
-/*
- * Remplissage du profil pro
- */
-// function profil(){
-// 	console.log("profil" , aofprofil);
+function profil_update() {
 
-// 	$('#entreprise').val(aofprofil["societe_pro"]);
-// 	$('#adresse2').val(aofprofil["address_pro"]);
-// 	$('#adresse3').val(aofprofil["code_ville"]);
-// 	$('#adresse4').val(aofprofil["ville"]);
-// 	$('#telephone').val(aofprofil["tel_pro"]);
-// 	$('#siret').val(aofprofil["siret_pro"]);
-// 	$('#mail').val(aofprofil["mail_pro"]);
-// 	$('#login').val(aofprofil["login_pro"]);
-// 	$('#mdp').val(aofprofil["mdp_pro"]);
-// }
+	var datas = {
+		page: "profil_pro_profil_update",
+		bJSON: 1,
+		societe_pro: $('#entreprise').val(),
+		address_pro: $('#adresse2').val(),
+		code_ville: $('#adresse3').val(),
+		ville: $('#adresse4').val(),
+		tel_pro: $('#telephone').val(),
+		siret_pro: $('#siret').val(),
+		mail_pro: $('#mail').val(),
+		login_pro: $('#login').val(),
+		mdp_pro: $('#mdp').val()
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+			console.log("this result",result)
+			
+			aofprofil_maj=result;
+
+			maj_profil();
+
+		})
+		.fail(function (err) {
+			console.log('error : ' + err.status);
+			alert("Erreur lors de la modification de votre actu");
+			
+		});
+}
+
+function maj_profil() {
+	
+	aofprofil_maj[0] = [];
+	aofprofil_maj[0]["societe_pro"] = $('#entreprise').val();
+	aofprofil_maj[0]["address_pro"] = $('#adresse2').val();
+	aofprofil_maj[0]["code_ville"] =$('#adresse3').val();
+	aofprofil_maj[0]["ville"] = $('#adresse4').val();
+	aofprofil_maj[0]["tel_pro"] = $('#telephone').val(),
+	aofprofil_maj[0]["siret_pro"] = $('#siret').val(),
+	aofprofil_maj[0]["mail_pro"] = $('#mail').val(),
+	aofprofil_maj[0]["login_pro"] = $('#login').val(),
+	aofprofil_maj[0]["mdp_pro"] = $('#mdp').val()
+	
+}

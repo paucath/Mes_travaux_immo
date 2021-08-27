@@ -51,6 +51,26 @@ Class Profil_pro_service extends Initialize	{
       $this->resultat["profil_pro_profil_list"]= $this->oBdd->getSelectDatas($spathSQL);
   }
 
+  public function profil_update(){
+    // Here I can Access to :
+    // $this->GLOBALS_INI
+    // $this->oBdd
+    // $this->VARS_HTML
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "profil_update.sql";
+    $this->resultat["profil_pro_profil_update"]= $this->oBdd->treatDatas($spathSQL, array(
+                                 "societe_pro" => $this->VARS_HTML["societe_pro"], 
+                                  "address_pro" => $this->VARS_HTML["address_pro"], 
+                                  "code_ville" => $this->VARS_HTML["code_ville"], 
+                                  "ville" => $this->VARS_HTML["ville"], 
+                                  "tel_pro" => $this->VARS_HTML["tel_pro"],
+                                  "siret_pro" => $this->VARS_HTML["siret_pro"],
+                                  "mail_pro" => $this->VARS_HTML["mail_pro"],
+                                  "login_pro" => $this->VARS_HTML["login_pro"],
+                                  "mdp_pro" => $this->VARS_HTML["mdp_pro"]
+                                  ));
+  
+  }
+
   /**
    *
    * Destroy service
