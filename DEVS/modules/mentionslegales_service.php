@@ -10,7 +10,7 @@ require_once  "initialize.php";
  * require_once "initialize.php";
  *
  * @package Mes travaux immo
- * @subpackage Mentions legales service
+ * @subpackage Mentions legales services
  * @author 
  * @copyright  
  * @version v1.0
