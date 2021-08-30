@@ -16,6 +16,14 @@ $(document).ready(function() {
 function annule(){
     var bulle_1=$("#bulle1");
     bulle_1.css("background-color" , "#FF0000");
+    var bulle_2=$("#bulle2");
+    bulle_2.css("background-color" , "lightgrey");
+    var bulle_3=$("#bulle3");
+    bulle_3.css("background-color" , "lightgrey");
+    var bulle_4=$("#bulle4");
+    bulle_4.css("background-color" , "lightgrey");
+    var bulle_5=$("#bulle5");
+    bulle_5.css("background-color" , "lightgrey");
     $("#Recap_panier").show();
     $("#connexion").hide();
     $("#livraison").hide();

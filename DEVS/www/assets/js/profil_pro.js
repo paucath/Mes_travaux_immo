@@ -330,7 +330,7 @@ function load_profil() {
 			aofprofil = result[0];
 
 			// organisation des données sur ma page 
-
+			
 			$('#entreprise').val(aofprofil["societe_pro"]);
 			$('#adresse2').val(aofprofil["address_pro"]);
 			$('#adresse3').val(aofprofil["code_ville"]);
@@ -349,6 +349,9 @@ function load_profil() {
 			console.log('arguments supplier list', arguments);
 		})
 }
+
+
+
 
 function profil_update() {
 
@@ -378,7 +381,7 @@ function profil_update() {
 			
 			aofprofil_maj=result;
 
-			maj_profil();
+			
 
 		})
 		.fail(function (err) {
@@ -388,17 +391,4 @@ function profil_update() {
 		});
 }
 
-function maj_profil() {
-	
-	aofprofil_maj[0] = [];
-	aofprofil_maj[0]["societe_pro"] = $('#entreprise').val();
-	aofprofil_maj[0]["address_pro"] = $('#adresse2').val();
-	aofprofil_maj[0]["code_ville"] =$('#adresse3').val();
-	aofprofil_maj[0]["ville"] = $('#adresse4').val();
-	aofprofil_maj[0]["tel_pro"] = $('#telephone').val(),
-	aofprofil_maj[0]["siret_pro"] = $('#siret').val(),
-	aofprofil_maj[0]["mail_pro"] = $('#mail').val(),
-	aofprofil_maj[0]["login_pro"] = $('#login').val(),
-	aofprofil_maj[0]["mdp_pro"] = $('#mdp').val()
-	
-}
+
