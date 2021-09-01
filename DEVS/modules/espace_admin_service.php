@@ -1,9 +1,9 @@
 <?php
 require_once  "initialize.php";
 /**
- * Class service | fichier service.php
+ * Class Espace_admin_service | fichier espace_admin_service.php
  *
- * Description de la classe à renseigner.
+ * Cette class permet de gérer les différentes fonctions de modification envoyé à la BDD .
  *
  * Cette classe necessite l'utilisation de la classe :
  *

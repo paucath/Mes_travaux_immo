@@ -1,13 +1,13 @@
 <?php
 require_once "devis_service.php";
 /**
- * Class Exemple | fichier exemple.php
+ * Class Devis | fichier devis.php
  *
- * Description de la classe à renseigner.
+ * Permet le controle de saisie de la partie devis .
  *
  * Cette classe necessite l'utilisation de la classe :
  *
- * require_once "accueil_service.php";
+ * require_once "espace_admin_service.php";
  *
  * @package Mes travaux immo
  * @subpackage devis

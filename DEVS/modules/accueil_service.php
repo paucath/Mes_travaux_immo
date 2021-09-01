@@ -1,9 +1,9 @@
 <?php
 require_once  "initialize.php";
 /**
- * Class index_service | fichier index_service.php
+ * Class Accueil_service | fichier accueil_service.php
  *
- * Description de la classe à renseigner.
+ * Cette class permet de gérer les différentes fonctions de modification envoyé à la BDD .
  *
  * Cette classe necessite l'utilisation de la classe :
  *

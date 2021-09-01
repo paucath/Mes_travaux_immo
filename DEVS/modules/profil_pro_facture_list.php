@@ -1,13 +1,13 @@
 <?php
 require_once "profil_pro_service.php";
 /**
- * Class Exemple | fichier exemple.php
+ * Class Profil_pro_facture_list| fichier profil_pro_facture_list.php
  *
- * Description de la classe à renseigner.
+ * Permet de lister les infos du profil pro onglet facture.
  *
  * Cette classe necessite l'utilisation de la classe :
  *
- * require_once "accueil_service.php";
+ * require_once "profil_pro_service.php";
  *
  * @package Mes travaux immo
  * @subpackage profil_pro_facture_list

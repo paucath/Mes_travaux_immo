@@ -1,13 +1,13 @@
 <?php
 require_once "profil_pro_service.php";
 /**
- * Class Exemple | fichier exemple.php
+ * Class Profil_pro | fichier profil_pro.php
  *
- * Description de la classe à renseigner.
+ * Permet le controle de saisie de l'espace admin .
  *
  * Cette classe necessite l'utilisation de la classe :
  *
- * require_once "accueil_service.php";
+ * require_once "profil_pro_service.php";
  *
  * @package Mes travaux immo
  * @subpackage profil_pro

@@ -1,13 +1,13 @@
 <?php
 require_once "user_actu_service.php";
 /**
- * Class Exemple | fichier exemple.php
+ * Class User_actu_list| fichier user_actu_list.php
  *
- * Description de la classe à renseigner.
+ * Permet de lister les infos de la page user actu.
  *
  * Cette classe necessite l'utilisation de la classe :
  *
- * require_once "accueil_service.php";
+ * require_once "user_actu_service.php";
  *
  * @package Mes travaux immo
  * @subpackage user_actu_list

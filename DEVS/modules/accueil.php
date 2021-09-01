@@ -1,13 +1,13 @@
 <?php
 require_once "accueil_service.php";
 /**
- * Class Index | fichier index.php
+ * Class Accueil | fichier accueil.php
  *
- * Description de la classe à renseigner.
+ * Permet le controle de saisie de l'accueil .
  *
  * Cette classe necessite l'utilisation de la classe :
  *
- * require_once "index_service.php";
+ * require_once "accueil_service.php";
  *
  * @package mes travaux immo
  * @subpackage accueil
