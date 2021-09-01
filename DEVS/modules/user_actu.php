@@ -1,13 +1,13 @@
 <?php
 require_once "user_actu_service.php";
 /**
- * Class Exemple | fichier exemple.php
+ * Class User_actu | fichier uszer_actu.php
  *
- * Description de la classe à renseigner.
+ * Permet le controle de saisie de l'espace admin .
  *
  * Cette classe necessite l'utilisation de la classe :
  *
- * require_once "accueil_service.php";
+ * require_once "User_actu_service.php";
  *
  * @package Mes travaux immo
  * @subpackage user_actu
