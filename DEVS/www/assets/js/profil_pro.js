@@ -227,6 +227,7 @@ const configuration_valide = {
 	'retrieve': true
 };
 
+
 var tables_2;
 $(document).ready(function () {
 	constructTable_valide();
@@ -234,10 +235,10 @@ $(document).ready(function () {
 	tables_2 = $('#table_projet_valide').DataTable(configuration_valide);
 });
 
-// Espace facture
 
-/** récupération info de la BDD */
-
+/*
+* Récupération des données des facture dans la BDD
+*/
 function load_facture() {
 	// Ici je mets les paramètres pour appeler un autre PHP :
 	// Je décide de l'appeler "user_actu_list"
@@ -351,8 +352,9 @@ function load_profil() {
 }
 
 
-
-
+/*
+* Modification des données du profil dans la BDD
+*/
 function profil_update() {
 
 	var datas = {

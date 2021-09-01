@@ -98,7 +98,7 @@ function list_article(aofactu) {
 }
 
 /**
- * Afficher un article dans le côté gauche de la page.
+ * Afficher un article entier dans le côté gauche de la page.
  * @param {Number} newsIndex L'index de l'article dans la liste des articles (global).
  */
 function article_complet(newsIndex) {

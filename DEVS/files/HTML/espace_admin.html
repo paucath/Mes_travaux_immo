@@ -9,10 +9,20 @@
                 <details class="details" open="open">
                     <summary class="nav_admin">Gestion des utilisateurs</summary>
                     <div>
-                        <div class="carte">
-                           
-
-                        </div>
+                        <details class="details" open="open">
+                            <summary class="nav_admin">Administrateur</summary>
+                            <div class="carte ">
+                                <table id="table_admin" class="display responsive nowrap" style="width: 100%" border=1>
+                                </table>
+                            </div>
+                        </details>
+                        <details class="details">
+                            <summary class="nav_admin">Utilisateurs</summary>
+                            <div class="carte ">
+                                <table id="table_pro" class="display responsive nowrap" style="width: 100%" border=1>
+                                </table>
+                            </div>
+                        </details>
                     </div>
                 </details>
                 <!-- ***************Gestion des articles************* -->
@@ -20,18 +30,8 @@
                     <summary class="nav_admin">Gestion des articles</summary>
                     <div class="d-flex">
                         <div class="carte ">
-                            
-                        
-                        </div>
-                    </div>
-                </details>
-                <!-- ***************Gestion des demande de contact************* -->
-                <details class="details">
-                    <summary class="nav_admin">Gestion des demande de contact</summary>
-                    <div class="d-flex">
-                        <div class="carte  ">
-                            
-
+                            <table id="table_actu" class="display responsive nowrap" style="width: 100%" border=1>
+                            </table>
                         </div>
                     </div>
                 </details>
@@ -40,16 +40,18 @@
                     <summary class="nav_admin">Gestion des abonnements</summary>
                     <div>
                         <div class="carte">
-                           
+                            <table id="table_abo" class="display responsive nowrap" style="width: 100%" border=1>
+                            </table>
                         </div>
                     </div>
                 </details>
-                <!-- ***************Gestion des demandes de devis************* -->
+                <!-- ***************Messagerie************* -->
                 <details class="details">
-                    <summary class="nav_admin">Gestion des demandes de devis</summary>
-                    <div>
-                        <div class="carte" >
-                            
+                    <summary class="nav_admin">Messagerie</summary>
+                    <div class="d-flex">
+                        <div class="carte  ">
+                            <table id="table_message" class="display responsive nowrap" style="width: 100%" border=1>
+                            </table>
                         </div>
                     </div>
                 </details>
