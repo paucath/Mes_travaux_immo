@@ -73,6 +73,13 @@ public function pro_list(){
     $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "message_list.sql";
     $this->resultat["espace_admin_message_list"]= $this->oBdd->getSelectDatas($spathSQL);
   }
+  /*
+   * lister le nombre d'abonnés
+   */
+  public function nbr_abo_list(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "nbr_abo_list.sql";
+    $this->resultat["espace_admin_nbr_abo_list"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
 
   /**
    *

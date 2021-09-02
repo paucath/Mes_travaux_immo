@@ -3,6 +3,7 @@ var table_pro;
 var table_actu;
 var table_abo;
 var table_message;
+var nbr_abo;
 var tables;
 var tables2;
 var tables3;
@@ -13,6 +14,7 @@ var aofpro=[];
 var aofactu=[];
 var aofabo=[];
 var aofmessage=[];
+var aofnbrabo=[];
 
 /*
 * Document ready
@@ -24,6 +26,7 @@ $(document).ready(function () {
     load_actu();
     load_abo();
     load_message();
+    load_nbr_abo();
 });
 
 /*
@@ -383,6 +386,7 @@ function constructTable_abo() {
 	var sHTML = "";
 	sHTML += "<thead>";
 	sHTML += "<tr>";
+    sHTML += "<td>Numéro abonnement</td>";
 	sHTML += "<td>Société</td>";
 	sHTML += "<td>date d'inscription</td>";
 	sHTML += "<td>modifier</td>";
@@ -393,6 +397,7 @@ function constructTable_abo() {
 
 	for (i = 0; i < aofabo.length; i++) {
 		sHTML += "<tr>";
+        sHTML += "<td>" + aofabo[i]["id_pro"] + "</td>";
 		sHTML += "<td>" + aofabo[i]["societe_pro"] + "</td>";
 		sHTML += "<td>" + aofabo[i]["date_inscription"] + "</td>";
 		sHTML += "<td><button class='modif_abo'>Modifier</button></td>";
@@ -437,6 +442,9 @@ const configuration_abo = {
 		{
 			"orderable": true
 		},
+        {
+			"orderable": true
+		},
 		{
 			"orderable": false
 		},
@@ -474,6 +482,41 @@ function load_abo(){
 			
 
 			constructTable_abo();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Récupération des informations des actus de la BDD
+*/
+function load_nbr_abo(){
+    
+	var datas = {
+		page: "espace_admin_nbr_abo_list",
+		bJSON: 1
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+			
+
+			aofnbrabo = result[0];
+
+			$('#nbr_abo').html(aofnbrabo["nbr_abo"]);
 
 		})
 		.fail(function (err) {

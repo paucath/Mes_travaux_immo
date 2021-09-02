@@ -12,8 +12,9 @@
                         <details class="details" open="open">
                             <summary class="nav_admin">Administrateur</summary>
                             <div class="d-flex">
-                                <div class="carte justify-content-center">
-                                    <table id="table_admin" class="display responsive nowrap" style="width: 100%"
+                                <div class="carte justify-content-center flex-column">
+                                    <button class="add_admin" style="width:20%">ajouter un admin</button>
+                                    <table id="table_admin" class="display responsive " style="width: 100%"
                                         border=1>
                                     </table>
                                 </div>
@@ -22,8 +23,8 @@
                         <details class="details">
                             <summary class="nav_admin">Utilisateurs</summary>
                             <div class="d-flex">
-                                <div class="carte justify-content-center">
-                                    <table id="table_pro" class="display responsive nowrap" style="width: 100%"
+                                <div class="carte justify-content-center flex-column">
+                                    <table id="table_pro" class="display responsive " style="width:100%"
                                         border=1>
                                     </table>
                                 </div>
@@ -31,12 +32,13 @@
                         </details>
                     </div>
                 </details>
-                <!-- ***************Gestion des articles************* -->
+                <!-- ***************Gestion des actualités************* -->
                 <details class="details">
-                    <summary class="nav_admin">Gestion des articles</summary>
+                    <summary class="nav_admin">Gestion des actualités</summary>
                     <div class="d-flex">
-                        <div class="carte justify-content-center">
-                            <table id="table_actu" class="display responsive nowrap" style="width: 100%" border=1>
+                        <div class="carte justify-content-center flex-column">
+                            <button class="add_actu" style="width:20%">ajouter une actualité</button>
+                            <table id="table_actu" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
                     </div>
@@ -45,8 +47,9 @@
                 <details class="details">
                     <summary class="nav_admin">Gestion des abonnements</summary>
                     <div class="d-flex">
-                        <div class="carte justify-content-center">
-                            <table id="table_abo" class="display responsive nowrap" style="width: 100%" border=1>
+                        <div class="carte justify-content-center flex-column">
+                            <div><p id="nbr_abo" class="nbr_abo d-flex justify-content-center""></p></div>
+                            <table id="table_abo" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
                     </div>
@@ -55,8 +58,8 @@
                 <details class="details">
                     <summary class="nav_admin">Messagerie</summary>
                     <div class="d-flex">
-                        <div class="carte  justify-content-center">
-                            <table id="table_message" class="display responsive nowrap" style="width: 100%" border=1>
+                        <div class="carte  justify-content-center flex-column">
+                            <table id="table_message" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
                     </div>
