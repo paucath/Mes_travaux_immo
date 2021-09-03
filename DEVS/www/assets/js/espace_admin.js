@@ -15,7 +15,6 @@ var aofactu=[];
 var aofabo=[];
 var aofmessage=[];
 var aofnbrabo=[];
-
 /*
 * Document ready
 */
@@ -52,7 +51,7 @@ function constructTable_admin() {
 		sHTML += "<td>" + aofadmin[i]["nom"] + "</td>";
 		sHTML += "<td>" + aofadmin[i]["prenom"] + "</td>";
 		sHTML += "<td>" + aofadmin[i]["email"] + "</td>";
-		sHTML += "<td><button class='modif_admin'>Modifier</button></td>";
+		sHTML += "<td><button class='modif_admin' onclick='edit_admin("+ i + ")' type='button' data-toggle='modal' data-target='#espace_admin_modal'>Modifier</button></td>";
         sHTML += "<td><button class='suppr_admin'>Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
@@ -71,7 +70,7 @@ const configuration = {
 	"order": [[1, "asc"]],
 	"pagingType": "simple_numbers",
 	"searching": true,
-	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "Ze total stp"]],
+	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
 		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
 		"emptyTable": "Aucun utilisateur",
@@ -167,7 +166,7 @@ function constructTable_pro() {
 		sHTML += "<td>" + aofpro[i]["societe_pro"] + "</td>";
 		sHTML += "<td>" + aofpro[i]["mail_pro"] + "</td>";
 		sHTML += "<td>" + aofpro[i]["siret_pro"] + "</td>";
-		sHTML += "<td><button class='modif_pro'>Modifier</button></td>";
+		sHTML += "<td><button class='modif_pro' onclick='edit_pro("+ i + ")' type='button' data-toggle='modal' data-target='#espace_admin_modal'>Modifier</button></td>";
         sHTML += "<td><button class='suppr_pro'>Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
@@ -187,7 +186,7 @@ const configuration_pro = {
 	"order": [[1, "asc"]],
 	"pagingType": "simple_numbers",
 	"searching": true,
-	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "Ze total stp"]],
+	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
 		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
 		"emptyTable": "Aucun utilisateur",
@@ -303,7 +302,7 @@ const configuration_actu = {
 	"order": [[1, "asc"]],
 	"pagingType": "simple_numbers",
 	"searching": true,
-	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "Ze total stp"]],
+	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
 		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
 		"emptyTable": "Aucun utilisateur",
@@ -389,8 +388,6 @@ function constructTable_abo() {
     sHTML += "<td>Numéro abonnement</td>";
 	sHTML += "<td>Société</td>";
 	sHTML += "<td>date d'inscription</td>";
-	sHTML += "<td>modifier</td>";
-    sHTML += "<td>supprimer</td>";
 	sHTML += "</tr>";
 	sHTML += "</thead>";
 	sHTML += "<tbody>";
@@ -400,8 +397,6 @@ function constructTable_abo() {
         sHTML += "<td>" + aofabo[i]["id_pro"] + "</td>";
 		sHTML += "<td>" + aofabo[i]["societe_pro"] + "</td>";
 		sHTML += "<td>" + aofabo[i]["date_inscription"] + "</td>";
-		sHTML += "<td><button class='modif_abo'>Modifier</button></td>";
-        sHTML += "<td><button class='suppr_abo'>Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -420,7 +415,7 @@ const configuration_abo = {
 	"order": [[1, "asc"]],
 	"pagingType": "simple_numbers",
 	"searching": true,
-	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "Ze total stp"]],
+	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
 		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
 		"emptyTable": "Aucun utilisateur",
@@ -444,12 +439,6 @@ const configuration_abo = {
 		},
         {
 			"orderable": true
-		},
-		{
-			"orderable": false
-		},
-		{
-			"orderable": false
 		}
 	],
 	'retrieve': true
@@ -572,7 +561,7 @@ const configuration_message = {
 	"order": [[1, "asc"]],
 	"pagingType": "simple_numbers",
 	"searching": true,
-	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "Ze total stp"]],
+	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
 		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
 		"emptyTable": "Aucun utilisateur",
@@ -637,6 +626,159 @@ function load_message(){
 			
 
 			constructTable_message();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Envoi d'un nouvel admin a la BDD
+*/
+function add_admin(){
+    
+	var datas = {
+		page: "espace_admin_admin_add",
+		bJSON: 1,
+		nom:$('#nom_admin').val(),
+		prenom:$('#prenom_admin').val(),
+		email:$('#email_admin').val(),
+		login_admin:$('#login_admin').val(),
+		mdp:$('#mdp_admin').val()
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			load_admin()
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+function new_admin() {
+	$("#admin_modal_add").show();
+	$("#admin_modal_update").hide();
+}
+
+function edit_admin(iIndiceEdit) {
+
+	id_admin=aofadmin[iIndiceEdit]["id_admin"];
+
+	$("#admin_modal_add").hide();
+	$("#admin_modal_update").show();
+
+	iIndiceEditEncours=iIndiceEdit;
+
+	console.log(iIndiceEdit);
+
+	$('#nom_admin_edit').val(aofadmin[iIndiceEdit]["nom"]);
+	$('#prenom_admin_edit').val(aofadmin[iIndiceEdit]["prenom"]);
+	$('#email_admin_edit').val(aofadmin[iIndiceEdit]["email"]);
+	$('#login_admin_edit').val(aofadmin[iIndiceEdit]["login_admin"]);
+	$('#mdp_admin_edit').val(aofadmin[iIndiceEdit]["mdp"]);
+
+	
+}
+
+function update_admin(){
+	var datas = {
+		page: "espace_admin_admin_update",
+		bJSON: 1,
+		id_admin:id_admin,
+		nom:$('#nom_admin_edit').val(),
+		prenom:$('#prenom_admin_edit').val(),
+		email:$('#email_admin_edit').val(),
+		login_admin:$('#login_admin_edit').val(),
+		mdp:$('#mdp_admin_edit').val()
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			load_admin()
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+function edit_pro(iIndiceEdit) {
+
+	id_pro=aofpro[iIndiceEdit]["id_pro"];
+
+	$("#admin_modal_add").hide();
+	$("#admin_modal_update").hide();
+	$("#pro_modal_update").show();
+
+
+	console.log(iIndiceEdit);
+
+	$('#societe_pro_edit').val(aofpro[iIndiceEdit]["societe_pro"]);
+	$('#tel_pro_edit').val(aofpro[iIndiceEdit]["tel_pro"]);
+	$('#adresse_pro_edit').val(aofpro[iIndiceEdit]["address_pro"]);
+	$('#mail_pro_edit').val(aofpro[iIndiceEdit]["mail_pro"]);
+	$('#siret_pro_edit').val(aofpro[iIndiceEdit]["siret_pro"]);
+	$('#login_pro_edit').val(aofpro[iIndiceEdit]["login_pro"]);
+	$('#mdp_pro_edit').val(aofpro[iIndiceEdit]["mdp_pro"]);
+	$('#statut_pro_edit').val(aofpro[iIndiceEdit]["statut_ab"]);
+
+	
+}
+
+function update_pro(){
+	var datas = {
+		page: "espace_admin_pro_update",
+		bJSON: 1,
+		id_pro:id_pro,
+		societe_pro:$('#societe_pro_edit').val(),
+		tel_pro:$('#tel_pro_edit').val(),
+		address_pro:$('#adresse_pro_edit').val(),
+		mail_pro:$('#mail_pro_edit').val(),
+		siret_pro:$('#siret_pro_edit').val(),
+		login_pro:$('#login_pro_edit').val(),
+		mdp_pro:$('#mdp_pro_edit').val(),
+		statut_ab:$('#statut_pro_edit').val()
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			load_pro()
 
 		})
 		.fail(function (err) {

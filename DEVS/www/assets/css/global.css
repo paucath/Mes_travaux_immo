@@ -568,3 +568,36 @@ textarea{
     margin: 2%;
     border-radius: 5px;
 }
+
+input{
+    margin:2%;
+    border: 1px solid var(--color-red);
+    border-radius:5px;
+    width:80%;
+}
+
+input[type="email"]{
+    margin:2%;
+    border: 1px solid var(--color-red);
+    border-radius:5px;
+    width:80%;
+}
+
+input[type="password"]{
+    margin:2%;
+    border: 1px solid var(--color-red);
+    border-radius:5px;
+    width:80%;
+}
+
+input[type="tel"]{
+    margin:2%;
+    border: 1px solid var(--color-red);
+    border-radius:5px;
+    width:80%;
+}
+
+.modal-header{
+    background-color: var(--color-red);
+    color: var(--color-white);
+}
