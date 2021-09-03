@@ -27,11 +27,11 @@
                                 <label for="siret">Numéro de SIRET</label></br>
                                 <input class="info" id="siret" name="siret" placeholder="Numero de Siret" type="text">
                                 <label for="mail">Email de l'Entreprise</label></br>
-                                <input class="info" id="mail" name="mail" placeholder="e-mail" type="text"></br>
+                                <input class="info" id="mail" name="mail" placeholder="e-mail" type="email"></br>
                                 <label for="mdp">login</label></br>
                                 <input class="info" id="login" name="login" placeholder="login" type="text"></br>
                                 <label for="mdp">Mot de passe</label></br>
-                                <input class="info" id="mdp" name="mdp" placeholder="Mot de passe" type="text"></br>
+                                <input class="info" id="mdp" name="mdp" placeholder="Mot de passe" type="password"></br>
                                 <button class="modif_profil" onClick="profil_update()">Modifier</button>
                             </div>
                         </div>
@@ -41,8 +41,8 @@
                 <details class="details">
                     <summary class="nav_pro">Projets Dispo</summary>
                     <div class="d-flex">
-                        <div class="carte justify-content-center">
-                            <table id="table_projet_dispo" class="display responsive nowrap" style="width: 100%" border=1>
+                        <div class="carte justify-content-center flex-column">
+                            <table id="table_projet_dispo" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
                     </div>
@@ -51,8 +51,8 @@
                 <details class="details">
                     <summary class="nav_pro">Projets acceptés</summary>
                     <div class="d-flex">
-                        <div class="carte justify-content-center ">
-                            <table class="display responsive nowrap " id="table_projet_valide" style="width: 100%" border=1>
+                        <div class="carte justify-content-center flex-column">
+                            <table class="display responsive  " id="table_projet_valide" style="width: 100%" border=1>
                             </table>
                         </div>
                     </div>

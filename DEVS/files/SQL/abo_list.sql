@@ -1,0 +1,1 @@
+SELECT * FROM `professionnel`  WHERE statut_ab=1

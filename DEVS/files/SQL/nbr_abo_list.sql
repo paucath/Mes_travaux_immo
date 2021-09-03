@@ -1,0 +1,1 @@
+SELECT COUNT(id_pro) AS nbr_abo FROM `professionnel`  WHERE statut_ab=1

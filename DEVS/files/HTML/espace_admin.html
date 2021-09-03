@@ -9,50 +9,151 @@
                 <details class="details" open="open">
                     <summary class="nav_admin">Gestion des utilisateurs</summary>
                     <div>
-                        <div class="carte">
-                           
-
-                        </div>
+                        <details class="details" open="open">
+                            <summary class="nav_admin">Administrateur</summary>
+                            <div class="d-flex">
+                                <div class="carte justify-content-center flex-column">
+                                    <button class="add_admin" style="width:20%" type="button" data-toggle="modal"
+                                        data-target="#espace_admin_modal" onclick="new_admin()">ajouter</button>
+                                    <table id="table_admin" class="display responsive " style="width: 100%" border=1>
+                                    </table>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="details">
+                            <summary class="nav_admin">Utilisateurs</summary>
+                            <div class="d-flex">
+                                <div class="carte justify-content-center flex-column">
+                                    <table id="table_pro" class="display responsive " style="width:100%" border=1>
+                                    </table>
+                                </div>
+                            </div>
+                        </details>
                     </div>
                 </details>
-                <!-- ***************Gestion des articles************* -->
+                <!-- ***************Gestion des actualités************* -->
                 <details class="details">
-                    <summary class="nav_admin">Gestion des articles</summary>
+                    <summary class="nav_admin">Gestion des actualités</summary>
                     <div class="d-flex">
-                        <div class="carte ">
-                            
-                        
-                        </div>
-                    </div>
-                </details>
-                <!-- ***************Gestion des demande de contact************* -->
-                <details class="details">
-                    <summary class="nav_admin">Gestion des demande de contact</summary>
-                    <div class="d-flex">
-                        <div class="carte  ">
-                            
-
+                        <div class="carte justify-content-center flex-column">
+                            <button class="add_actu" style="width:20%">ajouter</button>
+                            <table id="table_actu" class="display responsive " style="width: 100%" border=1>
+                            </table>
                         </div>
                     </div>
                 </details>
                 <!-- ***************Gestion des abonnements************* -->
                 <details class="details">
                     <summary class="nav_admin">Gestion des abonnements</summary>
-                    <div>
-                        <div class="carte">
-                           
+                    <div class="d-flex">
+                        <div class="carte justify-content-center flex-column">
+                            <div><p id="nbr_abo" class="nbr_abo d-flex justify-content-center"></p></div>
+                            <table id="table_abo" class="display responsive " style="width: 100%" border=1>
+                            </table>
+                            </div>
                         </div>
-                    </div>
                 </details>
-                <!-- ***************Gestion des demandes de devis************* -->
+                <!-- ***************Messagerie************* -->
                 <details class="details">
-                    <summary class="nav_admin">Gestion des demandes de devis</summary>
-                    <div>
-                        <div class="carte" >
-                            
+                    <summary class="nav_admin">Messagerie</summary>
+                    <div class="d-flex">
+                        <div class="carte  justify-content-center flex-column">
+                            <table id="table_message" class="display responsive " style="width: 100%" border=1>
+                            </table>
                         </div>
                     </div>
                 </details>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade espace_admin_modal" id="espace_admin_modal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!-- Ajout Admin Modal -->
+                <div class="modal-content" id="admin_modal_add">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout d'un administrateur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="nom_admin">Nom :</label><br>
+                        <input type="texte" id="nom_admin" classe="input_admin"><br>
+                        <label for="prenom_admin">Prenom :</label><br>
+                        <input type="texte" id="prenom_admin" classe="input_admin"><br>
+                        <label for="email_admin">email :</label><br>
+                        <input type="email" id="email_admin" classe="input_admin"><br>
+                        <label for="login_admin">Login :</label><br>
+                        <input type="texte" id="login_admin" classe="input_admin"><br>
+                        <label for="mdp_admin">Mot de passe :</label><br>
+                        <input type="password" id="mdp_admin" classe="input_admin"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="add_admin()" data-dismiss="modal" class="btn add_admin">Ajouter
+                            cet admin</button>
+                    </div>
+                </div>
+                <!-- Modif Admin Modal -->
+                <div class="modal-content" id="admin_modal_update">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modifier un administrateur</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="nom_admin_edit">Nom :</label><br>
+                        <input type="texte" id="nom_admin_edit" classe="input_admin"><br>
+                        <label for="prenom_admin_edit">Prenom :</label><br>
+                        <input type="texte" id="prenom_admin_edit" classe="input_admin"><br>
+                        <label for="email_admin_edit">email :</label><br>
+                        <input type="email" id="email_admin_edit" classe="input_admin"><br>
+                        <label for="login_admin_edit">Login :</label><br>
+                        <input type="texte" id="login_admin_edit" classe="input_admin"><br>
+                        <label for="mdp_admin_edit">Mot de passe :</label><br>
+                        <input type="password" id="mdp_admin_edit" classe="input_admin"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="update_admin()" data-dismiss="modal"
+                            class="btn add_admin">Modifier
+                            cet admin</button>
+                    </div>
+                </div>
+                <!-- Modif pro Modal -->
+                <div class="modal-content" id="pro_modal_update">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modifier un professionnel</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="societe_pro_edit">societe :</label><br>
+                        <input type="texte" id="societe_pro_edit" classe="input_pro"><br>
+                        <label for="tel_pro_edit">tel :</label><br>
+                        <input type="tel" id="tel_pro_edit" classe="input_pro"><br>
+                        <label for="adresse_pro_edit">adresse :</label><br>
+                        <input type="text" id="adresse_pro_edit" classe="input_pro"><br>
+                        <label for="mail_pro_edit">mail :</label><br>
+                        <input type="email" id="mail_pro_edit" classe="input_pro"><br>
+                        <label for="siret_pro_edit">Siret:</label><br>
+                        <input type="text" id="siret_pro_edit" classe="input_pro"><br>
+                        <label for="login_pro_edit">login:</label><br>
+                        <input type="text" id="login_pro_edit" classe="input_pro"><br>
+                        <label for="mdp_pro_edit">Mot de passe:</label><br>
+                        <input type="password" id="mdp_pro_edit" classe="input_pro"><br>
+                        <label for="statut_pro_edit">Statut de l'abonnement (1 en cours , 0 clos):</label><br>
+                        <input type="text" id="statut_pro_edit" classe="input_pro"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="update_pro()" data-dismiss="modal" class="btn add_admin">Modifier
+                            ce professionnel</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
