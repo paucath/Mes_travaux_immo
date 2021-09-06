@@ -154,6 +154,47 @@ public function pro_list(){
                                  "img_actu" => $this->VARS_HTML["img_actu"]
                                   ));
   }
+  /*
+   * Supprimer un admin
+   */
+  public function admin_delete(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "admin_delete.sql";
+    $this->resultat["espace_admin_admin_delete"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_admin" => $this->VARS_HTML["id_admin"]
+    ));
+  }
+
+  /*
+   * Supprimer le statut d'abonné d'un pro
+   */
+  public function pro_delete(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "pro_delete.sql";
+    $this->resultat["espace_admin_pro_delete"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_pro" => $this->VARS_HTML["id_pro"],
+                                  "statut_ab" => $this->VARS_HTML["statut_ab"]
+    ));
+  }
+
+  /*
+   * Supprimer une actu
+   */
+  public function actu_delete(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "actu_delete.sql";
+    $this->resultat["espace_admin_actu_delete"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_news" => $this->VARS_HTML["id_news"]
+    ));
+  }
+
+  /*
+   * Supprimer un message
+   */
+  public function message_delete(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "message_delete.sql";
+    $this->resultat["espace_admin_message_delete"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_message" => $this->VARS_HTML["id_message"]
+    ));
+  }
+
   /**
    *
    * Destroy service

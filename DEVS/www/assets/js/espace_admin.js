@@ -29,6 +29,7 @@ $(document).ready(function () {
 
 	$("#article_news").summernote();
 	$("#article_news_edit").summernote();
+	$("#texte").summernote();
 });
 
 /*
@@ -55,7 +56,7 @@ function constructTable_admin() {
 		sHTML += "<td>" + aofadmin[i]["prenom"] + "</td>";
 		sHTML += "<td>" + aofadmin[i]["email"] + "</td>";
 		sHTML += "<td><button class='modif_admin' onclick='edit_admin("+ i + ")' type='button' data-toggle='modal' data-target='#espace_admin_modal'>Modifier</button></td>";
-        sHTML += "<td><button class='suppr_admin'>Supprimer</button></td>";
+        sHTML += "<td><button class='suppr_admin' onclick='delete_admin("+ i +")'>Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -170,7 +171,7 @@ function constructTable_pro() {
 		sHTML += "<td>" + aofpro[i]["mail_pro"] + "</td>";
 		sHTML += "<td>" + aofpro[i]["siret_pro"] + "</td>";
 		sHTML += "<td><button class='modif_pro' onclick='edit_pro("+ i + ")' type='button' data-toggle='modal' data-target='#espace_admin_modal'>Modifier</button></td>";
-        sHTML += "<td><button class='suppr_pro'>Supprimer</button></td>";
+        sHTML += "<td><button class='suppr_pro' onclick='delete_pro("+ i + ")'>Désabonner</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -286,7 +287,7 @@ function constructTable_actu() {
 		sHTML += "<td>" + aofactu[i]["catch_phrase_news"] + "</td>";
         sHTML += "<td>" + aofactu[i]["img_actu"] + "</td>";
 		sHTML += "<td><button class='modif_actu' onclick='edit_actu("+ i + ")' data-toggle='modal' data-target='#espace_admin_modal'>Modifier</button></td>";
-        sHTML += "<td><button class='suppr_actu'>Supprimer</button></td>";
+        sHTML += "<td><button class='suppr_actu' onclick='delete_actu("+ i + ")'>Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -532,7 +533,6 @@ function constructTable_message() {
 	sHTML += "<td>Prénom</td>";
     sHTML += "<td>Objet</td>";
     sHTML += "<td>Lire</td>";
-	sHTML += "<td>Répondre</td>";
     sHTML += "<td>supprimer</td>";
 	sHTML += "</tr>";
 	sHTML += "</thead>";
@@ -543,9 +543,8 @@ function constructTable_message() {
 		sHTML += "<td>" + aofmessage[i]["nom"] + "</td>";
 		sHTML += "<td>" + aofmessage[i]["prenom"] + "</td>";
         sHTML += "<td>" + aofmessage[i]["objet"] + "</td>";
-		sHTML += "<td><button class='read_message'>Lire</button></td>";
-		sHTML += "<td><button class='rep_message'>Répondre</button></td>";
-        sHTML += "<td><button class='suppr_message'>Supprimer</button></td>";
+		sHTML += "<td><button class='read_message' onclick='read_message("+ i +")' data-toggle='modal' data-target='#espace_admin_modal'>Lire</button></td>";
+        sHTML += "<td><button class='suppr_message' onclick='delete_message("+ i +")' >Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -588,9 +587,6 @@ const configuration_message = {
 		},
         {
 			"orderable": true
-		},
-		{
-			"orderable": false
 		},
 		{
 			"orderable": false
@@ -675,14 +671,22 @@ function add_admin(){
 		})
 }
 
+/* 
+* Ouverture modal pour ajout admin
+*/
 function new_admin() {
 	$("#admin_modal_add").show();
 	$("#admin_modal_update").hide();
 	$("#pro_modal_update").hide();
 	$("#actu_modal_add").hide();
 	$("#actu_modal_update").hide();
+	$("#read_message_modal").hide();
+	$("#reply_message_modal").hide();	
 }
 
+/* 
+* Ouverture donnée admin dans modal en vu d'un update
+*/
 function edit_admin(iIndiceEdit) {
 
 	id_admin=aofadmin[iIndiceEdit]["id_admin"];
@@ -692,6 +696,8 @@ function edit_admin(iIndiceEdit) {
 	$("#pro_modal_update").hide();
 	$("#actu_modal_add").hide();
 	$("#actu_modal_update").hide();
+	$("#read_message_modal").hide();
+	$("#reply_message_modal").hide();	
 
 	iIndiceEditEncours=iIndiceEdit;
 
@@ -706,6 +712,9 @@ function edit_admin(iIndiceEdit) {
 	
 }
 
+/* 
+* Update admin
+*/
 function update_admin(){
 	var datas = {
 		page: "espace_admin_admin_update",
@@ -739,6 +748,9 @@ function update_admin(){
 		})
 }
 
+/* 
+* Ouverture donnée professionel dans modal en vu d'un update
+*/
 function edit_pro(iIndiceEdit) {
 
 	id_pro=aofpro[iIndiceEdit]["id_pro"];
@@ -748,6 +760,8 @@ function edit_pro(iIndiceEdit) {
 	$("#pro_modal_update").show();
 	$("#actu_modal_add").hide();
 	$("#actu_modal_update").hide();
+	$("#read_message_modal").hide();
+	$("#reply_message_modal").hide();	
 
 
 	console.log(iIndiceEdit);
@@ -764,6 +778,9 @@ function edit_pro(iIndiceEdit) {
 	
 }
 
+/* 
+* Update professionnel
+*/
 function update_pro(){
 	var datas = {
 		page: "espace_admin_pro_update",
@@ -800,12 +817,17 @@ function update_pro(){
 		})
 }
 
+/* 
+* Ouverture modal pour ajout actu
+*/
 function new_actu(){
 	$("#admin_modal_add").hide();
 	$("#admin_modal_update").hide();
 	$("#pro_modal_update").hide();
 	$("#actu_modal_add").show();
 	$("#actu_modal_update").hide();
+	$("#read_message_modal").hide();
+	$("#reply_message_modal").hide();	
 }
 
 /* 
@@ -843,6 +865,9 @@ function add_actu(){
 		})
 }
 
+/* 
+* Ouverture donnée actualité dans modal en vu d'un update
+*/
 function edit_actu(iIndiceEdit) {
 
 	id_news=aofactu[iIndiceEdit]["id_news"];
@@ -852,6 +877,8 @@ function edit_actu(iIndiceEdit) {
 	$("#pro_modal_update").hide();
 	$("#actu_modal_add").hide();
 	$("#actu_modal_update").show();
+	$("#read_message_modal").hide();
+	$("#reply_message_modal").hide();	
 
 
 	console.log(iIndiceEdit);
@@ -863,6 +890,9 @@ function edit_actu(iIndiceEdit) {
 	
 }
 
+/* 
+* Update actualité
+*/
 function update_actu(){
 	var datas = {
 		page: "espace_admin_actu_update",
@@ -894,5 +924,180 @@ function update_actu(){
 			console.log('arguments supplier list', arguments);
 		})
 }
+
+/* 
+* Ouverture du message dans un modal
+*/
+function read_message(iIndiceRead){
+
+	$("#admin_modal_add").hide();
+	$("#admin_modal_update").hide();
+	$("#pro_modal_update").hide();
+	$("#actu_modal_add").hide();
+	$("#actu_modal_update").hide();
+	$("#read_message_modal").show();
+	$("#reply_message_modal").hide();
+
+
+	$('#nom').val(aofmessage[iIndiceRead]["nom"]);
+	$('#prenom').val(aofmessage[iIndiceRead]["prenom"]);
+	$('#email').val(aofmessage[iIndiceRead]["email"]);
+	$('#objet').val(aofmessage[iIndiceRead]["objet"]);
+	$('#texte').summernote('code' , aofmessage[iIndiceRead]["texte"]);
+	
+}
+
+/* 
+* Ecrire réponse au message
+*/
+function reply_message(){
+
+	$("#admin_modal_add").hide();
+	$("#admin_modal_update").hide();
+	$("#pro_modal_update").hide();
+	$("#actu_modal_add").hide();
+	$("#actu_modal_update").hide();
+	$("#read_message_modal").hide();
+	$("#reply_message_modal").show();
+
+}
+
+/* 
+* Envoyer réponse au message
+*/
+function send_message(){
+
+	
+}
+
+/* 
+* Supprimer un admin
+*/
+function delete_admin(iSupprIndice) {
+     
+
+	var datas = {
+		page: "espace_admin_admin_delete",
+		bJSON: 1,
+		id_admin:aofadmin[iSupprIndice]["id_admin"]
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+
+           load_admin();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Supprimer l'abonnement d'un professionnel
+*/
+function delete_pro(iSupprIndice) {
+     
+
+	var datas = {
+		page: "espace_admin_pro_delete",
+		bJSON: 1,
+		id_pro:aofpro[iSupprIndice]["id_pro"],
+		statut_ab:aofpro[iSupprIndice]["statut_ab"]
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+
+           load_pro();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Supprimer une actu
+*/
+function delete_actu(iSupprIndice) {
+     
+
+	var datas = {
+		page: "espace_admin_actu_delete",
+		bJSON: 1,
+		id_news:aofactu[iSupprIndice]["id_news"]
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+
+           load_actu();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Supprimer un message
+*/
+function delete_message(iSupprIndice) {
+     
+
+	var datas = {
+		page: "espace_admin_message_delete",
+		bJSON: 1,
+		id_message:aofmessage[iSupprIndice]["id_message"]
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+
+           load_message();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
 
 

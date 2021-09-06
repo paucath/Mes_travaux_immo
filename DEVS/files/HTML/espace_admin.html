@@ -201,6 +201,52 @@
                         <button type="button" onclick="update_actu()" data-dismiss="modal" class="btn add_admin">Modifier cet actualité</button>
                     </div>
                 </div>
+                <!-- Lecture message Modal -->
+                <div class="modal-content" id="read_message_modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Votre message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="nom">Nom :</label><br>
+                        <input type="texte" id="nom" classe="input_admin"><br>
+                        <label for="prenom">Prenom :</label><br>
+                        <input type="texte" id="prenom" classe="input_admin"><br>
+                        <label for="email">Email :</label><br>
+                        <input type="texte" id="email" classe="input_admin"><br>
+                        <label for="objet">Objet :</label><br>
+                        <input type="texte" id="objet" classe="input_admin"><br>
+                        <label for="texte">Message :</label><br>
+                        <textarea id="texte" class="input_admin"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="reply_message()" data-toggle='modal' data-target='#espace_admin_modal' class="btn add_admin">Répondre</button>
+                    </div>
+                </div>
+                <!-- Réponce message Modal -->
+                <div class="modal-content" id="reply_message_modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Réponse</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="email">Email :</label><br>
+                        <input type="texte" id="email" classe="input_admin"><br>
+                        <label for="objet_reply">Objet :</label><br>
+                        <input type="texte" id="objet_reply" classe="input_admin"><br>
+                        <label for="texte_reply">Message :</label><br>
+                        <textarea id="texte_reply" class="input_admin"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="send_message()" data-dismiss="modal" class="btn add_admin">Répondre</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
