@@ -36,7 +36,7 @@
                     <summary class="nav_admin">Gestion des actualités</summary>
                     <div class="d-flex">
                         <div class="carte justify-content-center flex-column">
-                            <button class="add_actu" style="width:20%">ajouter</button>
+                            <button class="add_actu" style="width:20%" type="button" data-toggle="modal" data-target="#espace_admin_modal" onclick="new_actu()">ajouter</button>
                             <table id="table_actu" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
@@ -152,6 +152,99 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" onclick="update_pro()" data-dismiss="modal" class="btn add_admin">Modifier
                             ce professionnel</button>
+                    </div>
+                </div>
+                <!-- Ajout Actu Modal -->
+                <div class="modal-content" id="actu_modal_add">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajout d'une actualité</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="title_news">Titre :</label><br>
+                        <input type="texte" id="title_news" classe="input_admin"><br>
+                        <label for="catch_phrase_news">Phrase d'accroche :</label><br>
+                        <input type="texte" id="catch_phrase_news" classe="input_admin"><br>
+                        <label for="article_news">article :</label><br>
+                        <textarea id="article_news" class="input_admin"></textarea><br>
+                        <label for="img_actu">Image :</label><br>
+                        <input type="texte" id="img_actu" classe="input_admin"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="add_actu()" data-dismiss="modal" class="btn add_admin">Ajouter
+                            cette actualité</button>
+                    </div>
+                </div>
+                <!-- Modif Actu Modal -->
+                <div class="modal-content" id="actu_modal_update">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modifier une actualité</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="title_news_edit">Titre :</label><br>
+                        <input type="texte" id="title_news_edit" classe="input_admin"><br>
+                        <label for="catch_phrase_news_edit">Phrase d'accroche :</label><br>
+                        <input type="texte" id="catch_phrase_news_edit" classe="input_admin"><br>
+                        <label for="article_news_edit">article :</label><br>
+                        <textarea id="article_news_edit" class="input_admin"></textarea>
+                        <label for="img_actu_edit">Image :</label><br>
+                        <input type="texte" id="img_actu_edit" classe="input_admin"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="update_actu()" data-dismiss="modal" class="btn add_admin">Modifier cet actualité</button>
+                    </div>
+                </div>
+                <!-- Lecture message Modal -->
+                <div class="modal-content" id="read_message_modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Votre message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="nom">Nom :</label><br>
+                        <input type="texte" id="nom" classe="input_admin"><br>
+                        <label for="prenom">Prenom :</label><br>
+                        <input type="texte" id="prenom" classe="input_admin"><br>
+                        <label for="email">Email :</label><br>
+                        <input type="texte" id="email" classe="input_admin"><br>
+                        <label for="objet">Objet :</label><br>
+                        <input type="texte" id="objet" classe="input_admin"><br>
+                        <label for="texte">Message :</label><br>
+                        <textarea id="texte" class="input_admin"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="reply_message()" data-toggle='modal' data-target='#espace_admin_modal' class="btn add_admin">Répondre</button>
+                    </div>
+                </div>
+                <!-- Réponce message Modal -->
+                <div class="modal-content" id="reply_message_modal">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Réponse</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="email">Email :</label><br>
+                        <input type="texte" id="email" classe="input_admin"><br>
+                        <label for="objet_reply">Objet :</label><br>
+                        <input type="texte" id="objet_reply" classe="input_admin"><br>
+                        <label for="texte_reply">Message :</label><br>
+                        <textarea id="texte_reply" class="input_admin"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" onclick="send_message()" data-dismiss="modal" class="btn add_admin">Répondre</button>
                     </div>
                 </div>
             </div>

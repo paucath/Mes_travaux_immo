@@ -1,0 +1,1 @@
+DELETE FROM `actualite` WHERE id_news='@id_news'
