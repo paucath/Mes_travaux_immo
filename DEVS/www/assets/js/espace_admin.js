@@ -26,6 +26,9 @@ $(document).ready(function () {
     load_abo();
     load_message();
     load_nbr_abo();
+
+	$("#article_news").summernote();
+	$("#article_news_edit").summernote();
 });
 
 /*
@@ -282,7 +285,7 @@ function constructTable_actu() {
 		sHTML += "<td>" + aofactu[i]["title_news"] + "</td>";
 		sHTML += "<td>" + aofactu[i]["catch_phrase_news"] + "</td>";
         sHTML += "<td>" + aofactu[i]["img_actu"] + "</td>";
-		sHTML += "<td><button class='modif_actu'>Modifier</button></td>";
+		sHTML += "<td><button class='modif_actu' onclick='edit_actu("+ i + ")' data-toggle='modal' data-target='#espace_admin_modal'>Modifier</button></td>";
         sHTML += "<td><button class='suppr_actu'>Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
@@ -675,6 +678,9 @@ function add_admin(){
 function new_admin() {
 	$("#admin_modal_add").show();
 	$("#admin_modal_update").hide();
+	$("#pro_modal_update").hide();
+	$("#actu_modal_add").hide();
+	$("#actu_modal_update").hide();
 }
 
 function edit_admin(iIndiceEdit) {
@@ -683,6 +689,9 @@ function edit_admin(iIndiceEdit) {
 
 	$("#admin_modal_add").hide();
 	$("#admin_modal_update").show();
+	$("#pro_modal_update").hide();
+	$("#actu_modal_add").hide();
+	$("#actu_modal_update").hide();
 
 	iIndiceEditEncours=iIndiceEdit;
 
@@ -737,6 +746,8 @@ function edit_pro(iIndiceEdit) {
 	$("#admin_modal_add").hide();
 	$("#admin_modal_update").hide();
 	$("#pro_modal_update").show();
+	$("#actu_modal_add").hide();
+	$("#actu_modal_update").hide();
 
 
 	console.log(iIndiceEdit);
@@ -789,5 +800,99 @@ function update_pro(){
 		})
 }
 
+function new_actu(){
+	$("#admin_modal_add").hide();
+	$("#admin_modal_update").hide();
+	$("#pro_modal_update").hide();
+	$("#actu_modal_add").show();
+	$("#actu_modal_update").hide();
+}
+
+/* 
+* Envoi d'une nouvelle actu a la BDD
+*/
+function add_actu(){
+    
+	var datas = {
+		page: "espace_admin_actu_add",
+		bJSON: 1,
+		title_news:$('#title_news').val(),
+		catch_phrase_news:$('#catch_phrase_news').val(),
+		article_news:$('#article_news').val(),
+		img_actu:$('#img_actu').val()
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			load_actu()
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+function edit_actu(iIndiceEdit) {
+
+	id_news=aofactu[iIndiceEdit]["id_news"];
+
+	$("#admin_modal_add").hide();
+	$("#admin_modal_update").hide();
+	$("#pro_modal_update").hide();
+	$("#actu_modal_add").hide();
+	$("#actu_modal_update").show();
+
+
+	console.log(iIndiceEdit);
+
+	$('#title_news_edit').val(aofactu[iIndiceEdit]["title_news"]);
+	$('#catch_phrase_news_edit').val(aofactu[iIndiceEdit]["catch_phrase_news"]);
+	$('#article_news_edit').summernote('code' , aofactu[iIndiceEdit]["article_news"]);
+	$('#img_actu_edit').val(aofactu[iIndiceEdit]["img_actu"]);
+	
+}
+
+function update_actu(){
+	var datas = {
+		page: "espace_admin_actu_update",
+		bJSON: 1,
+		id_news:id_news,
+		title_news:$('#title_news_edit').val(),
+		catch_phrase_news:$('#catch_phrase_news_edit').val(),
+		article_news:$('#article_news_edit').summernote('code'),
+		img_actu:$('#img_actu_edit').val(),
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			load_actu()
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
 
 

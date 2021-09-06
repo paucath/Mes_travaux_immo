@@ -127,6 +127,33 @@ public function pro_list(){
                                   "statut_ab" => $this->VARS_HTML["statut_ab"]
                                   ));
   }
+
+  /*
+   * Ajouter une actu
+   */
+  public function actu_add(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "actu_add.sql";
+    $this->resultat["espace_admin_actu_add"]= $this->oBdd->treatDatas($spathSQL, array(
+      "title_news" => $this->VARS_HTML["title_news"], 
+      "catch_phrase_news" => $this->VARS_HTML["catch_phrase_news"], 
+      "article_news" => $this->VARS_HTML["article_news"],
+      "img_actu" => $this->VARS_HTML["img_actu"]
+      ));
+  }
+
+   /*
+   * Modifier unu actu
+   */
+  public function actu_update(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "actu_update.sql";
+    $this->resultat["espace_admin_actu_update"]= $this->oBdd->treatDatas($spathSQL, array(
+                                 "id_news" => $this->VARS_HTML["id_news"], 
+                                 "title_news" => $this->VARS_HTML["title_news"], 
+                                 "catch_phrase_news" => $this->VARS_HTML["catch_phrase_news"], 
+                                 "article_news" => $this->VARS_HTML["article_news"],
+                                 "img_actu" => $this->VARS_HTML["img_actu"]
+                                  ));
+  }
   /**
    *
    * Destroy service

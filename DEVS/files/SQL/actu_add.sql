@@ -1,0 +1,1 @@
+INSERT INTO `actualite` (title_news , catch_phrase_news , article_news , img_actu ) VALUE ("@title_news" , "@catch_phrase_news" , "@article_news" , "@img_actu" )
