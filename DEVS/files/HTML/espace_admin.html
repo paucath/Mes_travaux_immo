@@ -63,8 +63,19 @@
                         </div>
                     </div>
                 </details>
+                <!-- ***************Construction du devis************* -->
+                <details class="details">
+                    <summary class="nav_admin">Construction du devis</summary>
+                    <div class="d-flex">
+                        <div class="carte  justify-content-center flex-column">
+                            <table id="table_devis" class="display responsive " style="width: 100%" border=1>
+                            </table>
+                        </div>
+                    </div>
+                </details>
             </div>
         </div>
+
         <!-- Modal -->
         <div class="modal fade espace_admin_modal" id="espace_admin_modal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -215,7 +226,7 @@
                         <label for="prenom">Prenom :</label><br>
                         <input type="texte" id="prenom" classe="input_admin"><br>
                         <label for="email">Email :</label><br>
-                        <input type="texte" id="email" classe="input_admin"><br>
+                        <input type="email" id="email" classe="input_admin"><br>
                         <label for="objet">Objet :</label><br>
                         <input type="texte" id="objet" classe="input_admin"><br>
                         <label for="texte">Message :</label><br>
@@ -223,7 +234,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="reply_message()" data-toggle='modal' data-target='#espace_admin_modal' class="btn add_admin">Répondre</button>
                     </div>
                 </div>
                 <!-- Réponce message Modal -->
@@ -235,8 +245,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label for="email">Email :</label><br>
-                        <input type="texte" id="email" classe="input_admin"><br>
+                        <label for="email_reply">Email :</label><br>
+                        <input type="email" id="email_reply" classe="input_admin"><br>
                         <label for="objet_reply">Objet :</label><br>
                         <input type="texte" id="objet_reply" classe="input_admin"><br>
                         <label for="texte_reply">Message :</label><br>
@@ -244,7 +254,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="send_message()" data-dismiss="modal" class="btn add_admin">Répondre</button>
+                        <button type="button" onclick="send_message()" data-dismiss="modal" class="btn add_admin">Envoyer</button>
                     </div>
                 </div>
             </div>

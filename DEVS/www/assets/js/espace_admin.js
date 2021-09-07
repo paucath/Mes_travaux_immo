@@ -30,6 +30,8 @@ $(document).ready(function () {
 	$("#article_news").summernote();
 	$("#article_news_edit").summernote();
 	$("#texte").summernote();
+	$("#texte_reply").summernote();
+	
 });
 
 /*
@@ -533,6 +535,7 @@ function constructTable_message() {
 	sHTML += "<td>Prénom</td>";
     sHTML += "<td>Objet</td>";
     sHTML += "<td>Lire</td>";
+	sHTML += "<td>Répondre</td>";
     sHTML += "<td>supprimer</td>";
 	sHTML += "</tr>";
 	sHTML += "</thead>";
@@ -544,6 +547,7 @@ function constructTable_message() {
 		sHTML += "<td>" + aofmessage[i]["prenom"] + "</td>";
         sHTML += "<td>" + aofmessage[i]["objet"] + "</td>";
 		sHTML += "<td><button class='read_message' onclick='read_message("+ i +")' data-toggle='modal' data-target='#espace_admin_modal'>Lire</button></td>";
+		sHTML += "<td><button class='read_message' onclick='reply_message("+ i +")' data-toggle='modal' data-target='#espace_admin_modal'>Répondre</button></td>";
         sHTML += "<td><button class='suppr_message' onclick='delete_message("+ i +")' >Supprimer</button></td>";
 		sHTML += "</tr>";
 	}
@@ -587,6 +591,9 @@ const configuration_message = {
 		},
         {
 			"orderable": true
+		},
+		{
+			"orderable": false
 		},
 		{
 			"orderable": false
@@ -950,7 +957,7 @@ function read_message(iIndiceRead){
 /* 
 * Ecrire réponse au message
 */
-function reply_message(){
+function reply_message(iIndicereply){
 
 	$("#admin_modal_add").hide();
 	$("#admin_modal_update").hide();
@@ -959,6 +966,8 @@ function reply_message(){
 	$("#actu_modal_update").hide();
 	$("#read_message_modal").hide();
 	$("#reply_message_modal").show();
+
+	$('#email_reply').val(aofmessage[iIndicereply]["email"]);
 
 }
 
