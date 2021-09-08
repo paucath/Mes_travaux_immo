@@ -1,0 +1,1 @@
+INSERT INTO `sous_categorie` (id_categorie , sous_categorie , nbr_piece , m_carre) VALUE ("@id_categorie" , "@sous_categorie" , "@nbr_piece" , "@m_carre")

@@ -1,0 +1,1 @@
+INSERT INTO `categorie` (categorie) VALUE ("@categorie")

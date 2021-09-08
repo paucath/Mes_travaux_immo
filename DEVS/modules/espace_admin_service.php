@@ -195,6 +195,59 @@ public function pro_list(){
     ));
   }
 
+  public function message_send(){
+
+    $recepient = $this->VARS_HTML["email"];
+    
+    $text = $this->VARS_HTML["texte"];
+    $message = "Text: $text";
+    
+    $pagetitle =  $this->VARS_HTML["objet"];
+    mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"");
+
+    $this->resultat["espace_admin_message_send"] = 0;
+  }
+
+  /*
+   * lister les catégories des devis
+   */
+  public function cat_list(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cat_list.sql";
+    $this->resultat["espace_admin_devis_cat_list"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
+  /*
+   * lister les actualités
+   */
+  public function souscat_list(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "souscat_list.sql";
+    $this->resultat["espace_admin_devis_souscat_list"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
+  /*
+   * Ajouter une catégorie un devis
+   */
+  public function cat_add(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cat_add.sql";
+    $this->resultat["espace_admin_devis_cat_add"]= $this->oBdd->treatDatas($spathSQL, array(
+      "categorie" => $this->VARS_HTML["categorie"]
+      ));
+  }
+
+  /*
+   * Ajouter une sous catégorie un devis
+   */
+  public function souscat_add(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "souscat_add.sql";
+    $this->resultat["espace_admin_devis_souscat_add"]= $this->oBdd->treatDatas($spathSQL, array(
+          "id_categorie" => $this->VARS_HTML["id_categorie"],
+          "sous_categorie" => $this->VARS_HTML["sous_categorie"],
+          "nbr_piece" => $this->VARS_HTML["nbr_piece"],
+          "m_carre" => $this->VARS_HTML["m_carre"]
+
+      ));
+  }
+
   /**
    *
    * Destroy service

@@ -36,7 +36,8 @@
                     <summary class="nav_admin">Gestion des actualités</summary>
                     <div class="d-flex">
                         <div class="carte justify-content-center flex-column">
-                            <button class="add_actu" style="width:20%" type="button" data-toggle="modal" data-target="#espace_admin_modal" onclick="new_actu()">ajouter</button>
+                            <button class="add_actu" style="width:20%" type="button" data-toggle="modal"
+                                data-target="#espace_admin_modal" onclick="new_actu()">ajouter</button>
                             <table id="table_actu" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
@@ -47,11 +48,13 @@
                     <summary class="nav_admin">Gestion des abonnements</summary>
                     <div class="d-flex">
                         <div class="carte justify-content-center flex-column">
-                            <div><p id="nbr_abo" class="nbr_abo d-flex justify-content-center"></p></div>
+                            <div>
+                                <p id="nbr_abo" class="nbr_abo d-flex justify-content-center"></p>
+                            </div>
                             <table id="table_abo" class="display responsive " style="width: 100%" border=1>
                             </table>
-                            </div>
                         </div>
+                    </div>
                 </details>
                 <!-- ***************Messagerie************* -->
                 <details class="details">
@@ -61,17 +64,57 @@
                             <table id="table_message" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
+                        <div class="message_envoyé" id="message_envoyé"></div>
                     </div>
                 </details>
                 <!-- ***************Construction du devis************* -->
                 <details class="details">
                     <summary class="nav_admin">Construction du devis</summary>
-                    <div class="d-flex">
-                        <div class="carte  justify-content-center flex-column">
-                            <table id="table_devis" class="display responsive " style="width: 100%" border=1>
-                            </table>
-                        </div>
+                    <div>
+                        <details class="details">
+                            <summary class="nav_admin">CATEGORIES</summary>
+                            <div class="d-flex">
+                                <div class="carte justify-content-center ">
+                                    <div class="list_categorie d-flex justify-content-center" id="list_categorie"
+                                        style="width:50%"></div>
+                                    <div class="d-flex justify-content-center flex-column" style="width:50%">
+                                        <input type="text" class="new_categorie justify-content-center"
+                                            id="new_categorie" style="width:50%">
+                                        <button class="categorie" onclick="add_categorie()">Ajouter une
+                                            catégorie</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="details">
+                            <summary class="nav_admin">SOUS-CATEGORIES</summary>
+                            <div class="d-flex">
+                                <div class="carte justify-content-center ">
+                                    <div class="list_sous_categorie d-flex justify-content-center"
+                                        id="list_sous_categorie" style="width:50%"></div>
+                                    <div class="d-flex justify-content-center flex-column "
+                                        style="width:50%">
+                                        <input type="text" class="new_sous_categorie" id="new_sous_categorie">
+                                        <div class="select" id="select">
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="nbr_piece form-check-input" id="nbr_piece"
+                                                name="nbr_piece" value="1">
+                                            <label class="form-check-label" for="nbr_piece">Nombre de pièce</label>
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="m_carre form-check-input" id="m_carre"
+                                                name="m_carre" value="1">
+                                            <label for="m_carre" class="form-check-label">m²</label>
+                                        </div>
+                                        <button class="sous_categorie" onclick="add_sous_categorie()">Ajouter une sous
+                                            catégorie</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
                     </div>
+                </details>
                 </details>
             </div>
         </div>
@@ -209,7 +252,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="update_actu()" data-dismiss="modal" class="btn add_admin">Modifier cet actualité</button>
+                        <button type="button" onclick="update_actu()" data-dismiss="modal"
+                            class="btn add_admin">Modifier cet actualité</button>
                     </div>
                 </div>
                 <!-- Lecture message Modal -->
@@ -254,7 +298,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" onclick="send_message()" data-dismiss="modal" class="btn add_admin">Envoyer</button>
+                        <button type="button" onclick="send_message()" data-dismiss="modal"
+                            class="btn add_admin">Envoyer</button>
                     </div>
                 </div>
             </div>

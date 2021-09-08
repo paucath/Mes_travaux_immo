@@ -1,0 +1,1 @@
+SELECT * FROM `sous_categorie`
