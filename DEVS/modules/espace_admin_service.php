@@ -195,6 +195,10 @@ public function pro_list(){
     ));
   }
 
+
+  /*
+   * Envoyer un message
+   */
   public function message_send(){
 
     $recepient = $this->VARS_HTML["email"];
@@ -230,7 +234,8 @@ public function pro_list(){
   public function cat_add(){
     $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cat_add.sql";
     $this->resultat["espace_admin_devis_cat_add"]= $this->oBdd->treatDatas($spathSQL, array(
-      "categorie" => $this->VARS_HTML["categorie"]
+      "categorie" => $this->VARS_HTML["categorie"],
+      "visibilite" => $this->VARS_HTML["visibilite"]
       ));
   }
 
@@ -243,10 +248,53 @@ public function pro_list(){
           "id_categorie" => $this->VARS_HTML["id_categorie"],
           "sous_categorie" => $this->VARS_HTML["sous_categorie"],
           "nbr_piece" => $this->VARS_HTML["nbr_piece"],
-          "m_carre" => $this->VARS_HTML["m_carre"]
+          "m_carre" => $this->VARS_HTML["m_carre"],
+          "visibilite" => $this->VARS_HTML["visibilite"]
 
       ));
   }
+
+   /*
+   * rendre visible une categorie
+   */
+  public function cat_visibilite(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cat_visibilite.sql";
+    $this->resultat["espace_admin_devis_cat_visibilite"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_categorie" => $this->VARS_HTML["id_categorie"]
+    ));
+  }
+
+     /*
+   * rendre visible une sous categorie
+   */
+  public function souscat_visibilite(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "souscat_visibilite.sql";
+    $this->resultat["espace_admin_devis_souscat_visibilite"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_sous_categorie" => $this->VARS_HTML["id_sous_categorie"]
+    ));
+  }
+
+     /*
+   * rendre invisible une categorie
+   */
+  public function cat_invisibilite(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cat_invisibilite.sql";
+    $this->resultat["espace_admin_devis_cat_invisibilite"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_categorie" => $this->VARS_HTML["id_categorie"]
+    ));
+  }
+
+     /*
+   * rendre invisible une sous categorie
+   */
+  public function souscat_invisibilite(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "souscat_invisibilite.sql";
+    $this->resultat["espace_admin_devis_souscat_invisibilite"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_sous_categorie" => $this->VARS_HTML["id_sous_categorie"]
+    ));
+  }
+
+
 
   /**
    *

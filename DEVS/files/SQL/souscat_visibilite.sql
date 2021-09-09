@@ -1,0 +1,1 @@
+UPDATE `sous_categorie` SET visibilite=1 WHERE id_sous_categorie=@id_sous_categorie

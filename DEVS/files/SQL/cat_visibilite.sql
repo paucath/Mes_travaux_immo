@@ -1,0 +1,1 @@
+UPDATE `categorie` SET visibilite=1 WHERE id_categorie=@id_categorie

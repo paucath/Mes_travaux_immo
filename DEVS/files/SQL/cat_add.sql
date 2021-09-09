@@ -1,1 +1,1 @@
-INSERT INTO `categorie` (categorie) VALUE ("@categorie")
+INSERT INTO `categorie` (categorie, visibilite) VALUE ("@categorie",  @visibilite)
