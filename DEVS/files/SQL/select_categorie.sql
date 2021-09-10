@@ -1,0 +1,1 @@
+SELECT * FROM `categorie` WHERE visibilite=1

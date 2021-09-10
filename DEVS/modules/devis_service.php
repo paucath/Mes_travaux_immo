@@ -39,6 +39,30 @@ Class Devis_service extends Initialize	{
     // execute main function
   }
 
+  /*
+  *Remplissage du select ville
+  */
+  public function select_ville(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "select_ville.sql";
+    $this->resultat["devis_select_ville"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
+   /*
+  *Remplissage du select categorie
+  */
+  public function select_categorie(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "select_categorie.sql";
+    $this->resultat["devis_select_categorie"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
+     /*
+  *Remplissage du select categorie
+  */
+  public function select_souscategorie(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "select_souscategorie.sql";
+    $this->resultat["devis_select_souscategorie"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
   /**
    *
    * Destroy service

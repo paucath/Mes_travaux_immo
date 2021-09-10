@@ -6,72 +6,56 @@
     <div>
     </div></br></br>
 </div>
-<!-- Choix taille des travaux -->
+<!--Devis-->
 <div class="cadre_devis ">
     <div class="content_1" id="content_1">
+        <p>Votre devis</p>
+        <div class="d-flex justify-content-center ">
+            <div style="width:50%" class="d-flex justify-content-center flex-column">
+                <label for="catégorie" class="label">Catégorie</label></br>
+                <div class="select_cat" id="select_cat"></div></br>
+                <label for="sous_categorie" class="label" id="sous_cat_label">Sous-categorie</label></br>
+                <div class="select_souscat" id="select_souscat"></div></br>
+                <label for="nbr_piece" class="label" id="nbr_piece_label">Nombre de piece</label></br>
+                <input type="text" class="nbr_piece input_devis" id="nbr_piece" placeholder="Veuillez saisir le nombre de piece">
+                <label for="m_carre" class="label" id="m_carre_label">Nombre de m²</label></br>
+                <input type="text" class="m_carre input_devis" id="m_carre" placeholder="Veuillez saisir le nombre de m²">
+            </div>
+            <div style="width:50%" class="d-flex justify-content-center flex-column">
+                <label for="detail" class="label">Détails</label></br>
+                <textarea class="detail" id="detail"></textarea>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end ">
+            <button type="button" onClick="valide_devis()" class="bouton_devis">Valider votre devis</button>
+        </div>
+    </div>
+    <!-- Coordonnées -->
+    <div class="content_2" id="content_2">
         <div>
-            <p>Taille travaux</p>
+            <p>Vos informations personnels</p>
         </div>
-        <div class="buttons d-flex justify-content-around">
-            <button type="button" onClick="GrosOeuvre()" class="bouton_taille_trav">Gros Oeuvre</button>
-            <button type="button" onClick="PetitsTrav()" class="bouton_taille_trav">Petits travaux</button>
+        <div class="d-flex justify-content-center ">
+            <div style="width:50%" class="d-flex justify-content-center flex-column">
+                <label for="nom" class="label">Nom</label></br>
+                <input type="texte" class="nom input_devis" id="nom" placeholder="Votre nom"></br>
+                <label for="prenom" class="label">Prenom</label></br>
+                <input type="texte" class="prenom input_devis" id="prenom" placeholder="Votre prenom"></br>
+                <label for="telephone" class="label">Telephone</label></br>
+                <input type="tel" class="telephone input_devis" id="telephone" placeholder="Votre numero de téléphone">
+            </div>
+            <div style="width:50%" class="d-flex justify-content-center flex-column">
+                <label for="email" class="label">Email</label></br>
+                <input type="mail" class="email input_devis" id="email" placeholder="Votre email"></br>
+                <label for="adresse" class="label">Adresse</label></br>
+                <input type="texte" class="adresse input_devis" id="adresse" placeholder="Votre adresse"></br>
+                <label for="ville" class="label">Ville</label></br>
+                <div class="ville" id="ville">
+                </div>
+            </div>
         </div>
-    </div>
-<!-- Choix type de travaux -->
-    <div class="content_2a" id="content_2a">
-        <p>Type travaux Gros oeuvre</p>
-        <div class="input-group-text flex-column">
-            <div><input type="checkbox" class="type1" aria-label="type1"><label for="type1">type1 GO</label></div>
-            <div><input type="checkbox" class="type2" aria-label="type2"><label for="type2">type2 GO</label></div>
-            <div><input type="checkbox" class="type3" aria-label="type3"><label for="type3">type3 GO</label></div>
-            <div><input type="checkbox" class="type4" aria-label="type4"><label for="type4">type4 GO</label></div>
-            <div><input type="checkbox" class="type5" aria-label="type5"><label for="type5">type5 GO</label></div>
-            <div><input type="checkbox" class="type6" aria-label="type6"><label for="type6">type6 GO</label></div>
-            <div><input type="checkbox" class="type7" aria-label="type7"><label for="type7">type7 GO</label></div>
-            <div><input type="checkbox" class="type8" aria-label="type8"><label for="type8">type8 GO</label></div>
-        </div>
-        <div class="d-flex justify-content-end button_place">
-            <button type="button" onClick="valide_type_go()" class="type_go">Suivant</button>
-        </div>
-    </div>
-    <div class="content_2b" id="content_2b">
-        <p>Type travaux Petit travaux</p>
-        <div class="input-group-text flex-column">
-            <div><input type="checkbox" class="type1" aria-label="type1"><label for="type1">type1 PT</label></div>
-            <div><input type="checkbox" class="type2" aria-label="type2"><label for="type2">type2 PT</label></div>
-            <div><input type="checkbox" class="type3" aria-label="type3"><label for="type3">type3 PT</label></div>
-            <div><input type="checkbox" class="type4" aria-label="type4"><label for="type4">type4 PT</label></div>
-            <div><input type="checkbox" class="type5" aria-label="type5"><label for="type5">type5 PT</label></div>
-            <div><input type="checkbox" class="type6" aria-label="type6"><label for="type6">type6 PT</label></div>
-            <div><input type="checkbox" class="type7" aria-label="type7"><label for="type7">type7 PT</label></div>
-            <div><input type="checkbox" class="type8" aria-label="type8"><label for="type8">type8 PT</label></div>
-        </div>
-        <div class="d-flex justify-content-end button_place">
-            <button type="button" onClick="valide_type_pt()" class="type_pt">Suivant</button>
-        </div>
-    </div>
-<!-- Information sur les travaux -->
-    <div class="content_3" id="content_3">
-        <p>Info sup</p>
-        <div class="input_3">
-            <label for="duree">Durée</label></br>
-            <input class="content_3_1" id="duree" name="duree" placeholder="Durée des travaux" type="text"></br>
-            <label for="surface">Surface</label></br>
-            <input class="content_3_2" id="surface" name="surface" placeholder="Surface" type="text">
-        </div>
-        <div class="d-flex justify-content-end button_place">
-            <button type="button" onClick="valide_infosup()" class="info_sup">Suivant</button>
-        </div>
-    </div>
-<!-- Détails -->
-    <div class="content_4" id="content_4">
-        <p>Détails</p>
-        <div class="textarea_4">
-            <label for="details">Détails sur votre projet:</label></br>
-            <textarea class="detail" id="detail" name="detail" placeholder="Donner nous des détails"></textarea>
-        </div>
-        <div class="d-flex justify-content-end button_place">
-            <button type="button" onClick="valide_devis()" class="valid_devis">Enregistrer Devis</button>
+        <div class="buttons d-flex justify-content-end">
+            <button type="button" onClick="valide_coordonnée()" class="bouton_devis">Valider coordonnées</button>
         </div>
     </div>
 </div>

@@ -350,10 +350,9 @@ h5{
 }
 
 
-
 /*    Boutons     */
 
-.bouton_taille_trav , .type_go , .type_pt , .info_sup , .valid_devis{
+.bouton_devis{
     height:60px;
     background-color: var(--color-white);
     font-size: 20px;
@@ -363,64 +362,20 @@ h5{
     font-weight:bold;
 }
 
-.valid_devis:hover{
+.bouton_devis:hover{
     color: var(--color-white);
     background-color: var(--color-red);
     border: 3px solid var(--color-white);
     transition-duration:1s;
 }
 
-.info_sup:hover{
-    color: var(--color-white);
-    background-color: var(--color-red);
-    border: 3px solid var(--color-white);
-    transition-duration:1s;
+.label{
+    margin: 1%;
 }
 
-.type_pt:hover{
-    color: var(--color-white);
-    background-color: var(--color-red);
-    border: 3px solid var(--color-white);
-    transition-duration:1s;
-}
-
-.type_go:hover{
-    color: var(--color-white);
-    background-color: var(--color-red);
-    border: 3px solid var(--color-white);
-    transition-duration:1s;
-}
-
-.bouton_taille_trav:hover{
-    color: var(--color-white);
-    background-color: var(--color-red);
-    border: 3px solid var(--color-white);
-    transition-duration:1s;
-}
-
-.buttons{
-    margin-bottom: 1%;
-}
-
-.button_place{
-    margin:3%;
-}
-
-/*    Input     */
-
-.input_3{
-    margin: 3%;
-}
-
-textarea{
-    width: 50%;
+.input_devis{
+    width: 40%;
     height: 50%;
-    margin: 3%;
-    border: 1px solid var(--color-red);
-}
-
-.textarea_4 label{
-    margin: 2%;
 }
 
 /*----------------------------------------------------------------*/
