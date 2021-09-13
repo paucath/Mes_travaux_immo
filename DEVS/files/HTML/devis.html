@@ -22,13 +22,15 @@
                 <input type="text" class="m_carre input_devis" id="m_carre" placeholder="Veuillez saisir le nombre de m²">
             </div>
             <div style="width:50%" class="d-flex justify-content-center flex-column">
-                <label for="detail" class="label">Détails</label></br>
+                <label for="detail" class="label"  id='text_details'>Détails</label></br>
                 <textarea class="detail" id="detail"></textarea>
             </div>
         </div>
         <div class="d-flex justify-content-end ">
             <button type="button" onClick="valide_devis()" class="bouton_devis">Valider votre devis</button>
+            <div id="erreur" style="color:red ; font-size: 20px ; font-weight: bold;"></div>
         </div>
+        
     </div>
     <!-- Coordonnées -->
     <div class="content_2" id="content_2">
@@ -55,7 +57,9 @@
             </div>
         </div>
         <div class="buttons d-flex justify-content-end">
-            <button type="button" onClick="valide_coordonnée()" class="bouton_devis">Valider coordonnées</button>
+            <button type="button" id="coordonnee" onClick="valide_coordonnee()" class="bouton_devis">Valider coordonnées</button>
+            <button type="button" id="final" onClick="valide_total()" class="bouton_devis">Confirmer l'envoi du devis</button>
+            <div id="envoye" style="color: green;font-size: 20px ; font-weight: bold;"></div>
         </div>
     </div>
 </div>

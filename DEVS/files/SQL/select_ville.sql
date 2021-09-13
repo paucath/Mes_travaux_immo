@@ -1,1 +1,1 @@
-SELECT * FROM `ville` ORDER BY ville
+SELECT id_ville , ville , code_ville FROM `ville` ORDER BY ville

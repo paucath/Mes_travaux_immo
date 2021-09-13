@@ -63,6 +63,43 @@ Class Devis_service extends Initialize	{
     $this->resultat["devis_select_souscategorie"]= $this->oBdd->getSelectDatas($spathSQL);
   }
 
+       /*
+  *Remplissage du select categorie
+  */
+  public function list_client(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "list_client.sql";
+    $this->resultat["devis_list_client"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
+  /*
+   * Ajouter un client
+   */
+  public function add_client(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "add_client.sql";
+    $this->resultat["devis_add_client"]= $this->oBdd->treatDatas($spathSQL, array(
+      "id_ville" => $this->VARS_HTML["id_ville"], 
+      "prenom_client" => $this->VARS_HTML["prenom_client"],
+      "nom_client" => $this->VARS_HTML["nom_client"],  
+      "address_client" => $this->VARS_HTML["address_client"],
+      "tel_client" => $this->VARS_HTML["tel_client"],
+      "mail_client" => $this->VARS_HTML["mail_client"]
+      ));
+  }
+
+   /*
+   * Ajouter un devis
+   */
+  public function add_devis(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "add_devis.sql";
+    $this->resultat["devis_add_devis"]= $this->oBdd->treatDatas($spathSQL, array(
+      "id_client" => $this->VARS_HTML["id_client"], 
+      "id_categorie" => $this->VARS_HTML["id_categorie"],
+      "id_sous_categorie" => $this->VARS_HTML["id_sous_categorie"],  
+      "surface" => $this->VARS_HTML["surface"],
+      "details" => $this->VARS_HTML["details"]
+      ));
+  }
+
   /**
    *
    * Destroy service

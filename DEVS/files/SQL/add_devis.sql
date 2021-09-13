@@ -1,0 +1,1 @@
+INSERT INTO `projet` (id_client,id_categorie,id_sous_categorie,surface,details,statut) VALUES ('@id_client','@id_categorie','@id_sous_categorie','@surface','@details','en ligne')

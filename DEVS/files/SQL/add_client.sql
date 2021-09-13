@@ -1,0 +1,1 @@
+INSERT INTO `client` (id_ville,prenom_client,nom_client,tel_client,address_client,mail_client) VALUES ('@id_ville','@prenom_client','@nom_client','@tel_client','@address_client','@mail_client')
