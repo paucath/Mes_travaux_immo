@@ -3,11 +3,14 @@ var table_projet_valide;
 var aoffacture = [];
 var aofprofil = [];
 var aofprofil_maj=[];
-// document ready
+var aofproj_acc=[];
+var id_pro_connect=1;
 
+// document ready
 $(document).ready(function () {
 	load_facture();
 	load_profil();
+	load_projet_accepte();
 });
 
 // ***************CRUD PROJETS DISPONIBLES*******************************
@@ -125,26 +128,41 @@ $(document).ready(function () {
 
 // ***************CRUD PROJETS VALIDE*******************************
 
-var projet_valide = [];
+/*
+* Récupération des projet accepté par le professionnel dans la BDD
+*/
+function load_projet_accepte() {
 
+	var datas = {
+		page: "profil_pro_projet_accepte",
+		bJSON: 1,
+		id_pro:id_pro_connect
+	}
 
-projet_valide[0] = [];
-projet_valide[0]["size_work"] = "Gros oeuvre";
-projet_valide[0]["type_work"] = "placo";
-projet_valide[0]["area"] = "15";
-projet_valide[0]["duration"] = "20H";
-projet_valide[0]["price"] = "300";
-projet_valide[0]["details"] = "migsfjFCJBsdfjbdskbvjkfdsbfksbbfkjbkjb";
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			console.log("result", result);
+			
+			aofproj_acc = result;
 
-projet_valide[1] = [];
-projet_valide[1]["size_work"] = "Petits travaux";
-projet_valide[1]["type_work"] = "carrelage";
-projet_valide[1]["area"] = "100";
-projet_valide[1]["duration"] = "36H";
-projet_valide[1]["price"] = "1000";
-projet_valide[1]["details"] = "migsfjFCJBsdfjbdskbvjkfdsbfksbbfkjbkjb";
+			constructTable_valide();
 
-
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
 
 function constructTable_valide() {
 	var i;
@@ -152,29 +170,64 @@ function constructTable_valide() {
 	var sHTML = "";
 	sHTML += "<thead>";
 	sHTML += "<tr>";
-	sHTML += "<td>taille travaux</td>";
-	sHTML += "<td>type travaux</td>";
+	sHTML += "<td>Catégories</td>";
+	sHTML += "<td>Sous Catégorie</td>";
 	sHTML += "<td>surface</td>";
-	sHTML += "<td>durée</td>";
-	sHTML += "<td>prix</td>";
 	sHTML += "<td>détails</td>";
-	sHTML += "<td>Etat</td>";
+	sHTML += "<td>nombre de pièce</td>";
+	sHTML += "<td>nombre de m²</td>";
+	sHTML += "<td>Statut</td>";
+	sHTML += "<td></td>";
 	sHTML += "</tr>";
 	sHTML += "</thead>";
 	sHTML += "<tbody>";
 
-	for (i = 0; i < projet_valide.length; i++) {
-		sHTML += "<tr>";
-		sHTML += "<td>" + projet_valide[i]["size_work"] + "</td>";
-		sHTML += "<td>" + projet_valide[i]["type_work"] + "</td>";
-		sHTML += "<td>" + projet_valide[i]["area"] + "</td>";
-		sHTML += "<td>" + projet_valide[i]["duration"] + "</td>";
-		sHTML += "<td>" + projet_valide[i]["price"] + "</td>";
-		sHTML += "<td>" + projet_valide[i]["details"] + "</td>";
-		sHTML += "<td><button class='valide'>Terminer</button></td>";
-		sHTML += "</tr>";
-	}
+	for (i = 0; i < aofproj_acc.length; i++) {
 
+		if (aofproj_acc[i]["nbr_piece"]==0) {
+
+			aofproj_acc[i]["nbr_piece"]="NON";
+
+		}
+		else{
+
+			aofproj_acc[i]["nbr_piece"]="OUI";
+
+		}
+
+		if (aofproj_acc[i]["m_carre"]==0) {
+
+			aofproj_acc[i]["m_carre"]="NON";
+
+		}
+		else{
+
+			aofproj_acc[i]["m_carre"]="OUI";
+			
+		}
+
+		
+		
+		sHTML += "<tr>";
+		sHTML += "<td>" + aofproj_acc[i]["categorie"] + "</td>";
+		sHTML += "<td>" + aofproj_acc[i]["sous_categorie"] + "</td>";
+		sHTML += "<td>" + aofproj_acc[i]["surface"] + "</td>";
+		sHTML += "<td>" + aofproj_acc[i]["details"] + "</td>";
+		sHTML += "<td>" + aofproj_acc[i]["nbr_piece"] + "</td>";
+		sHTML += "<td>" + aofproj_acc[i]["m_carre"] + "</td>";
+		sHTML += "<td>" + aofproj_acc[i]["statut"] + "</td>";
+		if(aofproj_acc[i]["statut"]=="termine"){
+			sHTML += "<td><button class='valide_disabled' >Terminer</button></td>";
+		}
+		else{
+			sHTML += "<td><button class='valide'>Terminer</button></td>";
+		}
+		sHTML += "</tr>";
+		
+		
+	}
+	
+	
 	sHTML += "</tbody>";
 	$('#table_projet_valide').html(sHTML);
 }
@@ -200,7 +253,7 @@ const configuration_valide = {
 		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
 		"sInfoEmpty": "Utilisateurs 0 à 0 sur 0 sélectionnée",
 	},
-	responsive: true,
+	"responsive": true,
 	"columns": [
 		{
 			"orderable": true
@@ -215,10 +268,13 @@ const configuration_valide = {
 			"orderable": true
 		},
 		{
-			"orderable": true
+			"orderable": false
 		},
 		{
-			"orderable": true
+			"orderable": false
+		},
+		{
+			"orderable": false
 		},
 		{
 			"orderable": false
@@ -240,19 +296,12 @@ $(document).ready(function () {
 * Récupération des données des facture dans la BDD
 */
 function load_facture() {
-	// Ici je mets les paramètres pour appeler un autre PHP :
-	// Je décide de l'appeler "user_actu_list"
-	// Qui va s'occuper d'aller chercher mes données dans la base
-	// Le paramètre bJSON à 1, me permet que ma page ne se recharge pas
-	// Mais reste bien figée
+
 	var datas = {
 		page: "profil_pro_facture_list",
 		bJSON: 1
 	}
-	// J'exécute le POST
-	// Dans le ".done", le retour du PHP "user_actu_list", soit "user_actu_list.html"
-	// Si tout s'est bien passé
-	// Dans le ".fail", si il y'a eu une erreur d'exécution côté serveur.
+
 	$.ajax({
 		type: "POST",
 		url: "route.php",
@@ -263,13 +312,10 @@ function load_facture() {
 	})
 		.done(function (result) {
 			console.log("result", result);
-			// C'est dans result que je recevrais les données de la base de données
-			// Je fais un console.log pour voir son contenu
-			// Ici j'aurais à coder de parcourir le tableau "result"
+			
 
 			aoffacture = result;
 
-			// organisation des données sur ma page 
 
 			facture();
 
@@ -301,19 +347,14 @@ function facture() {
  * Récupération des données BDD du profil pro
  */
 function load_profil() {
-	// Ici je mets les paramètres pour appeler un autre PHP :
-	// Je décide de l'appeler "user_actu_list"
-	// Qui va s'occuper d'aller chercher mes données dans la base
-	// Le paramètre bJSON à 1, me permet que ma page ne se recharge pas
-	// Mais reste bien figée
+	
+
 	var datas = {
 		page: "profil_pro_profil_list",
 		bJSON: 1
 	}
-	// J'exécute le POST
-	// Dans le ".done", le retour du PHP "user_actu_list", soit "user_actu_list.html"
-	// Si tout s'est bien passé
-	// Dans le ".fail", si il y'a eu une erreur d'exécution côté serveur.
+	
+
 	$.ajax({
 		type: "POST",
 		url: "route.php",
@@ -324,13 +365,10 @@ function load_profil() {
 	})
 		.done(function (result) {
 			console.log("result", result);
-			// C'est dans result que je recevrais les données de la base de données
-			// Je fais un console.log pour voir son contenu
-			// Ici j'aurais à coder de parcourir le tableau "result"
+			
 
 			aofprofil = result[0];
 
-			// organisation des données sur ma page 
 			
 			$('#entreprise').val(aofprofil["societe_pro"]);
 			$('#adresse2').val(aofprofil["address_pro"]);
@@ -382,6 +420,12 @@ function profil_update() {
 			console.log("this result",result)
 			
 			aofprofil_maj=result;
+
+			$('#modif_profil').html("Votre profil a bien été modifié");
+
+			setTimeout(function () {
+				$('#modif_profil').html("");
+			},8000);
 
 			
 

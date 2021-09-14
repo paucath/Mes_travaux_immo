@@ -39,18 +39,24 @@ Class Profil_pro_service extends Initialize	{
     // execute main function
   }
 
-      /**fonction de récupération des informations de la bdd */
-
+      /*
+      *fonction de récupération des factures dans la bdd 
+      */
       public function facture_list(){
         $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "facture_list.sql";
         $this->resultat["profil_pro_facture_list"]= $this->oBdd->getSelectDatas($spathSQL);
     }
 
+    /*
+      *fonction de récupération des données du profil dans la bdd 
+      */
     public function profil_list(){
       $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "profil_list.sql";
       $this->resultat["profil_pro_profil_list"]= $this->oBdd->getSelectDatas($spathSQL);
   }
-
+ /*
+  *fonction de modification des données du profil dans la bdd 
+  */
   public function profil_update(){
     // Here I can Access to :
     // $this->GLOBALS_INI
@@ -71,6 +77,18 @@ Class Profil_pro_service extends Initialize	{
   
   }
 
+   /*
+  *fonction de modification des données du profil dans la bdd 
+  */
+  public function projet_accepte_list(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "projet_accepte_list.sql";
+    $this->resultat["profil_pro_projet_accepte"]= $this->oBdd->getSelectDatas($spathSQL, array(
+                                 "id_pro" => $this->VARS_HTML["id_pro"]
+                                  ));
+  
+  }
+                                
   /**
    *
    * Destroy service

@@ -33,6 +33,7 @@
                                 <label for="mdp">Mot de passe</label></br>
                                 <input class="info" id="mdp" name="mdp" placeholder="Mot de passe" type="password"></br>
                                 <button class="modif_profil" onClick="profil_update()">Modifier</button>
+                                <div id="modif_profil" style="font-size: 20px"></div>
                             </div>
                         </div>
                     </div>
@@ -52,76 +53,17 @@
                     <summary class="nav_pro">Projets acceptés</summary>
                     <div class="d-flex">
                         <div class="carte justify-content-center flex-column">
-                            <table class="display responsive  " id="table_projet_valide" style="width: 100%" border=1>
+                            <table id="table_projet_valide" class="display responsive " style="width: 100%" border=1>
                             </table>
                         </div>
                     </div>
                 </details>
-                <!-- ***************Mes filtres************* -->
+                <!-- ***************Abonnement************* -->
                 <details class="details">
-                    <summary class="nav_pro">Mes filtres</summary>
-                    <div>
-                        <div class="carte">
-                            <div class="cat_trav cadre d-flex ">
-                                <p>Catégories travaux</p>
-                                <div class="input-group-text flex-column">
-                                    <div><input type="checkbox" class="Gros oeuvre" aria-label="Gros oeuvre"><label
-                                            for="Gros oeuvre">Gros oeuvre</label></div>
-                                    <div><input type="checkbox" class="Petits travaux"
-                                            aria-label="Petits Travaux"><label for="Petits travaux">Petits
-                                            travaux</label></div>
-                                </div>
-                            </div>
-                            <div class="duree cadre d-flex ">
-                                <p>Durée</p>
-                                <div class="input-group-text flex-column ">
-                                    <div><input type="checkbox" class="24h ou moins" aria-label="24h ou moins"><label
-                                            for="24h ou moins">24h ou moins</label></div>
-                                    <div><input type="checkbox" class="24H à 120h" aria-label="24H à 120h"><label
-                                            for="24H à 120h">24H à 120h</label></div>
-                                    <div><input type="checkbox" class="plus de 120h" aria-label="plus de 120h"><label
-                                            for="plus de 120h">plus de 120h</label></div>
-                                </div>
-                            </div>
-                            <div class="type_trav cadre d-flex">
-                                <p>Type travaux</p>
-                                <div class="input-group-text flex-column">
-                                    <div><input type="checkbox" class="type1" aria-label="type1"><label
-                                            for="type1">type1</label></div>
-                                    <div><input type="checkbox" class="type2" aria-label="type2"><label
-                                            for="type2">type2</label></div>
-                                    <div><input type="checkbox" class="type3" aria-label="type3"><label
-                                            for="type3">type3</label></div>
-                                    <div><input type="checkbox" class="type4" aria-label="type4"><label
-                                            for="type4">type4</label></div>
-                                    <div><input type="checkbox" class="type5" aria-label="type5"><label
-                                            for="type5">type5</label></div>
-                                    <div><input type="checkbox" class="type6" aria-label="type6"><label
-                                            for="type6">type6</label></div>
-                                    <div><input type="checkbox" class="type7" aria-label="type7"><label
-                                            for="type7">type7</label></div>
-                                    <div><input type="checkbox" class="type8" aria-label="type8"><label
-                                            for="type8">type8</label></div>
-                                </div>
-                            </div>
-                            <div class="montant cadre d-flex">
-                                <p>Montant Devis</p>
-                                <div class="input-group-text flex-column">
-                                    <div><input type="checkbox" class="1" aria-label="moins de 100€"><label
-                                            for="1">moins de 100€</label></div>
-                                    <div><input type="checkbox" class="2" aria-label="100 à 200€"><label for="2">100 à
-                                            200€</label></div>
-                                    <div><input type="checkbox" class="3" aria-label="200 à 500€"><label for="3">200 à
-                                            500€</label></div>
-                                    <div><input type="checkbox" class="4" aria-label="500 à 1000€"><label for="4">500 à
-                                            1000€</label></div>
-                                    <div><input type="checkbox" class="5" aria-label="plus de 1000€"><label for="5">plus
-                                            de 1000€</label></div>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="valide" type="submit">Valider</button>
-                            </div>
+                    <summary class="nav_pro">Abonnement</summary>
+                    <div class="d-flex">
+                        <div class="carte justify-content-center flex-column">
+                            
                         </div>
                     </div>
                 </details>
@@ -130,15 +72,6 @@
                     <summary class="nav_pro">Mes factures</summary>
                     <div>
                         <div class="carte" id="facture">
-                            <!-- <ul>
-                            </br>
-                                <li>facture1.pdf</li></br>
-                                <li>facture2.pdf</li></br>
-                                <li>facture3.pdf</li></br>
-                                <li>facture4.pdf</li></br>
-                                <li>facture5.pdf</li></br>
-                                <li>facture6.pdf</li></br>
-                            </ul> -->
                         </div>
                     </div>
                 </details>
