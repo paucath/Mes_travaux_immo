@@ -68,6 +68,9 @@ function select_categorie() {
         })
 }
 
+/*
+*construire le select categorie
+*/
 function construct_select_categorie() {
     var i;
 
@@ -87,7 +90,7 @@ function construct_select_categorie() {
 }
 
 /*
-*Remplir le select ville
+*Remplir le select sous categorie
 */
 function select_souscategorie() {
 
@@ -121,6 +124,9 @@ function select_souscategorie() {
         })
 }
 
+/*
+*tri des sous categories en fonction de la catégorie selectionné sous categorie
+*/
 function tri_sous_cat(value) {
 
     aofsouscategorie_tri = [];
@@ -140,6 +146,9 @@ function tri_sous_cat(value) {
     $("#m_carre").hide();
 }
 
+/*
+*construction du select sous categorie
+*/
 function construct_select_souscategorie() {
     var i;
 
@@ -160,6 +169,9 @@ function construct_select_souscategorie() {
     $("#text_details").show();
 }
 
+/*
+*affichage de la surface en fonction du type de sous categorie
+*/
 function recup_surface(value) {
 
 
@@ -190,11 +202,9 @@ function recup_surface(value) {
 
 }
 
+
 /*
-*Remplir le select ville
-*/
-/*
-*validation des coordonnées
+*validation des données du devis
 */
 function valide_devis() {
 
@@ -219,6 +229,9 @@ function valide_devis() {
     }
 }
 
+/*
+*remplissage select ville
+*/
 function select_ville() {
 
     var datas = {
@@ -252,6 +265,9 @@ function select_ville() {
         })
 }
 
+/*
+*construction select ville
+*/
 function construct_select_ville() {
     var i;
 
@@ -270,6 +286,9 @@ function construct_select_ville() {
     $('#ville').html(sHTML);
 }
 
+/*
+*récupération des données client
+*/
 function list_client() {
 
     var datas = {
@@ -300,6 +319,9 @@ function list_client() {
         })
 }
 
+/*
+*vérification de l'existance du client
+*/
 function verif_client(){
 
     console.log(aofclient.length);
@@ -310,7 +332,7 @@ function verif_client(){
         console.log(aofclient[i]["prenom_client"]);
         console.log(aofclient[i]["nom_client"]);
 
-        if (((aofclient[i]["prenom_client"])==prenom)&((aofclient[i]["nom_client"])==nom)){
+        if (((aofclient[i]["prenom_client"])==prenom)&&((aofclient[i]["nom_client"])==nom)){
             
             id_client=aofclient[i]["id_client"];
             $("#final").show();
@@ -328,6 +350,9 @@ function verif_client(){
     
 }
 
+/*
+*ajout d'un client
+*/
 function add_client() {
 
     var datas = {
@@ -365,6 +390,9 @@ function add_client() {
         })
 }
 
+/*
+*ajout d'un devis
+*/
 function add_devis() {
 
     var datas = {
@@ -390,7 +418,12 @@ function add_devis() {
             console.log("result", result);
 
             $('#envoye').html("votre devis a bien été enregistré");
-            
+            $("#nom").val("");
+            $("#prenom").val("");
+            $("#telephone").val("");
+            $("#email").val("");
+            $("#adresse").val("");
+            $("#select_ville").val("");
 
         })
         .fail(function (err) {
@@ -402,11 +435,26 @@ function add_devis() {
 }
 
 /*
-*Validation du devis
+*Validation des coordonnées
 */
 function valide_coordonnee() {
 
-    list_client();
+    var nom=$("#nom").val();
+    var prenom=$("#prenom").val();
+    var telephone=$("#telephone").val();
+    var email=$("#email").val();
+    var adresse=$("#adresse").val();
+    var ville=$("#select_ville").val();
+
+    if((nom!="")&&(prenom!="")&&(telephone!="")&&(adresse!="")&&(email!="")&&(ville!="")){
+
+        list_client();
+        $('#non_envoye').html("");
+        
+    }
+    else{
+        $('#non_envoye').html("Veuiller saisir tout les champs du formulaire");
+    }
 }
 
 /*
