@@ -44,7 +44,9 @@ Class Profil_pro_service extends Initialize	{
       */
       public function facture_list(){
         $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "facture_list.sql";
-        $this->resultat["profil_pro_facture_list"]= $this->oBdd->getSelectDatas($spathSQL);
+        $this->resultat["profil_pro_facture_list"]= $this->oBdd->getSelectDatas($spathSQL,array(
+          "id_pro" => $this->VARS_HTML["id_pro"], 
+            ));
     }
 
     /*
@@ -52,18 +54,18 @@ Class Profil_pro_service extends Initialize	{
       */
     public function profil_list(){
       $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "profil_list.sql";
-      $this->resultat["profil_pro_profil_list"]= $this->oBdd->getSelectDatas($spathSQL);
+      $this->resultat["profil_pro_profil_list"]= $this->oBdd->getSelectDatas($spathSQL,array(
+        "id_pro" => $this->VARS_HTML["id_pro"], 
+          ));
   }
  /*
   *fonction de modification des données du profil dans la bdd 
   */
   public function profil_update(){
-    // Here I can Access to :
-    // $this->GLOBALS_INI
-    // $this->oBdd
-    // $this->VARS_HTML
+ 
     $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "profil_update.sql";
     $this->resultat["profil_pro_profil_update"]= $this->oBdd->treatDatas($spathSQL, array(
+                                "id_pro" => $this->VARS_HTML["id_pro"], 
                                  "societe_pro" => $this->VARS_HTML["societe_pro"], 
                                   "address_pro" => $this->VARS_HTML["address_pro"], 
                                   "code_ville" => $this->VARS_HTML["code_ville"], 
@@ -78,7 +80,7 @@ Class Profil_pro_service extends Initialize	{
   }
 
    /*
-  *fonction de modification des données du profil dans la bdd 
+  *lister les projets accepté par le professionnel
   */
   public function projet_accepte_list(){
  
@@ -88,7 +90,39 @@ Class Profil_pro_service extends Initialize	{
                                   ));
   
   }
-                                
+
+  
+   /*
+  *lister tout les projets disponible
+  */
+  public function projet_disponible_list(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "projet_disponible_list.sql";
+    $this->resultat["profil_pro_projet_disponible"]= $this->oBdd->getSelectDatas($spathSQL);
+  
+  }
+  
+  
+    /*
+  *affichage des categories dans un select
+  */
+  public function select_categorie(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "pp_select_categorie.sql";
+    $this->resultat["profil_pro_select_categorie"]= $this->oBdd->getSelectDatas($spathSQL);
+  
+  }
+
+     /*
+  *affichage des villes dans un select
+  */
+  public function select_ville(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "pp_select_ville.sql";
+    $this->resultat["profil_pro_select_ville"]= $this->oBdd->getSelectDatas($spathSQL);
+  
+  }
+  
   /**
    *
    * Destroy service

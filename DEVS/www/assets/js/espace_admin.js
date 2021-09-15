@@ -76,7 +76,6 @@ function constructTable_admin() {
     tables = $('#table_admin').DataTable(configuration);
 }
 
-
 /*
 *Configuration du datatables des administrateurs
 */
@@ -87,9 +86,9 @@ const configuration = {
 	"searching": true,
 	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
-		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
-		"emptyTable": "Aucun utilisateur",
-		"lengthMenu": "_MENU_ Utilisateurs par page",
+		"info": "Admins _START_ à _END_ sur _TOTAL_ sélectionnées",
+		"emptyTable": "Aucun administrateurs",
+		"lengthMenu": "_MENU_ Admins par page",
 		"search": "Rechercher : ",
 		"zeroRecords": "Aucun résultat de recherche",
 		"paginate": {
@@ -97,7 +96,7 @@ const configuration = {
 			"next": "Suivant"
 		},
 		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-		"sInfoEmpty": "Utilisateurs 0 à 0 sur 0 sélectionnée",
+		"sInfoEmpty": "Administrateurs 0 à 0 sur 0 sélectionnée",
 	},
 	"responsive": true,
 	"columns": [
@@ -119,7 +118,6 @@ const configuration = {
 	],
 	'retrieve': true
 };
-
 
 /* 
 * Récupération des informations admin de la BDD
@@ -191,8 +189,6 @@ function constructTable_pro() {
     tables2 = $('#table_pro').DataTable(configuration_pro);
 }
 
-
-
 /*
 *Configuration du datatables des professionnels
 */
@@ -203,9 +199,9 @@ const configuration_pro = {
 	"searching": true,
 	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
-		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
-		"emptyTable": "Aucun utilisateur",
-		"lengthMenu": "_MENU_ Utilisateurs par page",
+		"info": "Professionnels _START_ à _END_ sur _TOTAL_ sélectionnées",
+		"emptyTable": "Aucun Pro",
+		"lengthMenu": "_MENU_ Professionnels par page",
 		"search": "Rechercher : ",
 		"zeroRecords": "Aucun résultat de recherche",
 		"paginate": {
@@ -213,7 +209,7 @@ const configuration_pro = {
 			"next": "Suivant"
 		},
 		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-		"sInfoEmpty": "Utilisateurs 0 à 0 sur 0 sélectionnée",
+		"sInfoEmpty": "Professionnels 0 à 0 sur 0 sélectionnée",
 	},
 	"responsive": true,
 	"columns": [
@@ -235,8 +231,6 @@ const configuration_pro = {
 	],
 	'retrieve': true
 };
-
-
 
 /* 
 * Récupération des informations des professionnels de la BDD
@@ -307,8 +301,6 @@ function constructTable_actu() {
     tables3 = $('#table_actu').DataTable(configuration_actu);
 }
 
-
-
 /*
 *Configuration du datatables des actualités
 */
@@ -319,8 +311,8 @@ const configuration_actu = {
 	"searching": true,
 	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
-		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
-		"emptyTable": "Aucun utilisateur",
+		"info": "Actualités _START_ à _END_ sur _TOTAL_ sélectionnées",
+		"emptyTable": "Aucune Actualité",
 		"lengthMenu": "_MENU_ Utilisateurs par page",
 		"search": "Rechercher : ",
 		"zeroRecords": "Aucun résultat de recherche",
@@ -329,7 +321,7 @@ const configuration_actu = {
 			"next": "Suivant"
 		},
 		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-		"sInfoEmpty": "Utilisateurs 0 à 0 sur 0 sélectionnée",
+		"sInfoEmpty": "Actualités 0 à 0 sur 0 sélectionnée",
 	},
 	"responsive": true,
 	"columns": [
@@ -351,8 +343,6 @@ const configuration_actu = {
 	],
 	'retrieve': true
 };
-
-
 
 /* 
 * Récupération des informations des actus de la BDD
@@ -420,8 +410,6 @@ function constructTable_abo() {
     tables4 = $('#table_abo').DataTable(configuration_abo);
 }
 
-
-
 /*
 *Configuration du datatables des actualités
 */
@@ -432,9 +420,9 @@ const configuration_abo = {
 	"searching": true,
 	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
-		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
-		"emptyTable": "Aucun utilisateur",
-		"lengthMenu": "_MENU_ Utilisateurs par page",
+		"info": "Abonnements _START_ à _END_ sur _TOTAL_ sélectionnées",
+		"emptyTable": "Aucun Abonnement",
+		"lengthMenu": "_MENU_ Abonnements par page",
 		"search": "Rechercher : ",
 		"zeroRecords": "Aucun résultat de recherche",
 		"paginate": {
@@ -442,7 +430,7 @@ const configuration_abo = {
 			"next": "Suivant"
 		},
 		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-		"sInfoEmpty": "Utilisateurs 0 à 0 sur 0 sélectionnée",
+		"sInfoEmpty": "Abonnements 0 à 0 sur 0 sélectionnée",
 	},
 	"responsive": true,
 	"columns": [
@@ -566,8 +554,6 @@ function constructTable_message() {
     tables4 = $('#table_message').DataTable(configuration_message);
 }
 
-
-
 /*
 *Configuration du datatables des actualités
 */
@@ -578,9 +564,9 @@ const configuration_message = {
 	"searching": true,
 	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
 	"language": {
-		"info": "Utilisateurs _START_ à _END_ sur _TOTAL_ sélectionnées",
-		"emptyTable": "Aucun utilisateur",
-		"lengthMenu": "_MENU_ Utilisateurs par page",
+		"info": "Messages _START_ à _END_ sur _TOTAL_ sélectionnées",
+		"emptyTable": "Aucun message",
+		"lengthMenu": "_MENU_ Messages par page",
 		"search": "Rechercher : ",
 		"zeroRecords": "Aucun résultat de recherche",
 		"paginate": {
@@ -588,7 +574,7 @@ const configuration_message = {
 			"next": "Suivant"
 		},
 		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-		"sInfoEmpty": "Utilisateurs 0 à 0 sur 0 sélectionnée",
+		"sInfoEmpty": "Messages 0 à 0 sur 0 sélectionnée",
 	},
 	"responsive": true,
 	"columns": [
@@ -1321,7 +1307,6 @@ function construct_select(){
 
 	$('#select').html(sHTML);
 }
-
 
 /* 
 * Création booléen type de mesure
