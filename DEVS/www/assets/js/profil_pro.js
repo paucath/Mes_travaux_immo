@@ -696,7 +696,7 @@ function desabonnement(){
 		.done(function (result) {
 			console.log("this result", result)
 
-			abonnement()
+			load_profil();
 			
 		})
 		.fail(function (err) {
@@ -723,7 +723,7 @@ function reabonnement(){
 		.done(function (result) {
 			console.log("this result", result)
 
-			abonnement()
+			load_profil();
 			
 		})
 		.fail(function (err) {

@@ -294,8 +294,26 @@ public function pro_list(){
     ));
   }
 
+    /*
+   * lister les catégories des devis
+   */
+  public function  abonnement(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "list_abonnement.sql";
+    $this->resultat["espace_admin_abonnement"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
 
-
+      /*
+   * rendre invisible une sous categorie
+   */
+  public function maj_abonnement(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "abonnement_update.sql";
+    $this->resultat["espace_admin_maj_abonnement"]= $this->oBdd->treatDatas($spathSQL, array(
+                                  "id_abonnement" => $this->VARS_HTML["id_abonnement"],
+                                  "abonnement" => $this->VARS_HTML["abonnement"],
+                                  "tarif" => $this->VARS_HTML["tarif"]
+    ));
+  }
+ 
   /**
    *
    * Destroy service

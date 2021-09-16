@@ -17,6 +17,7 @@ var aofmessage=[];
 var aofnbrabo=[];
 var aofcat=[];
 var aofsouscat=[];
+var aofabonnement=[];
 var nbr_piece;
 var m_carre;
 var visibilite_cat;
@@ -34,6 +35,7 @@ $(document).ready(function () {
     load_nbr_abo();
 	load_categorie();
 	load_sous_categorie();
+	load_abonnement();
 
 
 	$("#article_news").summernote();
@@ -448,7 +450,7 @@ const configuration_abo = {
 };
 
 /* 
-* Récupération des informations des actus de la BDD
+* Récupération des informations des abonnés de la BDD
 */
 function load_abo(){
     
@@ -485,7 +487,7 @@ function load_abo(){
 }
 
 /* 
-* Récupération des informations des actus de la BDD
+* Récupération des informations du nbr d'abonné de la BDD
 */
 function load_nbr_abo(){
     
@@ -1484,6 +1486,84 @@ function invisibilite_souscat(iIndiceinvisibilite){
 		.done(function (result) {
 
            load_sous_categorie();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Récupération des informations de l'abonnement 
+*/
+function load_abonnement(){
+    
+	var datas = {
+		page: "espace_admin_abonnement",
+		bJSON: 1
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+			
+
+			aofabonnement = result[0];
+
+			$("#nom_abonnement").val(aofabonnement["abonnement"]);
+			$("#tarif").val(aofabonnement["tarif"]);
+
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* mise a jour des informations de l'abonnement 
+*/
+function maj_abonnement(){
+	var datas = {
+		page: "espace_admin_maj_abonnement",
+		bJSON: 1,
+		id_abonnement:aofabonnement["id_abonnement"],
+		abonnement:$("#nom_abonnement").val(),
+		tarif:$("#tarif").val()
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+			
+
+			load_abonnement();
+			$('#maj_abonnement').html("L'abonnement a bien été mis a jour");
+
+			setTimeout(function () {
+				$('#maj_abonnement').html("");
+			}, 8000);
+
 
 		})
 		.fail(function (err) {

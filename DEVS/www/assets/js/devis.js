@@ -23,8 +23,6 @@ $(document).ready(function () {
     $("#sous_cat_label").hide();
     $("#final").hide();
     
-
-
     select_categorie();
     select_ville();
     select_souscategorie();
@@ -51,7 +49,6 @@ function select_categorie() {
         cache: false
     })
         .done(function (result) {
-            console.log("result", result);
 
 
             aofcategorie = result;
@@ -63,9 +60,7 @@ function select_categorie() {
         .fail(function (err) {
             alert('error : ' + err.status);
         })
-        .always(function () {
-            console.log('arguments supplier list', arguments);
-        })
+
 }
 
 /*
@@ -108,20 +103,14 @@ function select_souscategorie() {
         cache: false
     })
         .done(function (result) {
-            console.log("result", result);
-
-
+    
             aofsouscategorie = result;
-
-
 
         })
         .fail(function (err) {
             alert('error : ' + err.status);
         })
-        .always(function () {
-            console.log('arguments supplier list', arguments);
-        })
+
 }
 
 /*
@@ -248,7 +237,7 @@ function select_ville() {
         cache: false
     })
         .done(function (result) {
-            console.log("result", result);
+           
 
 
             aofville = result;
@@ -260,9 +249,7 @@ function select_ville() {
         .fail(function (err) {
             alert('error : ' + err.status);
         })
-        .always(function () {
-            console.log('arguments supplier list', arguments);
-        })
+       
 }
 
 /*
@@ -305,7 +292,7 @@ function list_client() {
         cache: false
     })
         .done(function (result) {
-            console.log("result", result);
+            
 
             aofclient = result;
             verif_client();
@@ -314,9 +301,7 @@ function list_client() {
         .fail(function (err) {
             alert('error : ' + err.status);
         })
-        .always(function () {
-            console.log('arguments supplier list', arguments);
-        })
+       
 }
 
 /*
@@ -324,13 +309,12 @@ function list_client() {
 */
 function verif_client(){
 
-    console.log(aofclient.length);
+    
     for(i = 0; i < aofclient.length; i++) {
 
         var prenom=$('#prenom').val();
         var nom=$('#nom').val();
-        console.log(aofclient[i]["prenom_client"]);
-        console.log(aofclient[i]["nom_client"]);
+       
 
         if (((aofclient[i]["prenom_client"])==prenom)&&((aofclient[i]["nom_client"])==nom)){
             
@@ -340,7 +324,7 @@ function verif_client(){
         }
        
     }
-    console.log(id_client , "id_client");
+    
     
     if(id_client==""){
 
@@ -376,7 +360,7 @@ function add_client() {
         cache: false
     })
         .done(function (result) {
-            console.log("result", result);
+           
 
            
             list_client();
@@ -385,9 +369,7 @@ function add_client() {
         .fail(function (err) {
             alert('error : ' + err.status);
         })
-        .always(function () {
-            console.log('arguments supplier list', arguments);
-        })
+        
 }
 
 /*
@@ -415,7 +397,7 @@ function add_devis() {
         cache: false
     })
         .done(function (result) {
-            console.log("result", result);
+            
 
             $('#envoye').html("votre devis a bien été enregistré");
             $("#nom").val("");
@@ -429,9 +411,7 @@ function add_devis() {
         .fail(function (err) {
             alert('error : ' + err.status);
         })
-        .always(function () {
-            console.log('arguments supplier list', arguments);
-        })
+      
 }
 
 /*

@@ -23,11 +23,11 @@ function hideArticle() {
     }
 
     var icon = $(".showIcon");
-    if (icon.hasClass("fa-arrow-circle-right")) {
-        icon.removeClass("fa-arrow-circle-right").addClass("fa-arrow-circle-left");
+    if (icon.hasClass("assets/icons/arrow_right.png")) {
+        icon.removeClass("assets/icons/arrow_right.png").addClass("assets/icons/arrow_left.png");
 
     } else {
-        icon.removeClass("fa-arrow-circle-left").addClass("fa-arrow-circle-right");
+        icon.removeClass("assets/icons/arrow_left.png").addClass("assets/icons/arrow_right.png");
     }
 
 

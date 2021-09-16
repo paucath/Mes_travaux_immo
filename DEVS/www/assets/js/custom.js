@@ -6,7 +6,7 @@ var resizeId;
 
 $(document).ready(function($) {
     "use strict";
-    console.log("customok");
+ 
 
 //  Geo Location button
 

@@ -147,6 +147,32 @@ Class Profil_pro_service extends Initialize	{
                                   ));
   
   }
+
+  /*
+  *fonction de réabonnement
+  */
+  public function  reabonnement(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "reabonnement.sql";
+    $this->resultat["profil_pro_reabonnement"]= $this->oBdd->treatDatas($spathSQL, array(
+                                "id_pro" => $this->VARS_HTML["id_pro"]
+                                  ));
+  
+  }
+
+  /*
+  *fonction de desabonnement
+  */
+  public function  desabonnement(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "desabonnement.sql";
+    $this->resultat["profil_pro_desabonnement"]= $this->oBdd->treatDatas($spathSQL, array(
+                                "id_pro" => $this->VARS_HTML["id_pro"]
+                                  ));
+  
+  }
+
+
   
   /**
    *
