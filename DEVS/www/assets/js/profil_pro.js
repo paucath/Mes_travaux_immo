@@ -20,6 +20,7 @@ $(document).ready(function () {
 	select_categorie();
 	select_ville();
 	load_projet_disponible();
+
 });
 
 // ****************************************PROJETS DISPONIBLES**********************************************************
@@ -112,7 +113,7 @@ function constructTable() {
 		sHTML += "<td>" + aofproj[i]["nbr_piece"] + "</td>";
 		sHTML += "<td>" + aofproj[i]["m_carre"] + "</td>";
 		sHTML += "<td>" + aofproj[i]["ville"] + "</td>";
-		sHTML += "<td><button class='valide'>OK</button></td>";
+		sHTML += "<td><button class='valide' onclick='accepter_projet("+i+")'>OK</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -285,12 +286,12 @@ function construct_select_ville() {
 /* 
 * Accepter projet
 */
-function accepter_projet(){
+function accepter_projet(iIndiceAccepte){
 	var datas = {
 		page: "profil_pro_accepter_projet",
 		bJSON: 1,
-		
-		
+		id_projet:aofproj[iIndiceAccepte]["id_projet"],
+		id_pro: id_pro_connect
 	}
 	
 	$.ajax({
@@ -303,7 +304,8 @@ function accepter_projet(){
 	})
 		.done(function (result) {
 			
-			
+			load_projet_accepte();
+			load_projet_disponible();	
 
 		})
 		.fail(function (err) {
@@ -354,6 +356,9 @@ function load_projet_accepte() {
 		})
 }
 
+/*
+* Construction de la datatable projet accepté
+*/
 function constructTable_valide() {
 	var i;
 
@@ -410,7 +415,7 @@ function constructTable_valide() {
 			sHTML += "<td><button class='valide_disabled' >Terminer</button></td>";
 		}
 		else {
-			sHTML += "<td><button class='valide'>Terminer</button></td>";
+			sHTML += "<td><button class='valide' onclick='terminer_projet("+ i + ")'>Terminer</button></td>";
 		}
 		sHTML += "</tr>";
 
@@ -472,6 +477,37 @@ const configuration_valide = {
 	],
 	'retrieve': true
 };
+
+/*
+* Signaler la fin d'un projet
+*/
+function terminer_projet(iIndiceTermine){
+	var datas = {
+		page: "profil_pro_terminer_projet",
+		bJSON: 1,
+		id_projet:aofproj_acc[iIndiceTermine]["id_projet"]
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			
+			load_projet_accepte();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
 
 // ***************************************************facture************************************************************
 /*
@@ -550,11 +586,11 @@ function load_profil() {
 		cache: false
 	})
 		.done(function (result) {
-			console.log("result", result);
+			console.log("aofprofil", result);
 
 
 			aofprofil = result[0];
-
+			
 
 			$('#entreprise').val(aofprofil["societe_pro"]);
 			$('#adresse2').val(aofprofil["address_pro"]);
@@ -565,7 +601,7 @@ function load_profil() {
 			$('#mail').val(aofprofil["mail_pro"]);
 			$('#login').val(aofprofil["login_pro"]);
 			$('#mdp').val(aofprofil["mdp_pro"]);
-
+			abonnement();
 		})
 		.fail(function (err) {
 			alert('error : ' + err.status);
@@ -623,4 +659,76 @@ function profil_update() {
 		});
 }
 
+// ****************************************************Abonnement****************************************************************
 
+function abonnement(){
+
+	var sHTML="";
+	if(aofprofil["statut_ab"]==1){
+
+		sHTML += "<button class='abonnement' id='desabonne' onclick='desabonnement()'>Se désabonner</button>";
+		sHTML += "<button class='abonnement_disabled' id='reabonne'>Se réabonner</button>";
+		$('#abonnement').html(sHTML);	      
+	}
+
+	if(aofprofil["statut_ab"]==0){
+
+		sHTML += "<button class='abonnement_disabled' id='desabonne'>Se désabonner</button>";
+		sHTML += "<button class='abonnement' id='reabonne' onclick='reabonnement()'>Se réabonner</button>";
+		$('#abonnement').html(sHTML);	      
+	}
+}
+
+function desabonnement(){
+	var datas = {
+		page: "profil_pro_desabonnement",
+		bJSON: 1,
+		id_pro: id_pro_connect
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+			console.log("this result", result)
+
+			abonnement()
+			
+		})
+		.fail(function (err) {
+			console.log('error : ' + err.status);
+			alert('error : ' + err.status);
+
+		});
+}
+
+function reabonnement(){
+	var datas = {
+		page: "profil_pro_reabonnement",
+		bJSON: 1,
+		id_pro: id_pro_connect
+	}
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false,
+	})
+		.done(function (result) {
+			console.log("this result", result)
+
+			abonnement()
+			
+		})
+		.fail(function (err) {
+			console.log('error : ' + err.status);
+			alert('error : ' + err.status);
+
+		});
+}

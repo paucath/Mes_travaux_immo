@@ -123,6 +123,31 @@ Class Profil_pro_service extends Initialize	{
   
   }
   
+  /*
+  *fonction de modification dustatut d'un projet a 'en cours' dans la bdd 
+  */
+  public function  accepter_projet(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "accepter_projet.sql";
+    $this->resultat["profil_pro_accepter_projet"]= $this->oBdd->treatDatas($spathSQL, array(
+                                "id_projet" => $this->VARS_HTML["id_projet"],
+                                "id_pro" => $this->VARS_HTML["id_pro"]
+                                  ));
+  
+  }
+
+    /*
+  *fonction de modification dustatut d'un projet a 'en cours' dans la bdd 
+  */
+  public function  terminer_projet(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "terminer_projet.sql";
+    $this->resultat["profil_pro_terminer_projet"]= $this->oBdd->treatDatas($spathSQL, array(
+                                "id_projet" => $this->VARS_HTML["id_projet"]
+                                  ));
+  
+  }
+  
   /**
    *
    * Destroy service
