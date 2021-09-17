@@ -1,0 +1,1 @@
+SELECT CGV FROM `cgu_cgv`
