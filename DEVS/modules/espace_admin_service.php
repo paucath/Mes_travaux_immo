@@ -310,7 +310,8 @@ public function pro_list(){
     $this->resultat["espace_admin_maj_abonnement"]= $this->oBdd->treatDatas($spathSQL, array(
                                   "id_abonnement" => $this->VARS_HTML["id_abonnement"],
                                   "abonnement" => $this->VARS_HTML["abonnement"],
-                                  "tarif" => $this->VARS_HTML["tarif"]
+                                  "tarif" => $this->VARS_HTML["tarif"],
+                                  "descriptif" => $this->VARS_HTML["descriptif"]
     ));
   }
  

@@ -538,6 +538,8 @@ h5{
     margin-left: 1%;
 }
 
+/*  Boutons  */
+
 .modif_admin , .suppr_admin , .modif_pro , .suppr_pro , .modif_actu , .suppr_actu , .modif_abo , .suppr_abo , .read_message , .rep_message , .suppr_message ,.add_admin , .add_actu ,.categorie , .sous_categorie{
     height:50px;
     width:95%;
@@ -557,9 +559,13 @@ h5{
     transition-duration:1s;
 }
 
+/* datatables */
+
 #table_admin ,#table_pro , #table_actu , #table_abo , #table_message{
     width: 100%;
 }
+
+/* compteur abonné */
 
 .nbr_abo{
     border: 3px solid var(--color-red);
@@ -571,6 +577,8 @@ h5{
     margin: 2%;
     border-radius: 5px;
 }
+
+/* inputs */
 
 input{
     margin:2%;
@@ -600,10 +608,14 @@ input[type="tel"]{
     width:80%;
 }
 
+/* modal */
+
 .modal-header{
     background-color: var(--color-red);
     color: var(--color-white);
 }
+
+/* listing */
 
 .list_categorie, .list_sous_categorie{
     margin: auto;
@@ -612,6 +624,8 @@ input[type="tel"]{
 .list_categorie li, .list_sous_categorie li {
     margin:3%;
 }
+
+/* select */
 
 .select_cat{
     margin-top: 2% ;

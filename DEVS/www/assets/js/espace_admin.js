@@ -3,6 +3,7 @@ var table_pro;
 var table_actu;
 var table_abo;
 var table_message;
+var table_projet;
 var nbr_abo;
 var tables;
 var tables2;
@@ -18,6 +19,7 @@ var aofnbrabo=[];
 var aofcat=[];
 var aofsouscat=[];
 var aofabonnement=[];
+var aofprojet=[];
 var nbr_piece;
 var m_carre;
 var visibilite_cat;
@@ -36,12 +38,14 @@ $(document).ready(function () {
 	load_categorie();
 	load_sous_categorie();
 	load_abonnement();
+	load_projet();
 
 
 	$("#article_news").summernote();
 	$("#article_news_edit").summernote();
 	$("#texte").summernote();
 	$("#texte_reply").summernote();
+	$("#descriptif").summernote();
 	
 });
 
@@ -1522,6 +1526,7 @@ function load_abonnement(){
 
 			$("#nom_abonnement").val(aofabonnement["abonnement"]);
 			$("#tarif").val(aofabonnement["tarif"]);
+			$("#descriptif").summernote('code' ,aofabonnement["descriptif"]);
 
 
 		})
@@ -1542,7 +1547,8 @@ function maj_abonnement(){
 		bJSON: 1,
 		id_abonnement:aofabonnement["id_abonnement"],
 		abonnement:$("#nom_abonnement").val(),
-		tarif:$("#tarif").val()
+		tarif:$("#tarif").val(),
+		descriptif:$("#descriptif").summernote('code')
 	}
 	
 	$.ajax({
@@ -1564,6 +1570,119 @@ function maj_abonnement(){
 				$('#maj_abonnement').html("");
 			}, 8000);
 
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/*
+* Construction du datatable des projets
+*/
+function constructTable_projet() {
+	var i;
+
+	var sHTML = "";
+	sHTML += "<thead>";
+	sHTML += "<tr>";
+	sHTML += "<td>id_projet</td>";
+	sHTML += "<td>date création</td>";
+	sHTML += "<td>categorie</td>";
+	sHTML += "<td>pro</td>";
+	sHTML += "<td>date acceptation</td>";
+	sHTML += "</tr>";
+	sHTML += "</thead>";
+	sHTML += "<tbody>";
+
+	for (i = 0; i < aofprojet.length; i++) {
+		sHTML += "<tr>";
+		sHTML += "<td>" + aofprojet[i]["nom"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["prenom"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["email"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["prenom"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["email"] + "</td>";
+		sHTML += "</tr>";
+	}
+
+	sHTML += "</tbody>";
+	$('#table_projet').html(sHTML);
+    tables = $('#table_projet').DataTable(configuration);
+}
+
+/*
+*Configuration du datatables des administrateurs
+*/
+const configuration = {
+	"stateSave": false,
+	"order": [[1, "asc"]],
+	"pagingType": "simple_numbers",
+	"searching": true,
+	"lengthMenu": [[10, 25, 50, 100, -1], ["Dix", "Vingt cinq", "Cinquante", "Cent", "total"]],
+	"language": {
+		"info": "Admins _START_ à _END_ sur _TOTAL_ sélectionnées",
+		"emptyTable": "Aucun administrateurs",
+		"lengthMenu": "_MENU_ Admins par page",
+		"search": "Rechercher : ",
+		"zeroRecords": "Aucun résultat de recherche",
+		"paginate": {
+			"previous": "Précédent",
+			"next": "Suivant"
+		},
+		"sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+		"sInfoEmpty": "Administrateurs 0 à 0 sur 0 sélectionnée",
+	},
+	"responsive": true,
+	"columns": [
+		{
+			"orderable": true
+		},
+		{
+			"orderable": true
+		},
+		{
+			"orderable": true
+		},
+		{
+			"orderable": true
+		},
+		{
+			"orderable": true
+		}
+	],
+	'retrieve': true
+};
+
+/* 
+* Récupération des informations admin de la BDD
+*/
+
+function load_projet(){
+
+	var datas = {
+		page: "espace_admin_admin_list",
+		bJSON: 1
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+
+
+			aofadmin = result;
+
+
+			constructTable_projet();
 
 		})
 		.fail(function (err) {
