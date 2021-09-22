@@ -20,6 +20,7 @@ var aofcat=[];
 var aofsouscat=[];
 var aofabonnement=[];
 var aofprojet=[];
+var aofcgucgv=[];
 var nbr_piece;
 var m_carre;
 var visibilite_cat;
@@ -39,6 +40,7 @@ $(document).ready(function () {
 	load_sous_categorie();
 	load_abonnement();
 	load_projet();
+	load_cgu_cgv();
 
 
 	$("#article_news").summernote();
@@ -46,6 +48,8 @@ $(document).ready(function () {
 	$("#texte").summernote();
 	$("#texte_reply").summernote();
 	$("#descriptif").summernote();
+	$("#CGU").summernote();
+	$("#CGV").summernote();
 	
 });
 
@@ -1591,7 +1595,6 @@ function constructTable_projet() {
 	sHTML += "<tr>";
 	sHTML += "<td>id_projet</td>";
 	sHTML += "<td>date création</td>";
-	sHTML += "<td>categorie</td>";
 	sHTML += "<td>pro</td>";
 	sHTML += "<td>date acceptation</td>";
 	sHTML += "</tr>";
@@ -1600,23 +1603,22 @@ function constructTable_projet() {
 
 	for (i = 0; i < aofprojet.length; i++) {
 		sHTML += "<tr>";
-		sHTML += "<td>" + aofprojet[i]["nom"] + "</td>";
-		sHTML += "<td>" + aofprojet[i]["prenom"] + "</td>";
-		sHTML += "<td>" + aofprojet[i]["email"] + "</td>";
-		sHTML += "<td>" + aofprojet[i]["prenom"] + "</td>";
-		sHTML += "<td>" + aofprojet[i]["email"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["id_projet"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["date_creation"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["societe_pro"] + "</td>";
+		sHTML += "<td>" + aofprojet[i]["date_acceptation"] + "</td>";
 		sHTML += "</tr>";
 	}
 
 	sHTML += "</tbody>";
 	$('#table_projet').html(sHTML);
-    tables = $('#table_projet').DataTable(configuration);
+    tables = $('#table_projet').DataTable(configuration_projet);
 }
 
 /*
-*Configuration du datatables des administrateurs
+*Configuration du datatables des projets
 */
-const configuration = {
+const configuration_projet = {
 	"stateSave": false,
 	"order": [[1, "asc"]],
 	"pagingType": "simple_numbers",
@@ -1648,22 +1650,19 @@ const configuration = {
 		},
 		{
 			"orderable": true
-		},
-		{
-			"orderable": true
 		}
 	],
 	'retrieve': true
 };
 
 /* 
-* Récupération des informations admin de la BDD
+* Récupération des informations projets de la BDD
 */
 
 function load_projet(){
 
 	var datas = {
-		page: "espace_admin_admin_list",
+		page: "espace_admin_projet_list",
 		bJSON: 1
 	}
 
@@ -1679,10 +1678,93 @@ function load_projet(){
 			console.log("result", result);
 
 
-			aofadmin = result;
+			aofprojet = result;
 
 
 			constructTable_projet();
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* Récupération des informations des CGU/CGV
+*/
+function load_cgu_cgv(){
+    
+	var datas = {
+		page: "espace_admin_cgu_cgv_list",
+		bJSON: 1
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+			
+
+			aofcgucgv = result[0];
+
+			$("#CGU").summernote('code' , aofcgucgv["CGU"]);
+			$("#CGV").summernote('code' ,aofcgucgv["CGV"]);
+			
+
+
+		})
+		.fail(function (err) {
+			alert('error : ' + err.status);
+		})
+		.always(function () {
+			console.log('arguments supplier list', arguments);
+		})
+}
+
+/* 
+* mise a jour des informations des CGU/CGV
+*/
+function maj_cgu_cgv(){
+	var datas = {
+		page: "espace_admin_cgu_cgv_maj",
+		bJSON: 1,
+		CGU:$("#CGU").summernote('code'),
+		CGV:$("#CGV").summernote('code')
+	}
+	
+	$.ajax({
+		type: "POST",
+		url: "route.php",
+		async: true,
+		data: datas,
+		dataType: "json",
+		cache: false
+	})
+		.done(function (result) {
+			console.log("result", result);
+			
+
+			load_cgu_cgv();
+			$('#maj_cgu').html("Le CGU a bien été mis a jour");
+
+			setTimeout(function () {
+				$('#maj_cgu').html("");
+			}, 8000);
+			$('#maj_cgv').html("Le CGV a bien été mis a jour");
+
+			setTimeout(function () {
+				$('#maj_cgv').html("");
+			}, 8000);
+
 
 		})
 		.fail(function (err) {

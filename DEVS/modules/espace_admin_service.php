@@ -314,6 +314,32 @@ public function pro_list(){
                                   "descriptif" => $this->VARS_HTML["descriptif"]
     ));
   }
+
+   /*
+   * lister les projet
+   */
+  public function projet_list(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "projet_list.sql";
+    $this->resultat["espace_admin_projet_list"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+     /*
+   * lister les CGU/CGV
+   */
+  public function cgu_cgv_list(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cgu_cgv_list.sql";
+    $this->resultat["espace_admin_cgu_cgv_list"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+
+    /*
+   * Modifier unu actu
+   */
+  public function cgu_cgv_maj(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "cgu_cgv_maj.sql";
+    $this->resultat["espace_admin_cgu_cgv_maj"]= $this->oBdd->treatDatas($spathSQL, array(
+                                 "CGU" => $this->VARS_HTML["CGU"], 
+                                 "CGV" => $this->VARS_HTML["CGV"]
+                                  ));
+  }
  
   /**
    *
