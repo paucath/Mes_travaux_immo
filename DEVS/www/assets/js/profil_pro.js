@@ -10,6 +10,8 @@ var aofproj = [];
 var id_pro_connect = 1;
 var tables_2;
 var tables;
+var modal;
+var nbr_projet = [];
 
 // document ready
 $(document).ready(function () {
@@ -63,6 +65,9 @@ function load_projet_disponible() {
 		})
 }
 
+/*
+* construction de la datatable projet dispo
+*/
 function constructTable() {
 	var i;
 
@@ -113,7 +118,7 @@ function constructTable() {
 		sHTML += "<td>" + aofproj[i]["nbr_piece"] + "</td>";
 		sHTML += "<td>" + aofproj[i]["m_carre"] + "</td>";
 		sHTML += "<td>" + aofproj[i]["ville"] + "</td>";
-		sHTML += "<td><button class='valide' onclick='accepter_projet("+i+")'>OK</button></td>";
+		sHTML += "<td><button class='valide' onclick='accepter_projet(" + i + ")'>OK</button></td>";
 		sHTML += "</tr>";
 	}
 
@@ -269,8 +274,8 @@ function construct_select_ville() {
 	var i;
 
 	var sHTML = "";
-	sHTML += "<select class='select_ville' id='select_ville' style='width:100%'>";
-	sHTML += "<option value=''>choisir une ville</option>";
+	sHTML += "<select class='select_ville' id='ville' style='width:100%'>";
+	sHTML += "<option value=''>Séléctionner une nouvelle ville</option>";
 
 
 
@@ -286,14 +291,19 @@ function construct_select_ville() {
 /* 
 * Accepter projet
 */
-function accepter_projet(iIndiceAccepte){
+function accepter_projet(iIndiceAccepte) {
+
+	var mois = parseInt(moment().format('MM'));
+	var annee = parseInt(moment().format('YYYY'));
+
 	var datas = {
-		page: "profil_pro_accepter_projet",
+		page: "profil_pro_nbr_projet",
 		bJSON: 1,
-		id_projet:aofproj[iIndiceAccepte]["id_projet"],
-		id_pro: id_pro_connect
+		id_pro: id_pro_connect,
+		mois: mois,
+		annee: annee
 	}
-	
+
 	$.ajax({
 		type: "POST",
 		url: "route.php",
@@ -303,9 +313,54 @@ function accepter_projet(iIndiceAccepte){
 		cache: false
 	})
 		.done(function (result) {
-			
-			load_projet_accepte();
-			load_projet_disponible();	
+
+			nbr_projet = result;
+			console.log(nbr_projet[0]["nbr_projet"]);
+
+			if ((nbr_projet[0]["nbr_projet"]) == 1 || (nbr_projet[0]["nbr_projet"]) == 0) {
+
+				var datas = {
+					page: "profil_pro_accepter_projet",
+					bJSON: 1,
+					id_pro: id_pro_connect,
+					num_projet: aofproj[iIndiceAccepte]["num_projet"],
+					id_client: aofproj[iIndiceAccepte]["id_client"],
+					id_categorie: aofproj[iIndiceAccepte]["id_categorie"],
+					id_sous_categorie: aofproj[iIndiceAccepte]["id_sous_categorie"],
+					surface: aofproj[iIndiceAccepte]["surface"],
+					details: aofproj[iIndiceAccepte]["details"],
+					date_creation: aofproj[iIndiceAccepte]["date_creation"]
+
+				}
+
+				$.ajax({
+					type: "POST",
+					url: "route.php",
+					async: true,
+					data: datas,
+					dataType: "json",
+					cache: false
+				})
+					.done(function (result) {
+
+						load_projet_accepte();
+						load_projet_disponible();
+
+					})
+					.fail(function (err) {
+						alert('error : ' + err.status);
+					})
+					.always(function () {
+						console.log('arguments supplier list', arguments);
+					})
+			}
+			else {
+				$("#refus_projet").html("vous avez atteint le nombre maximal de projet accepté ce mois-ci");
+				setTimeout(function () {
+					$('#refus_projet').html("");
+				}, 8000);
+				
+			}
 
 		})
 		.fail(function (err) {
@@ -314,11 +369,13 @@ function accepter_projet(iIndiceAccepte){
 		.always(function () {
 			console.log('arguments supplier list', arguments);
 		})
+
+
 }
 
 
 
-// ****************************************PROJETS VALIDE***************************************************************
+// ****************************************PROJETS Accepté***************************************************************
 
 /*
 * Récupération des projet accepté par le professionnel dans la BDD
@@ -368,10 +425,8 @@ function constructTable_valide() {
 	sHTML += "<td>Catégories</td>";
 	sHTML += "<td>Sous Catégorie</td>";
 	sHTML += "<td>surface</td>";
-	sHTML += "<td>détails</td>";
 	sHTML += "<td>nombre de pièce</td>";
 	sHTML += "<td>nombre de m²</td>";
-	sHTML += "<td>Statut</td>";
 	sHTML += "<td></td>";
 	sHTML += "</tr>";
 	sHTML += "</thead>";
@@ -407,21 +462,12 @@ function constructTable_valide() {
 		sHTML += "<td>" + aofproj_acc[i]["categorie"] + "</td>";
 		sHTML += "<td>" + aofproj_acc[i]["sous_categorie"] + "</td>";
 		sHTML += "<td>" + aofproj_acc[i]["surface"] + "</td>";
-		sHTML += "<td>" + aofproj_acc[i]["details"] + "</td>";
 		sHTML += "<td>" + aofproj_acc[i]["nbr_piece"] + "</td>";
 		sHTML += "<td>" + aofproj_acc[i]["m_carre"] + "</td>";
-		sHTML += "<td>" + aofproj_acc[i]["statut"] + "</td>";
-		if (aofproj_acc[i]["statut"] == "termine") {
-			sHTML += "<td><button class='valide_disabled' >Terminer</button></td>";
-		}
-		else {
-			sHTML += "<td><button class='valide' onclick='terminer_projet("+ i + ")'>Terminer</button></td>";
-		}
+		sHTML += "<td><button  class='valide'  data-toggle='modal' data-target='#Modal' onclick='contenu_modal(" + i + ")'>Détails</button></td>";
 		sHTML += "</tr>";
 
-
 	}
-
 
 	sHTML += "</tbody>";
 	$('#table_projet_valide').html(sHTML);
@@ -467,12 +513,6 @@ const configuration_valide = {
 		},
 		{
 			"orderable": false
-		},
-		{
-			"orderable": false
-		},
-		{
-			"orderable": false
 		}
 	],
 	'retrieve': true
@@ -481,13 +521,13 @@ const configuration_valide = {
 /*
 * Signaler la fin d'un projet
 */
-function terminer_projet(iIndiceTermine){
+function terminer_projet(iIndiceTermine) {
 	var datas = {
 		page: "profil_pro_terminer_projet",
 		bJSON: 1,
-		id_projet:aofproj_acc[iIndiceTermine]["id_projet"]
+		id_projet: aofproj_acc[iIndiceTermine]["id_projet"]
 	}
-	
+
 	$.ajax({
 		type: "POST",
 		url: "route.php",
@@ -497,7 +537,7 @@ function terminer_projet(iIndiceTermine){
 		cache: false
 	})
 		.done(function (result) {
-			
+
 			load_projet_accepte();
 
 		})
@@ -507,6 +547,26 @@ function terminer_projet(iIndiceTermine){
 		.always(function () {
 			console.log('arguments supplier list', arguments);
 		})
+}
+
+/*
+* Obtenir les détails d'un projet et les coordonnées du client
+*/
+function contenu_modal(iIndiceDetail) {
+
+	modal = "";
+	modal += "<p>Vous venez de vous positionner sur le projet n°</p>" + aofproj_acc[iIndiceDetail]["num_projet"] + " .<br><br>";
+	modal += "<p>Vous pouvez dès a présent faire parvenir votre devis à :</p><br>";
+	modal += "<p>Nom</p>" + aofproj_acc[iIndiceDetail]["nom_client"] + "<br><br><p>Prenom</p>" + aofproj_acc[iIndiceDetail]["prenom_client"] + " .<br><br>";
+	modal += "<p>Coordonnées</p>";
+	modal += "<p>Email:</p>" + aofproj_acc[iIndiceDetail]["mail_client"] + "<br>";
+	modal += "<p>Téléphone:</p>" + aofproj_acc[iIndiceDetail]["tel_client"] + "<br>";
+	if (aofproj_acc[iIndiceDetail]["details"] != "") {
+		modal += "<p>Message laissé par le client au sujet de son projet</p>" + aofproj_acc[iIndiceDetail]["details"] + "<br>";
+	}
+
+	$('#modal_body').html(modal);
+
 }
 
 // ***************************************************facture************************************************************
@@ -590,7 +650,7 @@ function load_profil() {
 
 
 			aofprofil = result[0];
-			
+
 
 			$('#entreprise').val(aofprofil["societe_pro"]);
 			$('#adresse2').val(aofprofil["address_pro"]);
@@ -622,8 +682,7 @@ function profil_update() {
 		id_pro: id_pro_connect,
 		societe_pro: $('#entreprise').val(),
 		address_pro: $('#adresse2').val(),
-		code_ville: $('#adresse3').val(),
-		ville: $('#adresse4').val(),
+		id_ville: $('#ville').val(),
 		tel_pro: $('#telephone').val(),
 		siret_pro: $('#siret').val(),
 		mail_pro: $('#mail').val(),
@@ -643,12 +702,13 @@ function profil_update() {
 
 			aofprofil_maj = result;
 
+			load_profil();
+
 			$('#modif_profil').html("Votre profil a bien été modifié");
 
 			setTimeout(function () {
 				$('#modif_profil').html("");
 			}, 8000);
-
 
 
 		})
@@ -661,25 +721,25 @@ function profil_update() {
 
 // ****************************************************Abonnement****************************************************************
 
-function abonnement(){
+function abonnement() {
 
-	var sHTML="";
-	if(aofprofil["statut_ab"]==1){
+	var sHTML = "";
+	if (aofprofil["statut_ab"] == 1) {
 
 		sHTML += "<button class='abonnement' id='desabonne' onclick='desabonnement()'>Se désabonner</button>";
 		sHTML += "<button class='abonnement_disabled' id='reabonne'>Se réabonner</button>";
-		$('#abonnement').html(sHTML);	      
+		$('#abonnement').html(sHTML);
 	}
 
-	if(aofprofil["statut_ab"]==0){
+	if (aofprofil["statut_ab"] == 0) {
 
 		sHTML += "<button class='abonnement_disabled' id='desabonne'>Se désabonner</button>";
 		sHTML += "<button class='abonnement' id='reabonne' onclick='reabonnement()'>Se réabonner</button>";
-		$('#abonnement').html(sHTML);	      
+		$('#abonnement').html(sHTML);
 	}
 }
 
-function desabonnement(){
+function desabonnement() {
 	var datas = {
 		page: "profil_pro_desabonnement",
 		bJSON: 1,
@@ -697,7 +757,7 @@ function desabonnement(){
 			console.log("this result", result)
 
 			load_profil();
-			
+
 		})
 		.fail(function (err) {
 			console.log('error : ' + err.status);
@@ -706,7 +766,7 @@ function desabonnement(){
 		});
 }
 
-function reabonnement(){
+function reabonnement() {
 	var datas = {
 		page: "profil_pro_reabonnement",
 		bJSON: 1,
@@ -724,7 +784,7 @@ function reabonnement(){
 			console.log("this result", result)
 
 			load_profil();
-			
+
 		})
 		.fail(function (err) {
 			console.log('error : ' + err.status);

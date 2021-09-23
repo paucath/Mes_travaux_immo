@@ -2,6 +2,7 @@ var aofville = [];
 var aofcategorie = [];
 var aofsouscategorie = [];
 var aofsouscategorie_tri = [];
+var aofnum_proj=[];
 var indice;
 var id_sous_categorie;
 var id_categorie;
@@ -9,6 +10,7 @@ var surface;
 var details;
 var aofclient=[];
 var id_client="";
+var new_num_projet;
 /*
 *Document ready
 */
@@ -26,6 +28,7 @@ $(document).ready(function () {
     select_categorie();
     select_ville();
     select_souscategorie();
+    num_projet();
 
     $("#detail").summernote();
 });
@@ -384,7 +387,8 @@ function add_devis() {
         id_categorie:id_categorie,
         id_sous_categorie:id_sous_categorie,
         surface:surface,
-        details:details
+        details:details,
+        num_projet:new_num_projet 
 
     }
 
@@ -444,3 +448,37 @@ function valide_total() {
 
     add_devis();
 }
+
+/*
+*calcul du numero de projet
+*/
+function num_projet() {
+   
+    var datas = {
+        page: "devis_num_projet",
+        bJSON: 1
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "route.php",
+        async: true,
+        data: datas,
+        dataType: "json",
+        cache: false
+    })
+        .done(function (result) {
+            
+
+            aofnum_proj = result;
+            new_num_projet=parseInt(aofnum_proj[0]["MAX(num_projet)"])+1;
+            
+            
+
+        })
+        .fail(function (err) {
+            alert('error : ' + err.status);
+        })
+       
+}
+

@@ -68,8 +68,7 @@ Class Profil_pro_service extends Initialize	{
                                 "id_pro" => $this->VARS_HTML["id_pro"], 
                                  "societe_pro" => $this->VARS_HTML["societe_pro"], 
                                   "address_pro" => $this->VARS_HTML["address_pro"], 
-                                  "code_ville" => $this->VARS_HTML["code_ville"], 
-                                  "ville" => $this->VARS_HTML["ville"], 
+                                  "id_ville" => $this->VARS_HTML["id_ville"], 
                                   "tel_pro" => $this->VARS_HTML["tel_pro"],
                                   "siret_pro" => $this->VARS_HTML["siret_pro"],
                                   "mail_pro" => $this->VARS_HTML["mail_pro"],
@@ -130,8 +129,14 @@ Class Profil_pro_service extends Initialize	{
  
     $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "accepter_projet.sql";
     $this->resultat["profil_pro_accepter_projet"]= $this->oBdd->treatDatas($spathSQL, array(
-                                "id_projet" => $this->VARS_HTML["id_projet"],
-                                "id_pro" => $this->VARS_HTML["id_pro"]
+                                "id_pro" => $this->VARS_HTML["id_pro"],
+                                "num_projet" => $this->VARS_HTML["num_projet"],
+                                "id_client" => $this->VARS_HTML["id_client"],
+                                "id_categorie" => $this->VARS_HTML["id_categorie"],
+                                "id_sous_categorie" => $this->VARS_HTML["id_sous_categorie"],
+                                "surface" => $this->VARS_HTML["surface"],
+                                "details" => $this->VARS_HTML["details"],
+                                "date_creation" => $this->VARS_HTML["date_creation"]
                                   ));
   
   }
@@ -172,7 +177,18 @@ Class Profil_pro_service extends Initialize	{
   
   }
 
-
+     /*
+  *lister le nbr projets accepté par le professionnel
+  */
+  public function nbr_projet(){
+ 
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "nbr_projet.sql";
+    $this->resultat["profil_pro_nbr_projet"]= $this->oBdd->getSelectDatas($spathSQL, array(
+                                 "id_pro" => $this->VARS_HTML["id_pro"],
+                                 "mois"=> $this->VARS_HTML["mois"],
+                                 "annee"=> $this->VARS_HTML["annee"]
+                                  ));
+                              }
   
   /**
    *

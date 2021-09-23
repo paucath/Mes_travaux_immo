@@ -1,4 +1,5 @@
 <script type="text/javascript" src="assets/js/profil_pro.js" defer></script>
+<script type="text/javascript" src="assets/js/moment.js" defer></script>
 
 <section class="content">
     <section class="block">
@@ -16,9 +17,12 @@
                                     placeholder="Nom de votre entreprise" type="text">
                                 <label for="adresse1">Adresse de l'Entreprise</label></br>
                                 <input class="info" id="adresse2" name="adresse2" placeholder="Nom de la rue"
-                                    type="text">
-                                <input class="info" id="adresse3" name="adresse3" placeholder="code postal" type="text">
-                                <input class="info" id="adresse4" name="adresse4" placeholder="ville" type="text">
+                                    type="text"></br>
+                                <input class="info" id="adresse3" name="adresse3" placeholder="code postal"
+                                    type="text"></br>
+                                <input class="info" id="adresse4" name="adresse4" placeholder="ville" type="text"></br>
+                                <label for="select_ville">Changer de Ville</label></br>
+                                <div id="select_ville" style="width:80%"></div></br>
                                 <label for="telephone">Numero de téléphone</label></br>
                                 <input class="info" id="telephone" name="telephone" value=""
                                     placeholder="Numéro de téléphone" type="text">
@@ -45,6 +49,7 @@
                         <div class="carte justify-content-center flex-column">
                             <table id="table_projet_dispo" class="display responsive " style="width: 100%" border=1>
                             </table>
+                            <div id="refus_projet" style="font-size: 20px; color:red"></div>
                         </div>
                     </div>
                 </details>
@@ -75,6 +80,26 @@
                         </div>
                     </div>
                 </details>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Détails projet</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       <div id="modal_body"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="valide" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

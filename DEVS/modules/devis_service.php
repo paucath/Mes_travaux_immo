@@ -96,10 +96,19 @@ Class Devis_service extends Initialize	{
       "id_categorie" => $this->VARS_HTML["id_categorie"],
       "id_sous_categorie" => $this->VARS_HTML["id_sous_categorie"],  
       "surface" => $this->VARS_HTML["surface"],
-      "details" => $this->VARS_HTML["details"]
+      "details" => $this->VARS_HTML["details"],
+      "num_projet" => $this->VARS_HTML["num_projet"]
       ));
   }
 
+       /*
+  *Remplissage du select categorie
+  */
+  public function num_projet(){
+    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "num_projet.sql";
+    $this->resultat["devis_num_projet"]= $this->oBdd->getSelectDatas($spathSQL);
+  }
+  
   /**
    *
    * Destroy service

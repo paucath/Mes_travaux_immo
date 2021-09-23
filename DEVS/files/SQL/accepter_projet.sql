@@ -1,3 +1,3 @@
-UPDATE projet
-SET statut="en cours" , id_pro=@id_pro
-WHERE id_projet=@id_projet
+INSERT INTO `projet` 
+(num_projet , id_pro , date_acceptation , id_client , id_categorie , id_sous_categorie , surface , details , statut , date_creation)
+VALUE ("@num_projet", @id_pro , date(now()) , @id_client , @id_categorie , @id_sous_categorie , "@surface" , "@details" , "en cours" , "@date_creation")
