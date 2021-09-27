@@ -123,13 +123,10 @@ function valid_panier(){
     $("#inscription").show();
     $("#Paiement").hide();
 
-    if($('#mdp').val()==$('#mdp_2').val()){
+    
 
         select_ville();
-    }
-    else{
-        $('#verif_mdp').html("les deux mots de passe ne sont pas identique")
-    }
+   
 }
 /*
 *remplissage select ville
@@ -174,7 +171,7 @@ function construct_select_ville() {
     var i;
 
     var sHTML = "";
-    sHTML += "<select class='select_ville' id='select_ville' style='width:100%'>";
+    sHTML += "<select class='select_ville' id='ville' style='width:100%'>";
     sHTML += "<option value=''>choisir une ville</option>";
 
 
@@ -185,50 +182,67 @@ function construct_select_ville() {
 
     sHTML += "</select>";
 
-    $('#ville').html(sHTML);
+    $('#select_ville').html(sHTML);
 }
 
 /* 
 * Envoi d'un nouveau professionnel a la BDD
 */
 function add_pro(){
+
+
+    $("#verif_mdp").html('');
+    $("#form_vide").html('');
+
+    if(($('#login').val())!="" && ($('#mdp').val())!="" && ($('#societe').val())!="" && ($('#tel').val())!="" && ($('#adresse').val())!="" && ($('#ville').val())!="" && ($('#mail').val())!="" && ($('#siret').val())!="" ){
+
+        if (($('#mdp').val())==($('#mdp_2').val())){
     
+            var datas = {
+                page: "tunnel_commande_add_pro",
+                bJSON: 1,
+                login_pro:$('#login').val(),
+                mdp_pro:$('#mdp').val(),
+                mdp_2_pro:$('#mdp_2').val(),
+                societe_pro:$('#societe').val(),
+                tel_pro:$('#tel').val(),
+                address_pro: $('#adresse').val(),
+                id_ville: $('#ville').val(),
+                mail_pro:$('#mail').val(),
+                siret_pro: $('#siret').val()
+                
+            }
+            
+            $.ajax({
+                type: "POST",
+                url: "route.php",
+                async: true,
+                data: datas,
+                dataType: "json",
+                cache: false
+            })
+                .done(function (result) {
+                    
+                console.log("coucou");
+
+                $("#form_vide").html('Votre inscription a bien été prise en compte');
+        
+                })
+                .fail(function (err) {
+                    alert('error : ' + err.status);
+                })
+                .always(function () {
+                    console.log('arguments supplier list', arguments);
+                })
+        }
+        else{
+            $("#verif_mdp").html('Vos deux mots de passe ne sont pas identique');
+        }
+    }
+    else{
+        $("#form_vide").html('Veuillez remplir tout les champs du formulaire');
+    }
   
-
-	var datas = {
-		page: "tunnel_commande_add_pro",
-		bJSON: 1,
-        login_pro:$('#login').val(),
-        mdp_pro:$('#mdp').val(),
-        societe_pro:$('#societe').val(),
-        tel_pro:$('#tel').val(),
-        address_pro: $('#adresse').val(),
-        id_ville: $('#ville').val(),
-        mail_pro:$('#mail').val(),
-        siret_pro: $('#siret').val()
-		
-
-	}
-	
-	$.ajax({
-		type: "POST",
-		url: "route.php",
-		async: true,
-		data: datas,
-		dataType: "json",
-		cache: false
-	})
-		.done(function (result) {
-			
-		
-
-		})
-		.fail(function (err) {
-			alert('error : ' + err.status);
-		})
-		.always(function () {
-			console.log('arguments supplier list', arguments);
-		})
 }
 
 /*

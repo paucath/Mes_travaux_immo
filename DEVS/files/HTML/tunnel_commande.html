@@ -76,8 +76,8 @@
             <label for="mdp">Mot de passe</label></br>
             <input type="text" class="mdp" id="mdp" name="mdp" placeholder="votre mot de passe"></br>
             <label for="mdp_2">Confirmer votre mot de passe</label></br>
-            <div id="verif_mdp" style="font-size: 20px;color:red;"></div>
             <input type="text" class="mdp_2" id="mdp_2" name="mdp_2" placeholder="votre mot de passe"></br>
+            <div id="verif_mdp" style="font-size: 20px;color:red;"></div>
             <label for="societe">Société</label></br>
             <input type="text" class="societe" id="societe" name="societe" placeholder="Nom de votre société"></br>
             <label for="tel">Numéro de téléphone</label></br>
@@ -85,7 +85,7 @@
             <label for="adresse">Adresse</label></br>
             <input type="text" class="adresse" id="adresse" name="adresse" placeholder="Adresse de votre société"></br>
             <label for="ville">Ville</label></br>
-            <div id="ville" style="width:80%;"></div></br>
+            <div id="select_ville" style="width:80%;"></div></br>
             <label for="mail">E-mail</label></br>
             <input type="mail" class="mail" id="mail" name="mail" placeholder="Votre e-mail"></br>
             <label for="siret">Siret</label></br>
@@ -94,6 +94,7 @@
         <div class="d-flex justify-content-center">
             <button class="valide_commande" id="add_pro"  onClick="add_pro()">S'inscrire</button>
         </div>
+        <div id="form_vide" style="font-size: 20px;color:red;"></div>
     </div>
     <!-- Paiement -->
     <div class="Paiement" id="Paiement">

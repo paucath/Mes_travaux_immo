@@ -52,13 +52,14 @@ Class Tunnel_commande_add_pro	{
      * Get interface to gestion of accueil
      */
     function main() {
-		$objet_service = new Tunnel_commande_service();
+        
+        
+        $objet_service = new Tunnel_commande_service();
 		// Ici je fais mon appel $objet_service->ma_methode_qui_est_dans_le_service
 		$objet_service->add_pro();
 		// Je passe mes parametres pour y avoir acces dans mes pages HTML
 		$this->resultat = $objet_service->resultat;
 		$this->VARS_HTML = $objet_service->VARS_HTML;
-       
     }
     
 }

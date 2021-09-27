@@ -13,6 +13,7 @@ var tables;
 var modal;
 var nbr_projet = [];
 
+
 // document ready
 $(document).ready(function () {
 
@@ -676,15 +677,21 @@ function load_profil() {
 */
 function profil_update() {
 
+	if($('#ville').val()!=""){
+		ville=$('#ville').val();
+	}
+	else{
+		ville=aofprofil[0]["id_ville"];
+	}
+console.log(ville);
 	var datas = {
 		page: "profil_pro_profil_update",
 		bJSON: 1,
 		id_pro: id_pro_connect,
 		societe_pro: $('#entreprise').val(),
 		address_pro: $('#adresse2').val(),
-		id_ville: $('#ville').val(),
+		id_ville: ville,
 		tel_pro: $('#telephone').val(),
-		siret_pro: $('#siret').val(),
 		mail_pro: $('#mail').val(),
 		login_pro: $('#login').val(),
 		mdp_pro: $('#mdp').val()

@@ -70,7 +70,6 @@ Class Profil_pro_service extends Initialize	{
                                   "address_pro" => $this->VARS_HTML["address_pro"], 
                                   "id_ville" => $this->VARS_HTML["id_ville"], 
                                   "tel_pro" => $this->VARS_HTML["tel_pro"],
-                                  "siret_pro" => $this->VARS_HTML["siret_pro"],
                                   "mail_pro" => $this->VARS_HTML["mail_pro"],
                                   "login_pro" => $this->VARS_HTML["login_pro"],
                                   "mdp_pro" => $this->VARS_HTML["mdp_pro"]
