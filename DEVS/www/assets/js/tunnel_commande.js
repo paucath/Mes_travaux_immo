@@ -1,6 +1,8 @@
 var aofpanier=[];
 var aofcgv=[];
 var aofville=[];
+var aoftest=[];
+var aoferror=[];
 /*
 * Document ready
 */
@@ -12,6 +14,7 @@ $(document).ready(function() {
     $("#Paiement").hide();
     load_panier();
     load_cgv();
+    test_inscription();
 });
 
 /*
@@ -188,11 +191,62 @@ function construct_select_ville() {
 /* 
 * Envoi d'un nouveau professionnel a la BDD
 */
-function add_pro(){
+function test_inscription(){
 
+    var datas = {
+        page: "tunnel_commande_test_inscription",
+        bJSON: 1
+    }
+    
+    $.ajax({
+        type: "POST",
+        url: "route.php",
+        async: true,
+        data: datas,
+        dataType: "json",
+        cache: false
+    })
+        .done(function (result) {
+            
+        console.log("coucou");
+        aoftest=result;
+
+        })
+        .fail(function (err) {
+            alert('error : ' + err.status);
+        })
+        .always(function () {
+            console.log('arguments supplier list', arguments);
+        })
+}
+
+function test(){
+
+
+    for(i = 0; i < aoftest.length; i++){
+        if (aoftest[i]["login_pro"] == $('#login').val()){
+    
+            $("#erreur_login").html('Ce login existe déja');
+    
+        }
+        else if (aoftest[i]["siret_pro"] == $('#siret').val()){
+    
+            $("#erreur_siret").html('Ce siret existe déja');
+        }
+        else{
+            add_pro(); 
+        }
+    }
+}
+
+/* 
+* Envoi d'un nouveau professionnel a la BDD
+*/
+function add_pro(){
 
     $("#verif_mdp").html('');
     $("#form_vide").html('');
+
 
     if(($('#login').val())!="" && ($('#mdp').val())!="" && ($('#societe').val())!="" && ($('#tel').val())!="" && ($('#adresse').val())!="" && ($('#ville').val())!="" && ($('#mail').val())!="" && ($('#siret').val())!="" ){
 
@@ -223,10 +277,23 @@ function add_pro(){
             })
                 .done(function (result) {
                     
-                console.log("coucou");
+                console.log("coucou", result.aErrors);
 
-                $("#form_vide").html('Votre inscription a bien été prise en compte');
-        
+                 aoferror=result.aErrors;  
+                 
+                 console.log(aoferror);
+                 
+                 if ((result.nb_form_errors)==0){
+                     
+                     $("#form_vide").html('Votre inscription a bien été prise en compte');
+                     setTimeout(function () {
+                         $('#form_vide').html("");
+                        }, 8000);
+                        
+                    }
+                    
+                    affichage_erreur();
+               
                 })
                 .fail(function (err) {
                     alert('error : ' + err.status);
@@ -236,15 +303,148 @@ function add_pro(){
                 })
         }
         else{
-            $("#verif_mdp").html('Vos deux mots de passe ne sont pas identique');
+            $("#verif_mdp_2").html('Vos deux mots de passe ne sont pas identique');
+            setTimeout(function () {
+                $('#verif_mdp_2').html("");
+            }, 8000);
         }
     }
-    else{
+        else{
         $("#form_vide").html('Veuillez remplir tout les champs du formulaire');
+        setTimeout(function () {
+            $('#form_vide').html("");
+        }, 8000);
     }
-  
 }
 
+function affichage_erreur(){
+
+    if ((aoferror["address_pro"])==1){
+        $("#erreur_adresse").html("Veuillez renseigner l'adresse de votre societe , s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_adresse').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_address_pro"])==1){
+        $("#erreur_adresse").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#erreur_adresse').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["mail_pro"])==1){
+        $("#erreur_mail").html("Veuillez renseigner l'email de votre societe, s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_mail').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["format_mail_pro"])==1){
+        $("#erreur_mail").html("format de mail incorrect");
+				setTimeout(function () {
+					$('#erreur_mail').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_mail_pro"])==1){
+        $("#erreur_mail").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#erreur_mail').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["id_ville"])==1){
+        $("#erreur_ville").html("Veuillez renseigner la ville de votre societe s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_ville').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["mdp_pro"])==1){
+        $("#verif_mdp").html("Veuillez renseigner un mot de passe s'il vous plais");
+				setTimeout(function () {
+					$('#verif_mdp').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_mdp_pro"])==1){
+        $("#verif_mdp").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#verif_mdp').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["mdp_2_pro"])==1){
+        $("#verif_mdp_2").html("Veuillez renseigner le mot de passe de vérification s'il vous plais");
+				setTimeout(function () {
+					$('#verif_mdp_2').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["mdp_coherence"])==1){
+        $("#verif_mdp_2").html("Les deux mots de passe ne sont pas identique");
+				setTimeout(function () {
+					$('#verif_mdp_2').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["login_pro"])==1){
+        $("#erreur_login").html("Veuillez renseigner un login s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_login').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_login_pro"])==1){
+        $("#erreur_login").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#erreur_login').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["tel_pro"])==1){
+        $("#erreur_tel").html("Veuillez renseigner le numero de telephone de votre societe s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_tel').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_tel_pro"])==1){
+        $("#erreur_tel").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#erreur_tel').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["siret_pro"])==1){
+        $("#erreur_siret").html("Veuillez renseigner le numero de siret de votre societe s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_siret').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_siret_pro"])==1){
+        $("#erreur_siret").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#erreur_siret').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["societe_pro"])==1){
+        $("#erreur_societe").html("Veuillez renseigner le nom de votre societe s'il vous plais");
+				setTimeout(function () {
+					$('#erreur_societe').html("");
+				}, 8000);
+    }
+
+    if ((aoferror["length_societe_pro"])==1){
+        $("#erreur_societe").html("Vous avez dépassé le nombre de caractère maximum ");
+				setTimeout(function () {
+					$('#erreur_societe').html("");
+				}, 8000);
+    }
+}
 /*
 * fonction validation de l'inscription
 */
@@ -257,5 +457,3 @@ function valid_inscription(){
     $("#inscription").hide();
     $("#Paiement").show();
 }
-
-

@@ -63,24 +63,53 @@ public function ville_list(){
   $this->resultat["tunnel_commande_select_ville"]= $this->oBdd->getSelectDatas($spathSQL);
 }
 
- /*
-  *fonction de création d'un pro
-  */
-  public function add_pro(){
- 
-    $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "add_pro.sql";
-    $this->resultat["tunnel_commande_add_pro"]= $this->oBdd->treatDatas($spathSQL, array(
-                                "login_pro" => $this->VARS_HTML["login_pro"], 
-                                 "mdp_pro" => $this->VARS_HTML["mdp_pro"], 
-                                  "societe_pro" => $this->VARS_HTML["societe_pro"], 
-                                  "tel_pro" => $this->VARS_HTML["tel_pro"], 
-                                  "address_pro" => $this->VARS_HTML["address_pro"], 
-                                  "id_ville" => $this->VARS_HTML["id_ville"],
-                                  "mail_pro" => $this->VARS_HTML["mail_pro"],
-                                  "siret_pro" => $this->VARS_HTML["siret_pro"]
-                                  ));
-  
+  /*
+*fonction de création d'un pro
+*/
+public function add_pro()
+{
+
+  $spathSQL = $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "add_pro.sql";
+  $this->resultat["tunnel_commande_add_pro"] = $this->oBdd->treatDatas($spathSQL, array(
+    "login_pro" => $this->VARS_HTML["login_pro"],
+    "mdp_pro" => $this->crypterssl($this->VARS_HTML["siret_pro"], $this->VARS_HTML["mdp_pro"]),
+    "societe_pro" => $this->VARS_HTML["societe_pro"],
+    "tel_pro" => $this->VARS_HTML["tel_pro"],
+    "address_pro" => $this->VARS_HTML["address_pro"],
+    "id_ville" => $this->VARS_HTML["id_ville"],
+    "mail_pro" => $this->VARS_HTML["mail_pro"],
+    "siret_pro" => $this->VARS_HTML["siret_pro"]
+  ));
+}
+
+
+private function crypterssl($maCleDeCryptage, $maChaineACrypter)
+{
+  // Set a random salt
+  // $salt = openssl_random_pseudo_bytes(8);
+  // Or empty salt so that we'll be able to compare again
+  $salt = "";
+  $salted = '';
+  $dx = '';
+  // Salt the key(32) and iv(16) = 48
+  while (strlen($salted) < 48) {
+    $dx = md5($dx . $maCleDeCryptage . $salt, true);
+    $salted .= $dx;
   }
+  $key = substr($salted, 0, 32);
+  $iv  = substr($salted, 32, 16);
+  $encrypted_data = openssl_encrypt($maChaineACrypter, 'aes-256-cbc', $key, true, $iv);
+  return base64_encode('Salted__' . $salt . $encrypted_data);
+}
+
+/*
+*fonction de récupération des données ville pour l'inscription
+*/
+public function test_inscription(){
+  $spathSQL= $this->GLOBALS_INI["PATH_HOME"] . $this->GLOBALS_INI["PATH_MODEL"] . "test_inscription.sql";
+  $this->resultat["tunnel_commande_test_inscription"]= $this->oBdd->getSelectDatas($spathSQL);
+}
+
 
 
   /**

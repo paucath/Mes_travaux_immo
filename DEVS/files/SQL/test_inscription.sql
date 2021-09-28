@@ -1,0 +1,1 @@
+SELECT login_pro , siret_pro FROM `professionnel`
