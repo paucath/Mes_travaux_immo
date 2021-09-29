@@ -9,7 +9,7 @@ Class Configuration	{
 	 * @return array|false It will return an array, or false if an error occurred
 	 */
 	public static function getGlobalsINI() {
-		$DOCUMENT_ROOT=  $_SERVER['DOCUMENT_ROOT'];
+		$DOCUMENT_ROOT= "C:/wamp64/files/mestravauximmo/";
 		$aOfPaths= explode("/", $DOCUMENT_ROOT);
 		for ($i=count($aOfPaths)-1; $i>0; $i--)	{
 			$DOCUMENT_ROOT= str_replace($aOfPaths[$i], "", $DOCUMENT_ROOT);

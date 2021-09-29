@@ -9,11 +9,11 @@ require_once "espace_admin_service.php";
  *
  * require_once "espace_admin_service.php";
  *
- * @package Mes travaux immo
- * @subpackage espace admin admin add
- * @author CATHELAIN Pauline
- * @copyright  
- * @version v1.0
+* @package Mes travaux immo
+* @subpackage 
+* @author CATHELAIN Pauline
+* @copyright 
+* @version v1.0
  */
 
 Class Espace_admin_admin_add	{

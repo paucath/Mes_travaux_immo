@@ -28,7 +28,8 @@ Class Database {
 	 * @var object
 	 */
 	private $_hDb;
-	
+
+
 	/**
 	 * Connect to the database
 	 *
@@ -43,6 +44,8 @@ Class Database {
 		}
 	}
 
+
+	
 	/**
 	 * Disconnect from the database
 	 *
