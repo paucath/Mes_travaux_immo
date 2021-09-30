@@ -222,7 +222,6 @@ function test_inscription(){
 
 function test(){
 
-
     for(i = 0; i < aoftest.length; i++){
         if (aoftest[i]["login_pro"] == $('#login').val()){
     
